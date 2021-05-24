@@ -4,9 +4,10 @@
 }
 
 @media screen and (min-width: 318px) {
-  .current-date-container {
+  .current-date-section {
     width: 280px;
     height: 190px;
+    margin-bottom: 60px;
     display: flex;
     align-items: center;
     background-color: rgba(16, 33, 54, 0.8);
@@ -56,7 +57,7 @@
 }
 
 @media screen and (min-width: 766px) {
-  .current-date-container {
+  .current-date-section {
     width: 500px;
     height: 270px;
   }
@@ -79,7 +80,7 @@
   }
 }
 @media screen and (min-width: 1178px) {
-  .current-date-container {
+  .current-date-section {
     width: 630px;
     height: 278px;
     float: left;
