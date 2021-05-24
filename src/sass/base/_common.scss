@@ -1,0 +1,29 @@
+body {
+  font-family: 'Lato', sans-serif;
+  font-size: 18px;
+  line-height: 22px;
+  letter-spacing: 0.04em;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+p {
+  margin: 0;
+}
+ul,
+ol {
+  padding: 0;
+  margin: 0;
+  list-style: none;
+}
+img {
+  width: 100%;
+  display: block;
+}
+.link {
+  text-decoration: none;
+}
