@@ -1,0 +1,58 @@
+@media screen and (min-width: 318px) {
+  .quote-section {
+    margin: 0 auto;
+    width: 280px;
+    height: 95px;
+  }
+  .quote-container {
+    float: right;
+    color: white;
+  }
+  .quote-text {
+    font-size: 14px;
+    line-height: 17px;
+    letter-spacing: 0.04em;
+    font-style: italic;
+    text-align: end;
+    margin-bottom: 15px;
+  }
+  .quote-author {
+    font-family: "Lato";
+    font-size: 18px;
+    font-style: normal;
+    line-height: 22px;
+    float: right;
+  }
+}
+@media screen and (min-width: 768px) {
+  .quote-section {
+    width: 500px;
+    height: 145px;
+  }
+  .quote-container {
+    width: 350px;
+  }
+  .quote-text {
+    font-size: 22px;
+    line-height: 26px;
+    letter-spacing: 0.04em;
+  }
+  .quote-author {
+    font-size: 18px;
+    line-height: 22px;
+    letter-spacing: 0.04em;
+  }
+}
+@media screen and (min-width: 1178px) {
+  .quote-section {
+    width: 340px;
+    height: 132px;
+    float: right;
+  }
+  .quote-container {
+  }
+  .quote-text {
+  }
+  .quote-author {
+  }
+}
