@@ -1,0 +1,38 @@
+.switch-btn {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  min-width: 126px;
+  padding: 6px 0;
+  margin: 32px auto 0;
+  border-radius: 15px;
+  border: none;
+  outline: none;
+  cursor: pointer;
+  font-family: Lato;
+  font-size: 14px;
+  font-weight: 700;
+  line-height: 22px;
+  text-transform: uppercase;
+  letter-spacing: 0.4px;
+}
+
+.today-btn {
+  margin-right: 16px;
+  background-color: rgba(255, 255, 255, 1);
+}
+.five-days-btn {
+  background-color: rgba(255, 255, 255, 0.54);
+}
+
+.favorite-list-city-selector {
+  display: flex;
+  justify-content: space-between;
+  min-width: 50px;
+  height: 27px;
+  border-radius: 22px;
+  margin: 13px 10px 0;
+  background-color: rgba(16, 33, 54, 0.47);
+  outline: none;
+}
