@@ -1,0 +1,226 @@
+/* ====================== days-of-week-MOBILE ==========================================*/
+.location1 {
+    display: none;
+  }
+  .temperature-wrapper {
+    max-width: 280px;
+    height: 273px;
+    margin-top: 30px;
+    background-color: rgba(16, 33, 54, 0.8);
+    box-shadow: 0px 5px 33px rgba(16, 33, 54, 0.6);
+    border-radius: 34px;
+  
+    .location {
+      display: block;
+      padding-top: 30px;
+      margin-bottom: 20px;
+      font-size: 18px;
+      font-weight: 700;
+      line-height: 0.83;
+      color: #ffffff;
+      text-align: center;
+    }
+    .daily-temperature {
+      display: flex;
+      justify-content: space-between;
+      color: #ffffff;
+  
+      .daily-temperature__day {
+        margin-right: 27px;
+        margin-left: 35px;
+  
+        &:not(:last-child) {
+          margin-right: 0;
+        }
+        .daily-temperature__week-day {
+          margin-bottom: 13px;
+          font-size: 12px;
+          line-height: 0, 857;
+          text-align: center;
+          letter-spacing: 0.04em;
+        }
+        .daily-temperature__date {
+          font-size: 16px;
+          line-height: 0, 81;
+          text-align: center;
+          letter-spacing: 0.04em;
+        }
+        .daily-temperature__range {
+          display: flex;
+          justify-content: center;
+          margin: 5px;
+  
+          font-size: 12px;
+          line-height: 0, 857;
+          color: #767d85;
+  
+          .daily-temperature__range-value {
+            font-size: 14px;
+            line-height: 0, 823;
+            color: #ff6b09;
+            text-align: center;
+          }
+        }
+      }
+    }
+  }
+  .daily-temperature__range-item:first-child {
+    border-right: 1px solid #8798ac;
+  }
+  // .daily-temperature__range-item::after {
+  //   content: '';
+  //   margin-top: 2px;
+  
+  //   display: block;
+  //   width: 90%;
+  //   height: 1px;
+  //   margin-left: 7px;
+  //   background-color: white;
+  //   border-radius: 5px;
+  // }
+  .daily-temperature__additional-info {
+    display: block;
+    width: 82px;
+    height: 20px;
+    margin-top: 5px;
+    margin-left: 30px;
+    margin-bottom: 15px;
+  
+    font-size: 12px;
+    line-height: 14px;
+    box-shadow: none;
+    border: none;
+    color: #767d85;
+    background-color: transparent;
+  
+    &:hover{
+      cursor: pointer;
+    }
+    &::after {
+      content: '';
+      margin-top: 2px;
+  
+      display: block;
+      width: 80%;
+      height: 1px;
+      margin-left: 7px;
+      background-color: #767d85;
+      border-radius: 5px;
+    }
+  }
+  .day {
+    display: inline-block;
+    margin-right: 50px;
+    font-size: 12px;
+    line-height: 14px;
+    box-shadow: none;
+    border: none;
+    color: #ffffff;
+    background-color: transparent;
+  
+    &.prev {
+      margin-left: 30%;
+    }
+  }
+  /* ====================== days-of-week-TABLET ===========================================*/
+  @media screen and (min-width: 768px) {
+    .location1 {
+      display: block;
+      margin-top: 25px;
+      margin-bottom: 25px;
+      font-size: 28px;
+      line-height: 0, 823;
+      text-align: center;
+      color: #ffffff;
+    }
+    .temperature-wrapper {
+      max-width: 620px;
+      height: 270px;
+      margin: 0 auto;
+      margin-top: 25px;
+  
+      .location {
+        display: none;
+      }
+      .daily-temperature {
+        .daily-temperature__day {
+          margin-top: 40px;
+          margin-right: 61px;
+          margin-left: 40px;
+  
+          .daily-temperature__week-day {
+            margin-bottom: 10px;
+            font-size: 14px;
+            line-height: 0, 823;
+          }
+          .daily-temperature__date {
+            font-size: 18px;
+          }
+          .daily-temperature__range {
+            margin-top: 10px;
+            font-size: 14px;
+            line-height: 0, 823;
+  
+            .daily-temperature__range-value {
+              font-size: 14px;
+              line-height: 0, 81;
+            }
+          }
+        }
+      }
+    }
+    .daily-temperature__additional-info {
+      margin-left: 40px;
+      margin-bottom: 40px;
+      margin-top: 20px;
+      font-size: 14px;
+      line-height: 17px;
+    }
+    .day {
+      display: none;
+    }
+  }
+  /* ====================== days-of-week-TABLET ===========================================*/
+  @media screen and (min-width: 1280px) {
+    .location1 {
+      margin-bottom: 22px;
+    }
+    .temperature-wrapper {
+      max-width: 1060px;
+      height: 308px;
+      margin: 0 auto;
+      margin-top: 25px;
+  
+      .daily-temperature {
+        .daily-temperature__day {
+          margin-right: 99px;
+          margin-left: 130px;
+  
+          .daily-temperature__week-day {
+            font-size: 18px;
+            line-height: 1, 22;
+          }
+          .daily-temperature__date {
+            font-size: 25px;
+            line-height: 1, 2;
+          }
+          .daily-temperature__range {
+            margin-top: 30px;
+            font-size: 18px;
+            line-height: 0, 81;
+  
+            .daily-temperature__range-value {
+              font-size: 25px;
+              line-height: 0, 83;
+            }
+          }
+        }
+      }
+    }
+    .daily-temperature__additional-info {
+      margin-left: 129px;
+      margin-bottom: 40px;
+      margin-top: 5px;
+    }
+  }
+  
