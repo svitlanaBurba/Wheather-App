@@ -3,10 +3,13 @@
     margin: 0 auto;
     width: 280px;
     height: 95px;
+    margin-top: 30px;
+    margin-bottom: 30px;
   }
   .quote-container {
     float: right;
     color: white;
+    position: relative;
   }
   .quote-text {
     font-size: 14px;
@@ -16,8 +19,14 @@
     text-align: end;
     margin-bottom: 15px;
   }
+  .quote-text::after {
+    content: url('/images/qoute_icon.svg');
+    position: absolute;
+    top: -20px;
+    right: 20px;
+  }
   .quote-author {
-    font-family: "Lato";
+    font-family: 'Lato';
     font-size: 18px;
     font-style: normal;
     line-height: 22px;
