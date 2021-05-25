@@ -1,4 +1,4 @@
-import { fetchWether } from './js/apiService';
+import { fetchWeather } from './js/apiService';
 import './sass/main.scss';
 
 import CitySelector from './js/components/citySelector';
@@ -65,7 +65,7 @@ function startApp() {
 function weatherOneDayLoad(onWeatherOneDayLoad) {
   // вызываем наш апи, передаем ему город
 
-  fetchWether(selectedCity).then(w => {
+  fetchWeather(selectedCity).then(w => {
     selectedCityWeatherOneDay = w;
     console.log(w);
     onWeatherOneDayLoad(); // погоду в параметрах не передаем, т.к. она уже лежит в глобальной переменной
