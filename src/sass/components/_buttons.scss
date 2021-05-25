@@ -25,3 +25,14 @@
 .five-days-btn {
   background-color: rgba(255, 255, 255, 0.54);
 }
+
+.favorite-list-city-selector {
+  display: flex;
+  justify-content: space-between;
+  min-width: 50px;
+  height: 27px;
+  border-radius: 22px;
+  margin: 13px 10px 0;
+  background-color: rgba(16, 33, 54, 0.47);
+  outline: none;
+}
