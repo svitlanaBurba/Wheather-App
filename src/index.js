@@ -1,5 +1,10 @@
 import { fetchWether } from './js/apiService';
 import './sass/main.scss';
+
+import tDivTpl from '../templates/t-div.hbs';
+import loadMoreTpl from '../templates/load-more.hbs';
+import chartDivTpl from '../templates/chart-div.hbs';
+
 import CitySelector from './js/components/citySelector';
 
 let selectedCity;
@@ -27,3 +32,4 @@ function onCitySelected(city) {
   console.log(city);
   selectedCity = city;
 }
+

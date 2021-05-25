@@ -1,0 +1,34 @@
+<div class='wheather-main-more-info-container'>
+  <ul class='wheather-whole-data-more-info-list'>
+    {{#each this}}
+      <div class='wheather-whole-data-more-info-container'>
+        <li class='wheather-whole-data-more-info-item'>
+          <p class='current-more-info-time'>{{time}}</p>
+          <svg class='icon-more-info-wheather'>
+            <use href='{{03d}}' width='35' height='35'></use>
+          </svg>
+          <div class='current-more-info-temperature'>{{temperature.value}}</div>
+
+          <div class='container-more-info-wheather-parameters'>
+            <svg class='icon-more-info-wheather-parameters'>
+              <use href='./images/sprite.svg#icon-barometer' width='20' height='20'></use>
+            </svg>
+            <p class='text-more-info-wheather-parameters'>{{precipitation.value}}</p>
+          </div>
+          <div class='container-more-info-wheather-parameters'>
+            <svg class='icon-more-info-wheather-parameters'>
+              <use href='./images/sprite.svg#icon-humidity' width='20' height='20'></use>
+            </svg>
+            <p class='text-more-info-wheather-parameters'>{{humidity.value}}</p>
+          </div>
+          <div class='container-more-info-wheather-parameters'>
+            <svg class='icon-more-info-wheather-parameters'>
+              <use href='./images/sprite.svg#icon-wind' width='20' height='20'></use>
+            </svg>
+            <p class='text-more-info-wheather-parameters'>{{wind.speed.value}}</p>
+          </div>
+        </li>
+      </div>
+    {{/each}}
+  </ul>
+</div>
