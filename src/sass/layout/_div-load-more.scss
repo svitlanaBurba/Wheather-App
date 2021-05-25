@@ -1,0 +1,90 @@
+.wheather-whole-data-more-info-list {
+  @media screen and (min-width: 1280px) {
+    display: flex;
+  }
+}
+
+.wheather-whole-data-more-info-container {
+  width: 120px;
+  height: 218px;
+  border-radius: 25px;
+  background-color: #102136;
+  margin-right: 10px;
+  margin-top: 10px;
+  &:first-child {
+    margin-left: 79px;
+  }
+}
+
+.wheather-whole-data-more-info-item {
+  width: 88px;
+  height: 185px;
+  margin-top: 15px;
+  margin-left: 10px;
+  margin-right: 10px;
+}
+
+.current-more-info-time {
+  font-family: Lato;
+  font-style: normal;
+  font-weight: normal;
+  font-size: 14px;
+  line-height: 0.82;
+  align-items: center;
+  text-align: center;
+  color: #ffffff;
+  opacity: 0.54;
+  padding-top: 15px;
+  padding-right: 19px;
+  padding-bottom: 10px;
+  padding-left: 19px;
+}
+
+.icon-more-info-wheather {
+  display: block;
+  width: 35px;
+  height: 35px;
+  align-items: center;
+  text-align: center;
+  margin-left: auto;
+  margin-right: auto;
+  margin-bottom: 10px;
+}
+
+.current-more-info-temperature {
+  font-family: Lato;
+  font-style: normal;
+  font-weight: bold;
+  font-size: 25px;
+  line-height: 30px;
+  /* identical to box height */
+  color: #ff6b09;
+  margin-bottom: 10px;
+  align-items: center;
+  text-align: center;
+}
+
+.icon-more-info-wheather-parameters {
+  width: 20px;
+  height: 20px;
+  color: #ffffff;
+  margin-left: 0px;
+  margin-right: 10px;
+  margin-bottom: 5px;
+}
+
+.text-more-info-wheather-parameters {
+  font-family: Lato;
+  font-style: normal;
+  font-weight: normal;
+  font-size: 14px;
+  line-height: 17px;
+  color: #ffffff;
+  opacity: 0.54;
+  align-items: center;
+  text-align: center;
+}
+
+.container-more-info-wheather-parameters {
+  display: flex;
+}
