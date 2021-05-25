@@ -18,10 +18,58 @@
     />
   </head>
   <body>
-    <!-- Так добавляются фрагменты в главные HTML-файлы страниц. -->
-    <include src="./partials/header.html"></include>
-    <include src="./partials/section.html"></include>
+    <section class="header">
+      <div class="header-wrapper">
+        <form action="get" class="input-form">
+          <input class="input-field" name="input-city" placeholder="Enter the city" type="text" />
+          <input type="checkbox" class="add-favorite" />
+          <button type="button" class="input-form-search"></button>
+          <ul class="favorite-list">
+            <li class="favorite-list-city">
+              <button type="button" class="favorite-list-city-selector">London</button>
+            </li>
+          </ul>
+        </form>
+      </div>
+    </section>
+
+    <!-- Группа из двух кнопок, пока в общей разметке -->
+    <div class="switch-btn-wrapper">
+      <button class="switch-btn today-btn" type="button">Today</button>
+      <button class="switch-btn five-days-btn" type="button">5 days</button>
+    </div>
+    <!-- Группа из двух кнопок, пока в общей разметке -->
+
+    <!-- Контейнер с погодой Киев -3 Паша -->
+    <div class="wheather-main-container"></div>
+
+    <!-- Контейнер со временем Артем -->
+    <div class="current-date-section"></div>
+
+    <!-- Контейнер с цитатой Артем -->
+    <div class="quotation-wrapper"></div>
+
+    <!-- Контейнер с погодой 5 дней (основной) Сергей -->
+    <div class="weather-output-wrapper-five-days"></div>
+
+    <!-- Контейнер с погодой 5 дней (Load more) Паша -->
+    <div class="wheather-main-more-info-container"></div>
+
+    <!-- Контейнер с графиком Богдан -->
+    <div class="chart-main-container"></div>
+
+    <!-- <include src="./partials/header.html"></include> -->
+    <!-- <include src="./partials/section.html"></include> -->
+
+    <!-- <include src="./partials/header.html"></include>
+    <include src="./partials/section.html"></include> -->
+    <include src="./partials/current_date.html"></include>
+    <include src="./partials/t-div.html"></include>
+    <include src="./partials/qoute.html"></include>
+    <include src="./partials/days-week.html"></include>
+    <include src="./partials/load-more-div.html"></include>
     <include src="./partials/chart-div.html"></include>
+
     <!-- Скрипт идёт последним в разметке. В нём уже подключен главный SASS-файл. -->
     <script src="./index.js"></script>
   </body>

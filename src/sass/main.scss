@@ -3,5 +3,14 @@
 @import './base/common';
 @import './base/container';
 @import './components/buttons';
+
+@import './layout/current-date';
+
+@import './layout/qoute';
+
 @import './layout/div-temperature';
 @import './layout/div-chart';
+
+@import './base/container1';
+@import './layout/days-week';
+@import './components/div-load-more';

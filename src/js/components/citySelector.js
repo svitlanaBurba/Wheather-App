@@ -1,3 +1,31 @@
+export default class CitySelector {
+  refs = {
+    searchInputForm: '',
+    searchInputField: '',
+  };
+
+  onCitySelected;
+
+  onSearchInputSubmit(e) {
+    e.preventDefault();
+    const formData = new FormData(event.currentTarget);
+    const city = formData.get(this.refs.searchInputField.name);
+
+    this.onCitySelected(city);
+  }
+
+  addListeners() {
+    this.refs.searchInputForm.addEventListener('submit', this.onSearchInputSubmit.bind(this));
+  }
+
+  constructor(refs, onCitySelected) {
+    this.refs = refs;
+    this.onCitySelected = onCitySelected;
+
+    this.addListeners();
+  }
+}
+
 /* должен содержать функции:
 - renderCitySelector
 

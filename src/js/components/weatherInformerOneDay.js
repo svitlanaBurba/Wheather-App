@@ -1,4 +1,8 @@
-/* 
+function renderWeatherInformerOneDay(ref, weather) {
+  //ref.container.innerHTML('');
+}
+
+/*
 Отвечает за обновление окна погоды на 1 день для выбранного города
 
 должен содержать функции:
