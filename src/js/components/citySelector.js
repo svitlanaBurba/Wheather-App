@@ -1,11 +1,18 @@
+import favCityTmpl from '../../templates/citySelectorFavCity.hbs';
 export default class CitySelector {
+  // атрибуты класса (свойства)
   refs = {
     searchInputForm: '',
     searchInputField: '',
+    favCitiesList: '',
   };
+  favCities = []; // массив любимых городов
+  onCitySelected; // функция, которая будет вызываться при выборе пользователем города - передается в конструкторе
+  favCityTemplate; // шаблон для генерации кнопок любимых городов
 
-  onCitySelected;
+  // методы
 
+  // обработчик сабмита формы - когда город вводят руками
   onSearchInputSubmit(e) {
     e.preventDefault();
     const formData = new FormData(event.currentTarget);
@@ -14,15 +21,40 @@ export default class CitySelector {
     this.onCitySelected(city);
   }
 
-  addListeners() {
-    this.refs.searchInputForm.addEventListener('submit', this.onSearchInputSubmit.bind(this));
+  // обработчик нажатия на кнопку любимого города
+  // пока что не поддерживает удаление щелчком по крестику
+  onFavCityClick(e) {
+    const clickedCity = e.srcElement.innerText;
+    console.log('user selected' + clickedCity);
+    // пользователь выбрал новый город - так что вызываем onCitySelected
+    // доделать опционально - делать звезду желтой, в поле ввода ставить имя вібранного города
+    this.onCitySelected(clickedCity);
   }
 
+  addListeners() {
+    // при сабмите формы
+    this.refs.searchInputForm.addEventListener('submit', this.onSearchInputSubmit.bind(this));
+    // при нажатии на кнопку любимого города
+    this.refs.favCitiesList.addEventListener('click', this.onFavCityClick.bind(this));
+  }
+
+  render() {
+    this.refs.favCitiesList.innerHTML = '';
+    this.favCities.forEach(x => {
+      this.refs.favCitiesList.insertAdjacentHTML('afterbegin', this.favCityTemplate({ city: x }));
+    });
+  }
+
+  // конструктор
   constructor(refs, onCitySelected) {
     this.refs = refs;
     this.onCitySelected = onCitySelected;
+    this.favCityTemplate = favCityTmpl; // переделать, должно быть параметром конструктора
+
+    this.favCities = ['London', 'Berlin']; // переделать, должно быть параметром конструктора
 
     this.addListeners();
+    this.render();
   }
 }
 

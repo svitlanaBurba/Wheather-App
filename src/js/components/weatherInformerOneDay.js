@@ -1,5 +1,8 @@
-function renderWeatherInformerOneDay(ref, weather) {
-  //ref.container.innerHTML('');
+import oneDayTemp from '../../templates/weatherInformerOneDay.hbs';
+
+export default function renderWeatherInformerOneDay(ref, weather) {
+  ref.wrapper.innerHTML = oneDayTemp(weather);
+  console.log(weather);
 }
 
 /*
@@ -29,3 +32,16 @@ const weatherInformerOneDay = {
   contentBox = document.querySelector();
 };
  */
+
+/* class WeatherInformerOneDay {
+  refs = {
+    wrapper: '', //reference to a wrapper ()
+  };
+  template; // template function to render component
+  currentWeather = {};
+
+  constructor(refs, template, weather, isHidden) {
+    this.refs = refs;
+    this.template = template;
+  }
+} */
