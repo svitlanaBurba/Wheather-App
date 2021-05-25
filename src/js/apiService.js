@@ -1,3 +1,5 @@
+// Weather service
+
 const BASE_URL_WEATHER = 'https://api.openweathermap.org/data/2.5/weather?q=';
 const BASE_URL_IMG = 'https://pixabay.com/api/?image_type=photo&orientation=horizontal&q=';
 const apiKeyWether = 'd01e7beda7c1dcab67ea99635e4fb4bc';
@@ -14,3 +16,7 @@ const fetchImages = city =>
   });
 
 export { fetchWether, fetchImages };
+
+// Geolocation service
+
+// Bg Image Service
