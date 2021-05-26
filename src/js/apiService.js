@@ -47,6 +47,7 @@ const fetchWeatherFive = city =>
     return convertFiveDayWeather(res.data);
   });
 
+
 // Bg Image Service
 const fetchImages = city =>
   fetch(`${BASE_URL_IMG}${city}&page=1&per_page=12&key=${apiKeyImg}`).then(res => {
