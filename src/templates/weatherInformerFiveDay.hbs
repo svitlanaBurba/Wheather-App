@@ -3,14 +3,12 @@
     <h2 class='location1'>{{city.name}}, {{city.country}}</h2>
     <div class='temperature-wrapper'>
       <h2 class='location'>{{city.name}}, {{city.country}}</h2>
-      {{#each this}}
+      {{#each daysData}}
         <ul class='daily-temperature'>
           <li class='daily-temperature__day'>
             <p class='daily-temperature__week-day'>{{date.dayName}}</p>
             <p class='daily-temperature__date'>{{date.day}} {{date.month}}</p>
-            <svg class='daily-temperature__img'>
-              <use href='{{weather.icon}}' width='35' height='35'></use>
-            </svg>
+            <img class='daily-temperature__img' src='{{weather.icon}}' width='35' height='35' />
             <ul class='daily-temperature__range'>
               <li class='daily-temperature__range-item'>
                 <p class='daily-temperature__range'>min</p>

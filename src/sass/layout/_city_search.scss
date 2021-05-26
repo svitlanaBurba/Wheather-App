@@ -36,7 +36,9 @@
     padding: 10px 50px;
     border-color: #ffffff;
   }
-  .city-storage-div {
+
+  // +++
+  .favorite-list {
     display: flex;
     position: relative;
     left: 15px;
@@ -54,18 +56,19 @@
     border-radius: 50%;
     padding: 2px 12px;
   }
-  .city-storage-list-item {
-    font-size: 12px;
-    background: rgba(16, 33, 54, 0.5);
-    border-radius: 20px;
-    width: 80px;
-    margin-right: 10px;
-    color: rgb(255, 255, 255);
-    text-decoration: underline;
-    height: 30px;
-    text-align: center;
-    padding-top: 3px;
-  }
+  // +++
+  // .favorite-list-city-selector {
+  //   font-size: 12px;
+  //   background: rgba(16, 33, 54, 0.5);
+  //   border-radius: 20px;
+  //   width: 80px;
+  //   margin-right: 10px;
+  //   color: rgb(255, 255, 255);
+  //   text-decoration: underline;
+  //   height: 30px;
+  //   text-align: center;
+  //   padding-top: 3px;
+  // }
 
   .city-storsge-close-icon {
     height: 10px;

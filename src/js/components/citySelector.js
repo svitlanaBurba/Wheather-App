@@ -1,4 +1,9 @@
 import favCityTmpl from '../../templates/citySelectorFavCity.hbs';
+import $ from 'jquery';
+import slick from 'slick-carousel';
+
+window.$ = $;
+
 export default class CitySelector {
   // атрибуты класса (свойства)
   refs = {
@@ -24,7 +29,7 @@ export default class CitySelector {
   }
 
   onAddFavoriteBtnClick(e) {
-    e.preventDefault();
+    // e.preventDefault();
     const formData = new FormData(e.target.parentElement);
     const city = formData.get(this.refs.searchInputField.name);
 
@@ -52,7 +57,7 @@ export default class CitySelector {
     ) {
       const clickedCity = e.target.innerText;
       // пользователь выбрал новый город - так что вызываем onCitySelected
-      // доделать опционально - делать звезду желтой, в поле ввода ставить имя вібранного города
+      // доделать опционально - делать звезду желтой, в поле ввода ставить имя выбранного города
       this.onCitySelected(clickedCity);
     }
   }
@@ -73,6 +78,8 @@ export default class CitySelector {
     // для каждого любимого города добавляем кнопку из шаблона
     this.favCities.forEach(x => {
       this.refs.favCitiesList.insertAdjacentHTML('beforeend', this.favCityTemplate({ city: x }));
+      //console.log($('.slider').slick);
+      //$('.slider').slick('slickAdd', '<div><h3>' + x + '</h3></div>');
     });
   }
 
