@@ -14,7 +14,6 @@ const fetchWether = city =>
 // конвертируем полученный 'сырой' объект погоды в объект с температурой в цельсиях
 // имена атрибутов будут те, которые будем использовать в шаблонах
 const convertOneDayWeather = rawWeather => {
-  console.log(rawWeather);
   return {
     city: {
       name: rawWeather.name,

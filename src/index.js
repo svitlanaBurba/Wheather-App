@@ -2,12 +2,14 @@ import { fetchWether } from './js/apiService';
 import './sass/main.scss';
 
 import CitySelector from './js/components/citySelector';
+import FavCityManager from './js/favCityManager';
 import renderWeatherInformerOneDay from './js/components/weatherInformerOneDay';
 
 // референсы - вынести в файл
 let citySelectorRefs = {
   searchInputForm: document.querySelector('.input-form'),
   searchInputField: document.querySelector('.input-field'),
+  addFavoriteBtn: document.querySelector('.input-form-addfavorite'),
   favCitiesList: document.querySelector('.favorite-list'),
 };
 
@@ -53,10 +55,19 @@ startApp();
 
 function startApp() {
   // init components
-  let citySelector = new CitySelector(citySelectorRefs, onCitySelected);
+  let favCityManager = new FavCityManager();
+  //favCityManager.addFavCity('Berlin');
+  //favCityManager.addFavCity('Moscow');
 
-  //
-  onCitySelected('Kyiv');
+  let citySelector = new CitySelector(citySelectorRefs, onCitySelected, favCityManager);
+
+  // переделать в функцию выбора даты по умолчанию
+  let defaultCity = favCityManager.getFavCities()[0];
+  if (!defaultCity) {
+    defaultCity = 'Kyiv';
+  }
+
+  onCitySelected(defaultCity);
 }
 
 // загружает погоду на 1 день по selectedCity, сохраняет ее в selectedCityWeatherOneDay
@@ -67,7 +78,6 @@ function weatherOneDayLoad(onWeatherOneDayLoad) {
 
   fetchWether(selectedCity).then(w => {
     selectedCityWeatherOneDay = w;
-    console.log(w);
     onWeatherOneDayLoad(); // погоду в параметрах не передаем, т.к. она уже лежит в глобальной переменной
   });
 }
@@ -83,7 +93,6 @@ function onWeatherOneDayLoad() {
 // как правило это делает CitySelector - мы передадим ему эту функцию
 function onCitySelected(city) {
   // пользователь выбрал город. сохраняем в глобальную переменную
-  console.log(city);
   selectedCity = city;
 
   // теперь нам нужно :

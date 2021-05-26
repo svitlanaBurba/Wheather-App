@@ -4,9 +4,11 @@ export default class CitySelector {
   refs = {
     searchInputForm: '',
     searchInputField: '',
+    addFavoriteBtn: '',
     favCitiesList: '',
   };
   favCities = []; // массив любимых городов
+  favCityManager; // класс-API для получения-сохранения-удаления из localstorage
   onCitySelected; // функция, которая будет вызываться при выборе пользователем города - передается в конструкторе
   favCityTemplate; // шаблон для генерации кнопок любимых городов
 
@@ -15,43 +17,73 @@ export default class CitySelector {
   // обработчик сабмита формы - когда город вводят руками
   onSearchInputSubmit(e) {
     e.preventDefault();
-    const formData = new FormData(event.currentTarget);
+    const formData = new FormData(e.currentTarget);
     const city = formData.get(this.refs.searchInputField.name);
 
     this.onCitySelected(city);
   }
 
+  onAddFavoriteBtnClick(e) {
+    e.preventDefault();
+    const formData = new FormData(e.target.parentElement);
+    const city = formData.get(this.refs.searchInputField.name);
+
+    this.favCityManager.addFavCity(city);
+    this.favCities = this.favCityManager.getFavCities();
+    this.render();
+  }
+
+  removeFavCity(city) {
+    this.favCityManager.delFavCity(city);
+    this.favCities = this.favCityManager.getFavCities();
+
+    this.render();
+  }
+
   // обработчик нажатия на кнопку любимого города
   // пока что не поддерживает удаление щелчком по крестику
   onFavCityClick(e) {
-    const clickedCity = e.srcElement.innerText;
-    console.log('user selected' + clickedCity);
-    // пользователь выбрал новый город - так что вызываем onCitySelected
-    // доделать опционально - делать звезду желтой, в поле ввода ставить имя вібранного города
-    this.onCitySelected(clickedCity);
+    if (e.target.nodeName === 'I') {
+      const clickedCity = e.target.parentElement.innerText;
+      this.removeFavCity(clickedCity); // вызов этой функции удаляет город из стораджа и перерисовывает список
+    } else if (
+      !e.target.parentElement.className.includes('slider') &&
+      e.target.nodeName === 'BUTTON'
+    ) {
+      const clickedCity = e.target.innerText;
+      // пользователь выбрал новый город - так что вызываем onCitySelected
+      // доделать опционально - делать звезду желтой, в поле ввода ставить имя вібранного города
+      this.onCitySelected(clickedCity);
+    }
   }
 
   addListeners() {
     // при сабмите формы
     this.refs.searchInputForm.addEventListener('submit', this.onSearchInputSubmit.bind(this));
     // при нажатии на кнопку любимого города
+
     this.refs.favCitiesList.addEventListener('click', this.onFavCityClick.bind(this));
+    // при нажатии на кнопку добавления любимого города
+    this.refs.addFavoriteBtn.addEventListener('click', this.onAddFavoriteBtnClick.bind(this));
   }
 
+  // перерисовывает список любимых городов
   render() {
-    this.refs.favCitiesList.innerHTML = '';
+    this.refs.favCitiesList.innerHTML = ''; // очищаем список
+    // для каждого любимого города добавляем кнопку из шаблона
     this.favCities.forEach(x => {
-      this.refs.favCitiesList.insertAdjacentHTML('afterbegin', this.favCityTemplate({ city: x }));
+      this.refs.favCitiesList.insertAdjacentHTML('beforeend', this.favCityTemplate({ city: x }));
     });
   }
 
   // конструктор
-  constructor(refs, onCitySelected) {
+  constructor(refs, onCitySelected, favCityManager) {
     this.refs = refs;
     this.onCitySelected = onCitySelected;
     this.favCityTemplate = favCityTmpl; // переделать, должно быть параметром конструктора
 
-    this.favCities = ['London', 'Berlin']; // переделать, должно быть параметром конструктора
+    this.favCityManager = favCityManager;
+    this.favCities = this.favCityManager.getFavCities();
 
     this.addListeners();
     this.render();

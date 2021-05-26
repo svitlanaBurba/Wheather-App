@@ -31,8 +31,46 @@
   justify-content: space-between;
   min-width: 50px;
   height: 27px;
-  border-radius: 22px;
+  border-radius: 20px;
   margin: 13px 10px 0;
-  background-color: rgba(16, 33, 54, 0.47);
+  color: white;
+  background-color: rgba(16, 33, 54, 0.5);
   outline: none;
+}
+
+.favorite-list {
+  width: 400px;
+}
+.input-field {
+  background-color: white;
+  padding: 14px 24px;
+  position: relative;
+  align-items: center;
+  border-radius: 30px;
+  border: 1px solid white;
+  margin-bottom: 14px;
+  @media screen and (min-width: 320px) {
+    width: 320px;
+  }
+  @media screen and (min-width: 768px) {
+    width: 500px;
+  }
+  @media screen and (min-width: 1280px) {
+    width: 520px;
+  }
+}
+.header-wrapper {
+  margin: 0 auto 50px;
+  width: 280px;
+}
+.input-form-addfavorite {
+  position: absolute;
+  top: 15px;
+  background-color: blue;
+  left: 480px;
+  cursor: pointer;
+  border-radius: 50%;
+}
+.input-form {
+  position: relative;
 }
