@@ -4,6 +4,7 @@ import './sass/main.scss';
 import CitySelector from './js/components/citySelector';
 import FavCityManager from './js/favCityManager';
 import renderWeatherInformerOneDay from './js/components/weatherInformerOneDay';
+import renderWeatherInformerFiveDays from './js/components/weatherInformerFiveDays';
 
 // референсы - вынести в файл
 let citySelectorRefs = {
