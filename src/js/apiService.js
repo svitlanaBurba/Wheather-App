@@ -5,6 +5,7 @@ const BASE_URL_WEATHER = 'https://api.openweathermap.org/data/2.5/weather?';
 const BASE_URL_IMG = 'https://pixabay.com/api/?image_type=photo&orientation=horizontal&q=';
 const apiKeyWeather = 'd01e7beda7c1dcab67ea99635e4fb4bc';
 const apiKeyImg = '21715456-94146d2128778e129cf5897fe';
+const iconURL = 'http://openweathermap.org/img/wn/';
 
 const fetchWeather = city =>
   axios.get(`${BASE_URL_WEATHER}q=${city}&units=metric&appid=${apiKeyWeather}`).then(res => {
@@ -31,7 +32,7 @@ const convertOneDayWeather = rawWeather => {
     },
     sunrise: rawWeather.sys.sunrise,
     sunset: rawWeather.sys.sunset,
-    icon: 'http://openweathermap.org/img/wn/' + rawWeather.weather[0].icon + '.png',
+    icon: iconURL + rawWeather.weather[0].icon + '.png',
   };
 };
 
@@ -46,7 +47,6 @@ const fetchWeatherFive = city =>
   axios.get(`${BASE_URL_WEATHER_FIVE}${city}&units=metric&appid=${apiKeyWeather}`).then(res => {
     return convertFiveDayWeather(res.data);
   });
-
 
 // Bg Image Service
 const fetchImages = city =>
@@ -87,18 +87,49 @@ export { fetchWeather, fetchImages, fetchWeatherFive, fetchLocalWeather };
 
 const convertFiveDayWeather = rawWeather => {
   console.log(rawWeather);
+
+  const dates = rawWeather.list
+    .map(element => getDate(element).getDate())
+    .filter((el, idx, arr) => arr.indexOf(el) === idx)
+    .slice(0, 5);
+
+  const list = dates.map(el => rawWeather.list.filter(elem => getDate(elem).getDate() === el)[0]);
+
   return {
     city: {
       name: rawWeather.city.name,
       country: rawWeather.city.country,
     },
-    arr: rawWeather.list,
-    //dt;
-    //main.temp_min;
-    //main.temp_max;
-    //main.pressure;
-    //main.humidity;
-    //wind.speed;
-    //weather[0].icon;
+    daysData: list.map(convertFiveDayListElement),
   };
+  //dt;
+  //main.temp_min;
+  //main.temp_max;
+  //main.pressure;
+  //main.humidity;
+  //wind.speed;
+  //weather[0].icon;
 };
+
+function convertFiveDayListElement(el) {
+  let fullDate = getDate(el);
+  console.log(el);
+
+  return {
+    weather: {
+      icon: iconURL + el.weather[0].icon + '.png',
+    },
+    date: {
+      date: fullDate,
+      day: fullDate.getDate(),
+      dayName: new Intl.DateTimeFormat('en', { weekday: 'long' }).format(fullDate),
+      month: new Intl.DateTimeFormat('en', { month: 'short' }).format(fullDate),
+    },
+    temperature: {
+      min: el.main.temp_min,
+      max: el.main.temp_max,
+    },
+  };
+}
+
+const getDate = rawDate => new Date(rawDate.dt * 1000);

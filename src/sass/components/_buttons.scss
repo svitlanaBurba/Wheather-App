@@ -26,17 +26,45 @@
   background-color: rgba(255, 255, 255, 0.54);
 }
 
+.slick-track {
+  display: flex;
+}
+.favorite-list-city {
+  justify-content: space-around;
+}
+.slide {
+  min-width: max-content;
+}
 .favorite-list-city-selector {
   display: flex;
-  justify-content: space-between;
-  min-width: 50px;
-  height: 27px;
+  align-items: center;
+  font-size: 14px;
+  padding: 10px 10px;
+  background: rgba(16, 33, 54, 0.5);
   border-radius: 20px;
-  margin: 13px 10px 0;
+  min-width: 100px;
   color: white;
-  background-color: rgba(16, 33, 54, 0.5);
   outline: none;
+  border: none;
+  margin-right: 10px;
 }
+
+.fa-times-circle {
+  text-decoration: none;
+  color: rgba(255, 255, 255, 0.7);
+  margin-left: 5px;
+}
+// .favorite-list-city-selector {
+//   display: flex;
+//   justify-content: space-between;
+//   min-width: 50px;
+//   height: 27px;
+//   border-radius: 20px;
+//   margin: 13px 10px 0;
+//   color: white;
+//   background-color: rgba(16, 33, 54, 0.5);
+//   outline: none;
+// }
 
 .favorite-list {
   width: 400px;
@@ -61,15 +89,13 @@
 }
 .header-wrapper {
   margin: 0 auto 50px;
-  width: 280px;
 }
 .input-form-addfavorite {
   position: absolute;
   top: 15px;
-  background-color: blue;
+
   left: 480px;
   cursor: pointer;
-  border-radius: 50%;
 }
 .input-form {
   position: relative;
