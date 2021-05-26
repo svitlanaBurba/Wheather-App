@@ -9,7 +9,19 @@
       href="https://fonts.googleapis.com/css2?family=Lato:ital,wght@0,300;0,400;0,700;1,400&display=swap"
       rel="stylesheet"
     />
-
+    <link href="https://use.fontawesome.com/releases/v5.0.13/css/all.css" rel="stylesheet" />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.8.1/slick-theme.css"
+      integrity="sha512-6lLUdeQ5uheMFbWm3CP271l14RsX1xtx+J5x2yeIDkkiBpeVTNhTqijME7GgRKKi6hCqovwCoBTlRBEC20M8Mg=="
+      crossorigin="anonymous"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.8.1/slick.min.css"
+      integrity="sha512-yHknP1/AwR+yx26cB1y0cjvQUMvEa2PFzt1c9LlS4pRQ5NOTZFWbhBig+X9G9eYW/8m0/4OXNx8pxJ6z57x0dw=="
+      crossorigin="anonymous"
+    />
     <link
       rel="stylesheet"
       href="https://cdnjs.cloudflare.com/ajax/libs/modern-normalize/1.0.0/modern-normalize.min.css"
@@ -19,17 +31,22 @@
   </head>
   <body>
     <section class="header">
-      <div class="header-wrapper">
+      <div class="header-wrapper container">
         <form action="get" class="input-form">
           <input class="input-field" name="input-city" placeholder="Enter the city" type="text" />
-          <input type="checkbox" class="add-favorite" />
-          <button type="button" class="input-form-search"></button>
-          <ul class="favorite-list">
-            <li class="favorite-list-city">
-              <button type="button" class="favorite-list-city-selector">London</button>
-            </li>
-          </ul>
+          <!-- <input type="checkbox" class="add-favorite" /> -->
+          <button type="button" class="input-form-addfavorite">
+            <svg viewBox="0 0 32 32">
+              <path
+                d="M32 12.408l-11.056-1.607-4.944-10.018-4.944 10.018-11.056 1.607 8 7.798-1.889 11.011 9.889-5.199 9.889 5.199-1.889-11.011 8-7.798zM16 23.547l-6.983 3.671 1.334-7.776-5.65-5.507 7.808-1.134 3.492-7.075 3.492 7.075 7.807 1.134-5.65 5.507 1.334 7.776-6.983-3.671z"
+              ></path>
+            </svg>
+          </button>
+          <!-- <ul class="favorite-list"></ul> -->
         </form>
+        <div class="search-location__slider">
+          <ul class="slider favorite-list"></ul>
+        </div>
       </div>
     </section>
 
@@ -70,9 +87,29 @@
     <include src="./partials/qoute.html"></include>
     <include src="./partials/days-week.html"></include>
     <include src="./partials/load-more-div.html"></include>
-    <include src="./partials/chart-div.html"></include>
+    <include src="./partials/chart-div.html"></include> -->
 
     <!-- Скрипт идёт последним в разметке. В нём уже подключен главный SASS-файл. -->
     <script src="./index.js"></script>
+    <script
+      src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"
+      integrity="sha512-894YE6QWD5I59HgZOGReFYm4dnWc1Qt5NtvYSaNcOP+u1T9qYdvdihz0PPSiiqn/+/3e7Jo4EaG7TubfWGUrMQ=="
+      crossorigin="anonymous"
+    ></script>
+    <script
+      src="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.8.1/slick.min.js"
+      integrity="sha512-XtmMtDEcNz2j7ekrtHvOVR4iwwaD6o/FUJe6+Zq+HgcCsk3kj4uSQQR8weQ2QVj1o0Pk6PwYLohm206ZzNfubg=="
+      crossorigin="anonymous"
+    ></script>
+
+    <script>
+      $(document).ready(function () {
+        $('.slider').slick({
+          infinite: true,
+          slidesToShow: 4,
+          slidesToScroll: 4,
+        });
+      });
+    </script>
   </body>
 </html>
