@@ -5,6 +5,8 @@ import CitySelector from './js/components/citySelector';
 import FavCityManager from './js/favCityManager';
 import renderWeatherInformerOneDay from './js/components/weatherInformerOneDay';
 import renderWeatherInformerFiveDays from './js/components/weatherInformerFiveDays';
+import renderWeatherInformerMoreInfo from './js/components/weatherInformerMoreInfo';
+import renderTimeInformer from './js/components/timeInformer';
 
 // референсы - вынести в файл
 let citySelectorRefs = {
@@ -20,6 +22,14 @@ let weatherInformerOneDayRefs = {
 
 let weatherInformerFiveDaysRefs = {
   wrapper: document.querySelector('.weather-output-wrapper-five-days'),
+};
+
+let weatherInformerMoreInfoRefs = {
+  wrapper: document.querySelector('.wheather-main-more-info-container'),
+};
+
+let timeInformerRefs = {
+  wrapper: document.querySelector('.current-date-section'),
 };
 
 // глобальные переменные - хранят состояние программы, в т.ч. загруженную погоду
@@ -76,6 +86,8 @@ function weatherFiveDaysLoad(onWeatherFiveDaysLoad) {
 function onWeatherOneDayLoad() {
   // рендерим погоду на 1 день
   renderWeatherInformerOneDay(weatherInformerOneDayRefs, selectedCityWeatherOneDay);
+  // рендерим время (с новым восходом и закатом)
+  renderTimeInformer(timeInformerRefs, selectedCityWeatherOneDay);
 }
 
 // эта функция будет вызываться когда мы будем получать данные о погоде за 1 день
@@ -83,8 +95,13 @@ function onWeatherOneDayLoad() {
 function onWeatherFiveDaysLoad() {
   console.log('After');
   console.log(selectedCityWeatherFiveDays);
-  // рендерим погоду на 5 день
+  // рендерим погоду на 5 дней
   renderWeatherInformerFiveDays(weatherInformerFiveDaysRefs, selectedCityWeatherFiveDays);
+  // рендерим more info для первого дня из 1 (ПЕРЕДЕЛАТЬ - будет показываться для того дня, который выбрал пользователь )
+  renderWeatherInformerMoreInfo(
+    weatherInformerMoreInfoRefs,
+    selectedCityWeatherFiveDays.daysData[0],
+  );
 }
 
 // эту функцию будут вызывать любые события выбора города

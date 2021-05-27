@@ -30,27 +30,25 @@
     />
   </head>
   <body>
-    <section class="header">
-      <div class="header-wrapper container">
-        <form action="get" class="input-form">
-          <svg class="input-icon-location">
-            <use href="../src/images/sprite.svg#icon-icon-location"></use>
-          </svg>
-          <input class="input-field" name="input-city" placeholder="Enter the city" type="text" />
+    <div class="header-wrapper">
+      <form action="get" class="input-form">
+        <svg class="input-icon-location">
+          <use href="../src/images/sprite.svg#icon-icon-location"></use>
+        </svg>
+        <input class="input-field" name="input-city" placeholder="Enter the city" type="text" />
 
-          <!-- <input type="checkbox" class="add-favorite" /> -->
-          <button type="button" class="input-form-addfavorite">
-            <svg class="input-icon-star">
-              <use href="../src/images/sprite.svg#icon-Star-1"></use>
-            </svg>
-          </button>
-          <!-- <ul class="favorite-list"></ul> -->
-        </form>
-        <div class="search-location__slider container">
-          <div class="slider favorite-list"></div>
-        </div>
+        <!-- <input type="checkbox" class="add-favorite" /> -->
+        <button type="button" class="input-form-addfavorite">
+          <svg class="input-icon-star">
+            <use href="../src/images/sprite.svg#icon-Star-1"></use>
+          </svg>
+        </button>
+        <!-- <ul class="favorite-list"></ul> -->
+      </form>
+      <div class="search-location__slider">
+        <div class="slider favorite-list"></div>
       </div>
-    </section>
+    </div>
 
     <!-- Группа из двух кнопок, пока в общей разметке -->
     <div class="switch-btn-wrapper">
@@ -88,7 +86,7 @@
     <include src="./partials/t-div.html"></include>
     <include src="./partials/qoute.html"></include>
     <include src="./partials/days-week.html"></include>
-    <include src="./partials/load-more-div.html"></include>
+    <!-- <include src="./partials/load-more-div.html"></include> -->
     <include src="./partials/chart-div.html"></include>
 
     <!-- Скрипт идёт последним в разметке. В нём уже подключен главный SASS-файл. -->

@@ -38,6 +38,7 @@
 .favorite-list-city-selector {
   display: flex;
   align-items: center;
+  justify-content: space-around;
   font-size: 14px;
   padding: 10px 10px;
   background: rgba(16, 33, 54, 0.5);
@@ -54,20 +55,11 @@
   color: rgba(255, 255, 255, 0.7);
   margin-left: 5px;
 }
-// .favorite-list-city-selector {
-//   display: flex;
-//   justify-content: space-between;
-//   min-width: 50px;
-//   height: 27px;
-//   border-radius: 20px;
-//   margin: 13px 10px 0;
-//   color: white;
-//   background-color: rgba(16, 33, 54, 0.5);
-//   outline: none;
-// }
 
 .favorite-list {
-  width: 400px;
+  display: flex;
+  position: relative;
+  left: 15px;
 }
 .input-field {
   background-color: white;
@@ -77,9 +69,8 @@
   border-radius: 30px;
   border: 1px solid white;
   margin-bottom: 14px;
-  @media screen and (min-width: 320px) {
-    width: 320px;
-  }
+  outline: none;
+  width: 320px;
   @media screen and (min-width: 768px) {
     width: 500px;
   }
@@ -87,16 +78,71 @@
     width: 520px;
   }
 }
+input:autofill {
+  background-color: white;
+}
 .header-wrapper {
   margin: 0 auto 50px;
 }
 .input-form-addfavorite {
   position: absolute;
-  top: 15px;
-
-  left: 480px;
+  top: 12px;
+  left: 280px;
+  border: none;
   cursor: pointer;
+  background-color: white;
+  outline: none;
+  border-radius: 50%;
+  @media screen and (min-width: 768px) {
+    left: 455px;
+  }
+  @media screen and (min-width: 1280px) {
+    left: 480px;
+  }
 }
+
 .input-form {
   position: relative;
+  margin: 0 auto;
+  width: 280px;
+  @media screen and (min-width: 768px) {
+    width: 500px;
+  }
+  @media screen and (min-width: 1280px) {
+    width: 520px;
+  }
+}
+
+.input-icon-star {
+  height: 26px;
+  width: 22px;
+  border: #7e8691;
+  fill: none;
+  pointer-events: none;
+  background-color: transparent;
+}
+.input-form-addfavorite:hover .input-icon-star {
+  fill: gold;
+}
+@media screen and (min-width: 768px) {
+  .city-search-section {
+    width: 500px;
+    height: 88px;
+    margin: 0 auto;
+    margin-bottom: 100px;
+  }
+  .input-icon-star {
+    left: 460px;
+  }
+}
+
+.search-location__slider {
+  width: 250px;
+  margin: 0 auto;
+  @media screen and (min-width: 768px) {
+    width: 400px;
+  }
+  @media screen and (min-width: 1280px) {
+    width: 430px;
+  }
 }

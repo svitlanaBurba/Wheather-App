@@ -21,12 +21,7 @@
     top: 13px;
     left: -120px;
   }
-  .input-icon-star {
-    height: 22px;
-    position: absolute;
-    top: 13px;
-    left: 120px;
-  }
+
   .city-search-input {
     font-size: 14px;
     width: 100%;
@@ -37,12 +32,6 @@
     border-color: #ffffff;
   }
 
-  // +++
-  .favorite-list {
-    display: flex;
-    position: relative;
-    left: 15px;
-  }
   .city-storage-list {
     list-style: none;
     display: flex;
@@ -77,24 +66,5 @@
     position: relative;
     right: -11px;
     top: 1px;
-  }
-}
-@media screen and (min-width: 768px) {
-  .city-search-section {
-    width: 500px;
-    height: 88px;
-    margin: 0 auto;
-    margin-bottom: 100px;
-  }
-  .input-icon-star {
-    left: 315px;
-  }
-}
-@media screen and (min-width: 1280px) {
-  .city-search-section {
-    width: 520px;
-  }
-  .input-icon-star {
-    left: 330px;
   }
 }
