@@ -87,7 +87,7 @@ export { fetchWeather, fetchImages, fetchWeatherFive, fetchLocalWeather };
 
 // конвертер для 5 дней и more info (одна структура)
 const convertFiveDayWeather = rawWeather => {
-  // получаем массив из 5 дат путем удаления дубликатов и слайса
+  // получаем массив из 5 дат путем удаления дубликатов и shift
   const dates = rawWeather.list
     .map(element => getDate(element).getDate())
     .filter((v, i, a) => a.indexOf(v) === i);
@@ -108,6 +108,8 @@ const convertFiveDayWeather = rawWeather => {
   //              [{ прогноз на 28 на 00}, { прогноз на 28 на 03}]
   //          ]
   const list = dates.map(date => rawWeather.list.filter(elem => getDate(elem).getDate() === date));
+  console.log('5days:');
+  console.log(rawWeather);
 
   return {
     city: {
