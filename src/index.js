@@ -120,3 +120,23 @@ function onCitySelected(city) {
   // погода на 5 дней и тп
   weatherFiveDaysLoad(onWeatherFiveDaysLoad);
 }
+
+// const btnsScrollRef = document.querySelector('.btn-scroll');
+// btnsScrollRef.addEventListener('click', scroolBtn);
+// function scroolBtn(event) {
+//   if (event.target.tagName === 'BUTTON')
+//     console.log('ok')
+//     ref.wrapper.scroll({
+//       left: 50,
+//       behavior: 'smooth',
+//     });
+// }
+// const containerFiveDaysRender = document.querySelector('wheather-main-more-info-container');
+// const btnFifeDaysRef = document.querySelector('switch-btn five-days-btn');
+// btnFifeDaysRef.addEventListener('click', openFiveDays);
+// function openFiveDays(event) {
+//   if (event.target === "BUTTON") {
+//     console.log('ok')
+//     containerFiveDaysRender.classList.remove(visually-hidden);
+//   }
+//  }
