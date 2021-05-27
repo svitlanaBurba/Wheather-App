@@ -1,15 +1,43 @@
 <section class="weather-output">
   <div class="weather-output-wrapper-today">
+    <!-- Группа из двух кнопок, пока в общей разметке -->
     <div class="switch-btn-wrapper">
       <button class="switch-btn today-btn" type="button">Today</button>
       <button class="switch-btn five-days-btn" type="button">5 days</button>
     </div>
-    <!-- нужно дополнить этот див-контейнер -->
+    <!-- Группа из двух кнопок, пока в общей разметке -->
 
+    <!-- нужно дополнить этот див-контейнер -->
+    <!-- Контейнер с погодой Киев -3 Паша -->
+    <div class="wheather-main-container">
+      <div class="wheather-whole-data-container">
+        <svg class="icon-wheather">
+          <use href="./images/sprite.svg#icon-cloudy" width="35" height="35"></use>
+        </svg>
+        <h2 class="city-name">Kyiv, UA</h2>
+        <div class="values-container">
+          <div class="current-temperature">-3</div>
+          <div class="min-max-temperature-container">
+            <div class="min-temperature">
+              <span class="min-t-text">min</span> <br />
+              <span class="min-t-value">-2°</span>
+            </div>
+            <span class="t-divider"> | </span>
+            <div class="max-temperature">
+              <span class="max-t-text">max</span> <br />
+              <span class="max-t-value">1°</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- Контейнер с погодой Киев -3 Паша -->
     <div class="temperature-wrapper-today"></div>
 
-    <!-- нужно дополнить этот див-контейнер -->
-    <div class="location-wrapper-today"></div>
+    <!-- Контейнер со временем Артем -->
+    <div class="current-date-section"></div>
+
+    <!-- Контейнер с цитатой Артем -->
     <div class="quotation-wrapper">
       <p class="quotation-text">
         Who cares about the clouds when we're together? Just sing a song and bring the sunny
@@ -18,30 +46,13 @@
       <p class="quotation-author">Dale Evans</p>
     </div>
   </div>
+
+  <!-- Контейнер с погодой 5 дней (основной) Сергей -->
   <div class="weather-output-wrapper-five-days">
     <div class="switch-btn-wrapper">
       <button class="switch-btn today-btn" type="button">Today</button>
       <button class="switch-btn five-days-btn" type="button">5 days</button>
     </div>
-    <h2 class="location">Kyiv, UA</h2>
-    <div class="temperature-wrapper">
-      <ul class="daily-temperature">
-        <li class="daily-temperature__day">
-          <p class="daily-temperature__week-day"></p>
-          <p class="daily-temperature__date"></p>
-          <div class="daily-temperature__weather-img"></div>
-          <ul class="daily-temperature__temperature-range">
-            <li>
-              <p class="daily-temperature__temperature-range-key">min</p>
-              <p class="daily-temperature__temperature-range-value">-2</p>
-            </li>
-            <li>
-              <p class="daily-temperature__temperature-range-key">max</p>
-              <p class="daily-temperature__temperature-range-value">+5</p>
-            </li>
-          </ul>
-          <button type="button" class="daily-temperature__additional-info">more info</button>
-          <ul class="daily-temperature__hourly">
             <!-- нужно дополнить эти элементы списка -->
 
             <li></li>
@@ -56,7 +67,14 @@
         </li>
       </ul>
       <button type="button">Show chart</button>
-      <div class="chart-wrapper"></div>
+      <!-- <div class="chart-main-container">
+        <div class="chart-hide-button-container">
+          <a class="chart-hide-link" href="">Hide Chart</a>
+          <svg class="icon-arrow-up">
+            <use href="./images/sprite.svg#icon-arrow-up" width="28" height="28"></use>
+          </svg>
+        </div>
+      </div> -->
     </div>
   </div>
 </section>

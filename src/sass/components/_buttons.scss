@@ -1,0 +1,151 @@
+.switch-btn {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  min-width: 126px;
+  padding: 6px 0;
+  margin: 32px auto 0;
+  border-radius: 15px;
+  border: none;
+  outline: none;
+  cursor: pointer;
+  font-family: Lato;
+  font-size: 14px;
+  font-weight: 700;
+  line-height: 22px;
+  text-transform: uppercase;
+  letter-spacing: 0.4px;
+}
+
+.today-btn {
+  display: inline-block;
+  margin-right: 16px;
+  background-color: rgba(255, 255, 255, 1);
+}
+.five-days-btn {
+  display: inline-block;
+  margin-right: 0;
+  background-color: rgba(255, 255, 255, 0.54);
+}
+
+.slick-track {
+  display: flex;
+}
+.favorite-list-city {
+  justify-content: space-around;
+}
+.slide {
+  min-width: max-content;
+}
+.favorite-list-city-selector {
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+  font-size: 14px;
+  padding: 10px 10px;
+  background: rgba(16, 33, 54, 0.5);
+  border-radius: 20px;
+  min-width: 100px;
+  color: white;
+  outline: none;
+  border: none;
+  margin-right: 10px;
+}
+
+.fa-times-circle {
+  text-decoration: none;
+  color: rgba(255, 255, 255, 0.7);
+  margin-left: 5px;
+}
+
+.favorite-list {
+  display: flex;
+  position: relative;
+  left: 15px;
+}
+.input-field {
+  background-color: white;
+  padding: 14px 24px;
+  position: relative;
+  align-items: center;
+  border-radius: 30px;
+  border: 1px solid white;
+  margin-bottom: 14px;
+  outline: none;
+  width: 320px;
+  @media screen and (min-width: 768px) {
+    width: 500px;
+  }
+  @media screen and (min-width: 1280px) {
+    width: 520px;
+  }
+}
+input:autofill {
+  background-color: white;
+}
+.header-wrapper {
+  margin: 0 auto 50px;
+}
+.input-form-addfavorite {
+  position: absolute;
+  top: 12px;
+  left: 280px;
+  border: none;
+  cursor: pointer;
+  background-color: white;
+  outline: none;
+  border-radius: 50%;
+  @media screen and (min-width: 768px) {
+    left: 455px;
+  }
+  @media screen and (min-width: 1280px) {
+    left: 480px;
+  }
+}
+
+.input-form {
+  position: relative;
+  margin: 0 auto;
+  width: 280px;
+  @media screen and (min-width: 768px) {
+    width: 500px;
+  }
+  @media screen and (min-width: 1280px) {
+    width: 520px;
+  }
+}
+
+.input-icon-star {
+  height: 26px;
+  width: 22px;
+  border: #7e8691;
+  fill: none;
+  pointer-events: none;
+  background-color: transparent;
+}
+.input-form-addfavorite:hover .input-icon-star {
+  fill: gold;
+}
+@media screen and (min-width: 768px) {
+  .city-search-section {
+    width: 500px;
+    height: 88px;
+    margin: 0 auto;
+    margin-bottom: 100px;
+  }
+  .input-icon-star {
+    left: 460px;
+  }
+}
+
+.search-location__slider {
+  width: 250px;
+  margin: 0 auto;
+  @media screen and (min-width: 768px) {
+    width: 400px;
+  }
+  @media screen and (min-width: 1280px) {
+    width: 430px;
+  }
+}

@@ -1,0 +1,134 @@
+.wheather-main-more-info-container {
+  width: 270px;
+  margin-right: auto;
+  margin-left: auto;
+
+  @media screen and (min-width: 768px) {
+    width: 659px;
+  }
+
+  @media screen and (min-width: 1280px) {
+    width: 1060px;
+  }
+}
+
+.wheather-whole-data-more-info-container {
+  overflow-x: auto;
+  display: flex;
+  &::-webkit-scrollbar {
+    height: 3px;
+    bottom: #ff6b09;
+    background-color: #ffffff8a;
+  }
+  &::-webkit-scrollbar-thumb {
+    background-color: #ff6b09;
+  }
+
+  @media screen and (min-width: 768px) {
+    overflow: hidden;
+  }
+
+  @media screen and (min-width: 1280px) {
+    &:first-child {
+      margin-left: 79px;
+    }
+    justify-content: space-evenly;
+    overflow: hidden;
+  }
+}
+
+.wheather-whole-data-more-info-item {
+  border-radius: 25px;
+  background-color: #102136;
+  width: 120px;
+  height: 218px;
+  margin-left: 10px;
+}
+
+.current-more-info-time {
+  font-family: Lato;
+  font-style: normal;
+  font-weight: normal;
+  font-size: 14px;
+  line-height: 0.82;
+  align-items: center;
+  text-align: center;
+  color: #ffffff;
+  opacity: 0.54;
+  padding-top: 15px;
+  padding-right: 19px;
+  padding-bottom: 10px;
+  padding-left: 19px;
+}
+
+.icon-more-info-wheather {
+  display: block;
+  width: 35px;
+  height: 35px;
+  align-items: center;
+  text-align: center;
+  margin-left: auto;
+  margin-right: auto;
+  margin-bottom: 10px;
+}
+
+.current-more-info-temperature {
+  font-family: Lato;
+  font-style: normal;
+  font-weight: bold;
+  font-size: 25px;
+  line-height: 0.83;
+  /* identical to box height */
+  color: #ff6b09;
+  margin-bottom: 10px;
+  align-items: center;
+  text-align: center;
+}
+
+.container-more-info-wheather-parameters-pressure {
+  display: flex;
+  align-items: center;
+  text-align: center;
+
+  &::before {
+    width: 20px;
+    height: 20px;
+    color: #ffffff;
+    content: url('../../src/images/Barometer.svg');
+  }
+}
+.container-more-info-wheather-parameters-humidity {
+  display: flex;
+  align-items: center;
+  text-align: center;
+
+  &::before {
+    width: 20px;
+    height: 20px;
+    color: #ffffff;
+    content: url('../../src/images/Humidity.svg');
+  }
+}
+
+.container-more-info-wheather-parameters-wind {
+  display: flex;
+  align-items: center;
+  text-align: center;
+
+  &::before {
+    width: 20px;
+    height: 20px;
+    color: #ffffff;
+    content: url('../../src/images/wind.svg');
+  }
+}
+
+.text-more-info-wheather-parameters {
+  font-family: Lato;
+  font-style: normal;
+  font-weight: normal;
+  font-size: 14px;
+  line-height: 0.82;
+  color: #ffffff;
+  opacity: 0.54;
+}

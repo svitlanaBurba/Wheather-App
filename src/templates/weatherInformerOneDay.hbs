@@ -1,0 +1,20 @@
+<div class='wheather-main-container'>
+  <div class='wheather-whole-data-container'>
+    <img class='icon-wheather' src='{{icon}}' width='35' height='35' />
+    <h2 class='city-name'>{{city.name}}, {{city.country}}</h2>
+    <div class='values-container'>
+      <div class='current-temperature'>{{temperature.value}}&deg</div>
+      <div class='min-max-temperature-container'>
+        <div class='min-temperature'>
+          <p class='min-t-text'>min</p>
+          <p class='min-t-value'>{{temperature.min}}&deg</p>
+        </div>
+        <p class='t-divider'> | </p>
+        <div class='max-temperature'>
+          <p class='max-t-text'>max</p>
+          <p class='max-t-value'>{{temperature.max}}&deg</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

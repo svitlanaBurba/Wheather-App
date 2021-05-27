@@ -1,9 +1,27 @@
 <!DOCTYPE html>
-<html lang="ru">
+<html lang="en">
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Заголовок страницы</title>
+    <link rel="preconnect" href="https://fonts.gstatic.com" />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Lato:ital,wght@0,300;0,400;0,700;1,400&display=swap"
+      rel="stylesheet"
+    />
+    <link href="https://use.fontawesome.com/releases/v5.0.13/css/all.css" rel="stylesheet" />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.8.1/slick-theme.css"
+      integrity="sha512-6lLUdeQ5uheMFbWm3CP271l14RsX1xtx+J5x2yeIDkkiBpeVTNhTqijME7GgRKKi6hCqovwCoBTlRBEC20M8Mg=="
+      crossorigin="anonymous"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.8.1/slick.min.css"
+      integrity="sha512-yHknP1/AwR+yx26cB1y0cjvQUMvEa2PFzt1c9LlS4pRQ5NOTZFWbhBig+X9G9eYW/8m0/4OXNx8pxJ6z57x0dw=="
+      crossorigin="anonymous"
+    />
     <link
       rel="stylesheet"
       href="https://cdnjs.cloudflare.com/ajax/libs/modern-normalize/1.0.0/modern-normalize.min.css"
@@ -12,11 +30,82 @@
     />
   </head>
   <body>
-    <!-- Так добавляются фрагменты в главные HTML-файлы страниц. -->
+    <div class="header-wrapper">
+      <form action="get" class="input-form">
+        <svg class="input-icon-location">
+          <use href="../src/images/sprite.svg#icon-icon-location"></use>
+        </svg>
+        <input class="input-field" name="input-city" placeholder="Enter the city" type="text" />
+
+        <!-- <input type="checkbox" class="add-favorite" /> -->
+        <button type="button" class="input-form-addfavorite">
+          <svg class="input-icon-star">
+            <use href="../src/images/sprite.svg#icon-Star-1"></use>
+          </svg>
+        </button>
+        <!-- <ul class="favorite-list"></ul> -->
+      </form>
+      <div class="search-location__slider">
+        <div class="slider favorite-list"></div>
+      </div>
+    </div>
+
+    <!-- Контейнер с погодой Киев -3 Паша -->
+    <div class="wheather-main-container"></div>
+
+    <!-- Группа из двух кнопок, пока в общей разметке -->
+    <div class="switch-btn-wrapper container">
+      <button class="switch-btn today-btn" type="button">Today</button>
+      <button class="switch-btn five-days-btn" type="button">5 days</button>
+    </div>
+
+    <!-- Контейнер со временем Артем -->
+    <div class="current-date-section"></div>
+
+    <!-- Контейнер с цитатой Артем -->
+    <div class="quotation-wrapper"></div>
+
+    <!-- Контейнер с погодой 5 дней (основной) Сергей -->
+    <div class="weather-output-wrapper-five-days"></div>
+
+    <!-- Контейнер с погодой 5 дней (Load more) Паша -->
+    <div class="wheather-main-more-info-container"></div>
+
+    <!-- Контейнер с графиком Богдан -->
+    <div class="chart-main-container"></div>
+
+    <!-- <include src="./partials/header.html"></include> -->
+    <!-- <include src="./partials/city_search.html"></include> -->
+    <!-- <include src="./partials/section.html"></include> -->
+
     <!-- <include src="./partials/header.html"></include>
     <include src="./partials/section.html"></include> -->
+
+    <!-- <include src="./partials/current_date.html"></include>
     <include src="./partials/t-div.html"></include>
+    <include src="./partials/qoute.html"></include>
+   
     <!-- Скрипт идёт последним в разметке. В нём уже подключен главный SASS-файл. -->
     <script src="./index.js"></script>
+    <script
+      src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"
+      integrity="sha512-894YE6QWD5I59HgZOGReFYm4dnWc1Qt5NtvYSaNcOP+u1T9qYdvdihz0PPSiiqn/+/3e7Jo4EaG7TubfWGUrMQ=="
+      crossorigin="anonymous"
+    ></script>
+    <script
+      src="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.8.1/slick.min.js"
+      integrity="sha512-XtmMtDEcNz2j7ekrtHvOVR4iwwaD6o/FUJe6+Zq+HgcCsk3kj4uSQQR8weQ2QVj1o0Pk6PwYLohm206ZzNfubg=="
+      crossorigin="anonymous"
+    ></script>
+
+    <script>
+      $(document).ready(function () {
+        $('.slider').slick({
+          infinite: true,
+          slidesToShow: 4,
+          slidesToScroll: 4,
+        });
+      });
+    </script>
   </body>
 </html>
