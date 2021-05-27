@@ -1,30 +1,34 @@
-<section class='days-of-week'>
+<section class='days-of-week '>
   <div class='container'>
     <h2 class='location1'>{{city.name}}, {{city.country}}</h2>
-    <div class='temperature-wrapper'>
+    <div class='h2-wripper'>
       <h2 class='location'>{{city.name}}, {{city.country}}</h2>
-      {{#each daysData}}
-        <ul class='daily-temperature'>
-          <li class='daily-temperature__day'>
-            <p class='daily-temperature__week-day'>{{date.dayName}}</p>
-            <p class='daily-temperature__date'>{{date.day}} {{date.month}}</p>
-            <img class='daily-temperature__img' src='{{weather.icon}}' width='35' height='35' />
-            <ul class='daily-temperature__range'>
-              <li class='daily-temperature__range-item'>
-                <p class='daily-temperature__range'>min</p>
-                <p class='daily-temperature__range-value'>{{temperature.min}}</p>
-              </li>
-              <li class='daily-temperature__range-item'>
-                <p class='daily-temperature__range'>max</p>
-                <p class='daily-temperature__range-value'>{{temperature.max}}</p>
-              </li>
-            </ul>
-            <button type='button' class='daily-temperature__additional-info'>more info</button>
-          </li>
-        </ul>
-      {{/each}}
-      <button type='button' class='day prev'>></button>
-      <button type='button' class='day next'>></button>
+      <div class='temperature-wrapper'>
+        {{#each daysData}}
+          <ul class='daily-temperature siema'> <!--"siema"-->
+            <li class='daily-temperature__day '>
+              <p class='daily-temperature__week-day'>{{date.dayName}}</p>
+              <p class='daily-temperature__date'>{{date.day}} {{date.month}}</p>
+              <img class='daily-temperature__img' src='{{weather.icon}}' width='30' height='30' />
+              <ul class='daily-temperature__range'>
+                <li class='daily-temperature__range-item'>
+                  <p class='daily-temperature__range'>min</p>
+                  <p class='daily-temperature__range-value'>{{temperature.min}}</p>
+                </li>
+                <li class='daily-temperature__range-item'>
+                  <p class='daily-temperature__range'>max</p>
+                  <p class='daily-temperature__range-value'>{{temperature.max}}</p>
+                </li>
+              </ul>
+              <button type='button' class='daily-temperature__additional-info'>more info</button>
+            </li>
+          </ul>
+        {{/each}}
+      </div>
+      <div class='btn-scroll'>
+        <button type='button' class='day prev' data-action="prev"><</button>
+        <button type='button' class='day next' data-action="next">></button>
+      </div>
     </div>
   </div>
 </section>
