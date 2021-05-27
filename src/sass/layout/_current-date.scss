@@ -1,32 +1,37 @@
-@media screen and (min-width: 318px) {
+@media screen and (min-width: 300px) {
   .current-date-section {
+    margin: 0 auto;
     width: 280px;
-    height: 190px;
-    margin-bottom: 60px;
-    display: flex;
+    margin-top: 50px;
+    padding: 40px 0px;
     align-items: center;
     background-color: rgba(16, 33, 54, 0.8);
     border-radius: 34px;
     color: white;
   }
-  .current-time-div {
-    display: flex;
-    flex-direction: column;
-  }
-  .current-day-div {
-    display: flex;
-    flex-direction: row;
-    font-family: 'Lato';
-    font-size: 45px;
-  }
-  .current-day-sup {
-    font-size: 28px;
-  }
   .current-date-div {
     align-items: center;
     display: flex;
     flex-direction: column;
-    padding: 30px 0px;
+    font-weight: 300;
+  }
+  .current-day-div {
+    font-weight: 300;
+    display: flex;
+    flex-direction: row;
+    font-size: 45px;
+    justify-content: center;
+  }
+  .current-time-div {
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    padding-top: 20px;
+    font-weight: 300;
+  }
+
+  .current-day-sup {
+    font-size: 28px;
   }
 
   .current-month-div,
@@ -34,66 +39,75 @@
     display: flex;
     flex-direction: row;
     font-size: 14px;
-    padding-left: 10px;
-    padding: 10px 0px;
+    padding-bottom: 20px;
   }
-  .current-day {
-    padding-left: 5px;
+  .current-day-suntime {
+    padding-bottom: 0px;
+    padding-top: 0px;
   }
+
   .current-month,
   .current-sun-rise {
     display: flex;
     padding-right: 10px;
-    border-right: 1px solid #ffffff;
+    border-right: 1px ridge #ffffff;
+    align-items: center;
   }
   .current-time,
   .current-sun-set {
     display: flex;
     padding-left: 10px;
+    align-items: center;
   }
   .current-sun-rise::before {
     content: url('/images/008-sunrise.svg');
-    padding-right: 10px;
+    padding-right: 14px;
+    top: 3px;
+    position: relative;
   }
   .current-sun-set::before {
     content: url('/images/008-sunrise.svg');
     padding-right: 10px;
+    top: 3px;
+    position: relative;
   }
 }
 
 @media screen and (min-width: 766px) {
   .current-date-section {
     width: 500px;
-    height: 270px;
   }
+
   .current-date-div {
     width: 290px;
     height: 180px;
+    margin: 0 auto;
     padding: 0px 0px;
     width: fit-content;
+    margin-top: 30px;
   }
-
-  .current-day {
-    padding-left: 10px;
+  .current-day-div {
+    margin: 20px;
     font-size: 90px;
   }
+
   .current-day-sup {
     top: -40px;
   }
   .current-month-div,
   .current-day-suntime {
     font-size: 18px;
+    margin-top: 10px;
   }
 }
-@media screen and (min-width: 1178px) {
+@media screen and (min-width: 1278px) {
   .current-date-section {
     width: 630px;
     height: 278px;
     float: left;
     border-radius: 0px 34px 0px 0px;
-    position: fixed;
-    bottom: 0px;
     margin-bottom: 0px;
+    padding: 70px 0px;
   }
   .current-date-div {
     width: fit-content;
@@ -101,15 +115,18 @@
   }
   .current-day-div {
     font-size: 90px;
-    padding-right: 180px;
+    justify-content: end;
+    padding-left: 80px;
   }
   .current-time-div {
     display: flex;
     flex-direction: row;
+    justify-content: center;
     font-size: 18px;
   }
   .current-month-div {
     margin-right: 40px;
+    padding-bottom: 0px;
   }
   .current-month,
   .current-sun-rise {
