@@ -132,6 +132,6 @@ const convertFiveDayWeather = rawWeather => {
 //main.humidity;
 //wind.speed;
 //weather[0].icon;
-
+// ...
 // export data
 export { fetchWeather, fetchImages, fetchWeatherFive, fetchLocalWeather };
