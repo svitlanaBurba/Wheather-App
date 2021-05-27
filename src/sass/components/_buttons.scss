@@ -19,10 +19,13 @@
 }
 
 .today-btn {
+  display: inline-block;
   margin-right: 16px;
   background-color: rgba(255, 255, 255, 1);
 }
 .five-days-btn {
+  display: inline-block;
+  margin-right: 0;
   background-color: rgba(255, 255, 255, 0.54);
 }
 
