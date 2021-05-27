@@ -17,6 +17,9 @@
   text-transform: uppercase;
   letter-spacing: 0.4px;
 }
+.switch-btn:hover {
+  background-color: #fff;
+}
 
 .today-btn {
   display: inline-block;
@@ -51,6 +54,9 @@
   outline: none;
   border: none;
   margin-right: 10px;
+}
+.favorite-list-city-selector:hover {
+  background-color: #102136;
 }
 
 .fa-times-circle {

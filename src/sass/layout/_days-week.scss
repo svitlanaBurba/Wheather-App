@@ -12,7 +12,7 @@
   overflow: hidden;
   background-color: rgba(16, 33, 54, 0.8);
   box-shadow: 0px 5px 33px rgba(16, 33, 54, 0.6);
-  border-radius: 34px;
+  border-radius: 34px 34px 0 0;
 
   .location {
     display: block;
@@ -125,12 +125,11 @@
   &.prev {
     margin-left: 100px;
 
-    &:hover{
+    &:hover {
       color: rgb(132, 132, 243);
     }
   }
-  &.next:hover{
-   
+  &.next:hover {
     color: rgb(132, 132, 243);
   }
 }
@@ -245,4 +244,10 @@
     margin-bottom: 40px;
     margin-top: 5px;
   }
+}
+
+.weather-container-five-days-total {
+  border-radius: 35px;
+  background-color: rgba(16, 33, 54, 0.8);
+  box-shadow: 0px 8px 43px rgba(16, 33, 54, 0.6);
 }
