@@ -1,4 +1,5 @@
 import favCityTmpl from '../../templates/citySelectorFavCity.hbs';
+import fetchLocationCityName from '../apiService';
 import jquery from 'jquery';
 import slick from 'slick-carousel';
 
@@ -96,6 +97,11 @@ export default class CitySelector {
     }
   }
 
+  onGeoBtnClick(e) {
+    console.log(fetchLocationCityName);
+    fetchLocationCityName.then(city => alert(city));
+  }
+
   addListeners() {
     // при сабмите формы
     this.refs.searchInputForm.addEventListener('submit', this.onSearchInputSubmit.bind(this));
@@ -104,6 +110,8 @@ export default class CitySelector {
     this.refs.favCitiesList.addEventListener('click', this.onFavCityClick.bind(this));
     // при нажатии на кнопку добавления любимого города
     this.refs.addFavoriteBtn.addEventListener('click', this.onAddFavoriteBtnClick.bind(this));
+
+    this.refs.geoBtn.addEventListener('click', this.onGeoBtnClick.bind(this));
   }
 
   // перерисовывает список любимых городов

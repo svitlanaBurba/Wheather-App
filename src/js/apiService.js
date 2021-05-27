@@ -1,5 +1,7 @@
 // Weather service
 import axios from 'axios';
+// export data
+export { fetchWeather, fetchImages, fetchWeatherFive, fetchLocalWeather, fetchLocationCityName };
 
 const BASE_URL_WEATHER = 'https://api.openweathermap.org/data/2.5/weather?';
 const BASE_URL_IMG = 'https://pixabay.com/api/?image_type=photo&orientation=horizontal&q=';
@@ -82,8 +84,23 @@ const fetchLocalWeather = () =>
       return convertOneDayWeather(res.data);
     });
 
-// export data
-export { fetchWeather, fetchImages, fetchWeatherFive, fetchLocalWeather };
+// GeoLocation Service 2.0
+const fetchLocationCityName = () => {
+  return new Promise((resolve, reject) => {
+    navigator.geolocation.getCurrentPosition(resolve, reject, { timeout: 1000 });
+  }).then(position => {
+    const latitude = position.coords.latitude;
+    const longitude = position.coords.longitude;
+
+    return axios
+      .get(
+        `${BASE_URL_WEATHER}lat=${latitude}&lon=${longitude}&units=metric&appid=${apiKeyWeather}`,
+      )
+      .then(res => {
+        return res.data.name + ', ' + res.data.sys.country;
+      });
+  });
+};
 
 // конвертер для 5 дней и more info (одна структура)
 const convertFiveDayWeather = rawWeather => {

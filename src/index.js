@@ -15,6 +15,7 @@ let citySelectorRefs = {
   searchInputForm: document.querySelector('.input-form'),
   searchInputField: document.querySelector('.input-field'),
   addFavoriteBtn: document.querySelector('.input-form-addfavorite'),
+  geoBtn: document.querySelector('.input-icon-location'),
   favCitiesList: document.querySelector('.favorite-list'),
 };
 
@@ -80,8 +81,6 @@ function weatherOneDayLoad(onWeatherOneDayLoad) {
 // и вызывает функцию onWeatherFiveDaysLoad которую передают как аргумент
 // (эта функция будет обновлять нужные компоненты)
 function weatherFiveDaysLoad(onWeatherFiveDaysLoad) {
-  console.log('Before');
-  console.log(selectedCityWeatherFiveDays);
   // вызываем наш апи, передаем ему город
   fetchWeatherFive(selectedCity).then(w => {
     selectedCityWeatherFiveDays = w;
