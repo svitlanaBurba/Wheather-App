@@ -28,6 +28,7 @@
   "dependencies": {
     "axios": "^0.21.1",
     "jquery": "^3.6.0",
+    "moment-timezone": "^0.5.33",
     "siema": "^1.5.1",
     "slick": "^1.12.2",
     "slick-carousel": "^1.8.1"

@@ -32,6 +32,7 @@ const convertOneDayWeather = rawWeather => {
       min: Math.floor(rawWeather.main.temp_min),
       max: Math.floor(rawWeather.main.temp_max),
     },
+    timezone: rawWeather.timezone,
     sunrise: getTime(rawWeather.sys.sunrise),
     sunset: getTime(rawWeather.sys.sunset),
     icon: iconURL + rawWeather.weather[0].icon + '.png',
