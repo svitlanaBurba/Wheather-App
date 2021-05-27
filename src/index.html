@@ -1,4 +1,5 @@
 <!DOCTYPE html>
+
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
@@ -73,11 +74,13 @@
       </div>
     </section>
 
-    <!-- Контейнер с погодой 5 дней (основной) Сергей -->
-    <div class="weather-output-wrapper-five-days"></div>
+    <div class="weather-container-five-days-total container">
+      <!-- Контейнер с погодой 5 дней (основной) Сергей -->
+      <div class="weather-output-wrapper-five-days"></div>
 
-    <!-- Контейнер с погодой 5 дней (Load more) Паша -->
-    <div class="wheather-main-more-info-container"></div>
+      <!-- Контейнер с погодой 5 дней (Load more) Паша -->
+      <div class="wheather-main-more-info-container"></div>
+    </div>
 
     <!-- Контейнер с графиком Богдан -->
     <div class="chart-main-container"></div>
@@ -93,7 +96,6 @@
     <include src="./partials/t-div.html"></include>
     <include src="./partials/qoute.html"></include>
 
-
     <!-- Скрипт идёт последним в разметке. В нём уже подключен главный SASS-файл. -->
     <script src="./index.js"></script>
     <script
@@ -107,14 +109,6 @@
       crossorigin="anonymous"
     ></script>
 
-    <script>
-      $(document).ready(function () {
-        $('.slider').slick({
-          infinite: true,
-          slidesToShow: 4,
-          slidesToScroll: 4,
-        });
-      });
-    </script>
+    <script></script>
   </body>
 </html>

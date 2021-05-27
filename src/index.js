@@ -1,5 +1,7 @@
 import { fetchWeather, fetchWeatherFive } from './js/apiService';
 import './sass/main.scss';
+//import jquery from 'jquery';
+//import slick from 'slick-carousel';
 
 import CitySelector from './js/components/citySelector';
 import FavCityManager from './js/favCityManager';
@@ -13,6 +15,7 @@ let citySelectorRefs = {
   searchInputForm: document.querySelector('.input-form'),
   searchInputField: document.querySelector('.input-field'),
   addFavoriteBtn: document.querySelector('.input-form-addfavorite'),
+  geoBtn: document.querySelector('.input-icon-location'),
   favCitiesList: document.querySelector('.favorite-list'),
 };
 
@@ -41,11 +44,17 @@ startApp();
 
 function startApp() {
   // init components
+
   let favCityManager = new FavCityManager();
   //favCityManager.addFavCity('Berlin');
   //favCityManager.addFavCity('Moscow');
 
-  let citySelector = new CitySelector(citySelectorRefs, onCitySelected, favCityManager);
+  let citySelector = new CitySelector(
+    citySelectorRefs, //
+    onCitySelected,
+    favCityManager,
+    x => ({}), // функция которую вызывать после отрисовки компонента.
+  );
 
   // переделать в функцию выбора даты по умолчанию
   let defaultCity = favCityManager.getFavCities()[0];
@@ -72,8 +81,6 @@ function weatherOneDayLoad(onWeatherOneDayLoad) {
 // и вызывает функцию onWeatherFiveDaysLoad которую передают как аргумент
 // (эта функция будет обновлять нужные компоненты)
 function weatherFiveDaysLoad(onWeatherFiveDaysLoad) {
-  console.log('Before');
-  console.log(selectedCityWeatherFiveDays);
   // вызываем наш апи, передаем ему город
   fetchWeatherFive(selectedCity).then(w => {
     selectedCityWeatherFiveDays = w;
@@ -120,3 +127,23 @@ function onCitySelected(city) {
   // погода на 5 дней и тп
   weatherFiveDaysLoad(onWeatherFiveDaysLoad);
 }
+
+// const btnsScrollRef = document.querySelector('.btn-scroll');
+// btnsScrollRef.addEventListener('click', scroolBtn);
+// function scroolBtn(event) {
+//   if (event.target.tagName === 'BUTTON')
+//     console.log('ok')
+//     ref.wrapper.scroll({
+//       left: 50,
+//       behavior: 'smooth',
+//     });
+// }
+// const containerFiveDaysRender = document.querySelector('wheather-main-more-info-container');
+// const btnFifeDaysRef = document.querySelector('switch-btn five-days-btn');
+// btnFifeDaysRef.addEventListener('click', openFiveDays);
+// function openFiveDays(event) {
+//   if (event.target === "BUTTON") {
+//     console.log('ok')
+//     containerFiveDaysRender.classList.remove(visually-hidden);
+//   }
+//  }
