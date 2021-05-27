@@ -4,14 +4,13 @@ import Siema from 'siema';
 export default function renderWeatherInformerFiveDays(ref, weather) {
   ref.wrapper.innerHTML = fiveDaysTemp(weather);
 
-
   const prev = document.querySelector('.prev');
   const next = document.querySelector('.next');
   const btnScrollRef = document.querySelector('.btn-scroll');
 
   btnScrollRef.addEventListener('click', scroolBtn);
   const mySiema = new Siema();
-  
+
   function scroolBtn(event) {
     if (event.target.tagName !== 'BUTTON') return;
     if (event.target.dataset.action === 'next') {
@@ -37,5 +36,3 @@ export default function renderWeatherInformerFiveDays(ref, weather) {
   //   onChange: () => {},
   // });
 }
-
-

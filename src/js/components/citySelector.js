@@ -1,5 +1,5 @@
 import favCityTmpl from '../../templates/citySelectorFavCity.hbs';
-import fetchLocationCityName from '../apiService';
+import { fetchLocationCityName } from '../apiService';
 import jquery from 'jquery';
 import slick from 'slick-carousel';
 
@@ -98,8 +98,7 @@ export default class CitySelector {
   }
 
   onGeoBtnClick(e) {
-    console.log(fetchLocationCityName);
-    fetchLocationCityName.then(city => alert(city));
+    fetchLocationCityName().then(city => this.onCitySelected(city));
   }
 
   addListeners() {

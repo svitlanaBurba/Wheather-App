@@ -85,10 +85,12 @@ const fetchLocalWeather = () =>
     });
 
 // GeoLocation Service 2.0
+
 const fetchLocationCityName = () => {
   return new Promise((resolve, reject) => {
-    navigator.geolocation.getCurrentPosition(resolve, reject, { timeout: 1000 });
+    navigator.geolocation.getCurrentPosition(resolve, reject, { timeout: 3000 });
   }).then(position => {
+    console.log(position);
     const latitude = position.coords.latitude;
     const longitude = position.coords.longitude;
 
@@ -97,6 +99,7 @@ const fetchLocationCityName = () => {
         `${BASE_URL_WEATHER}lat=${latitude}&lon=${longitude}&units=metric&appid=${apiKeyWeather}`,
       )
       .then(res => {
+        console.log(res);
         return res.data.name + ', ' + res.data.sys.country;
       });
   });

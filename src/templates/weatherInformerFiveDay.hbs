@@ -1,12 +1,13 @@
-<section class='days-of-week '>
+<section class='days-of-week'>
   <div class='container'>
     <h2 class='location1'>{{city.name}}, {{city.country}}</h2>
     <div class='h2-wripper'>
       <h2 class='location'>{{city.name}}, {{city.country}}</h2>
-      <div class='temperature-wrapper'>
+      <div class='siema temperature-wrapper'>
         {{#each daysData}}
-          <ul class='daily-temperature'> <!--"siema"-->
-            <li class='daily-temperature__day '>
+          <ul class='daily-temperature'>
+            <!--"siema"-->
+            <li class='daily-temperature__day'>
               <p class='daily-temperature__week-day'>{{date.dayName}}</p>
               <p class='daily-temperature__date'>{{date.day}} {{date.month}}</p>
               <img class='daily-temperature__img' src='{{weather.icon}}' width='35' height='35' />
@@ -26,8 +27,8 @@
         {{/each}}
       </div>
       <div class='btn-scroll'>
-        <button type='button' class='day prev' data-action="prev"><</button>
-        <button type='button' class='day next' data-action="next">></button>
+        <button type='button' class='day prev' data-action='prev'></button>
+        <button type='button' class='day next' data-action='next'>></button>
       </div>
     </div>
   </div>
