@@ -90,8 +90,11 @@ const convertFiveDayWeather = rawWeather => {
   // получаем массив из 5 дат путем удаления дубликатов и слайса
   const dates = rawWeather.list
     .map(element => getDate(element).getDate())
-    .filter((v, i, a) => a.indexOf(v) === i)
-    .slice(0, 5);
+    .filter((v, i, a) => a.indexOf(v) === i);
+
+  if (dates[5]) {
+    dates.shift();
+  }
 
   // из исходного "плоского" массива детальных прогнозов list делаем 2 уровневый массив:
   // для каждого дня будет отдельный вложенный массив детальных прогнозов
