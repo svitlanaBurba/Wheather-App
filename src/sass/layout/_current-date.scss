@@ -2,7 +2,6 @@
   .current-date-section {
     margin: 0 auto;
     width: 280px;
-    margin-bottom: 60px;
     margin-top: 50px;
     padding: 40px 0px;
     align-items: center;
@@ -101,16 +100,14 @@
     margin-top: 10px;
   }
 }
-@media screen and (min-width: 1178px) {
+@media screen and (min-width: 1278px) {
   .current-date-section {
     width: 630px;
     height: 278px;
     float: left;
     border-radius: 0px 34px 0px 0px;
-    position: relative;
-    bottom: -3vh;
     margin-bottom: 0px;
-    padding: 80px 0px;
+    padding: 70px 0px;
   }
   .current-date-div {
     width: fit-content;
