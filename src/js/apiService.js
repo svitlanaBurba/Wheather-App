@@ -20,11 +20,6 @@ const convertOneDayWeather = rawWeather => {
       name: rawWeather.name,
       country: rawWeather.sys.country,
     },
-    // temperature: {
-    //   value: convertToCel(rawWeather.main.temp),
-    //   min: convertToCel(rawWeather.main.temp_min),
-    //   max: convertToCel(rawWeather.main.temp_max),
-    // },
     temperature: {
       value: Math.floor(rawWeather.main.temp),
       min: Math.floor(rawWeather.main.temp_min),
@@ -38,15 +33,6 @@ const convertOneDayWeather = rawWeather => {
 
 // переводим температуру из кельвинов в цельсии
 // const convertToCel = data => Math.floor(data - 273.15);
-
-// Weather service (5 days)
-
-const BASE_URL_WEATHER_FIVE = 'https://api.openweathermap.org/data/2.5/forecast?q=';
-
-const fetchWeatherFive = city =>
-  axios.get(`${BASE_URL_WEATHER_FIVE}${city}&units=metric&appid=${apiKeyWeather}`).then(res => {
-    return convertFiveDayWeather(res.data);
-  });
 
 // Bg Image Service
 const fetchImages = city =>
@@ -82,54 +68,70 @@ const fetchLocalWeather = () =>
       return convertOneDayWeather(res.data);
     });
 
-// export data
-export { fetchWeather, fetchImages, fetchWeatherFive, fetchLocalWeather };
+// Weather service (5 days)
+
+const BASE_URL_WEATHER_FIVE = 'https://api.openweathermap.org/data/2.5/forecast?q=';
+
+const fetchWeatherFive = city =>
+  axios.get(`${BASE_URL_WEATHER_FIVE}${city}&units=metric&appid=${apiKeyWeather}`).then(res => {
+    return convertFiveDayWeather(res.data);
+  });
+
+function groupBy(key) {
+  return function group(array) {
+    return array.reduce((acc, obj) => {
+      const property = obj[key];
+      acc[property] = acc[property] || [];
+      acc[property].push(obj);
+      return acc;
+    }, {});
+  };
+}
 
 const convertFiveDayWeather = rawWeather => {
-  console.log(rawWeather);
+  const datesWithDay = rawWeather.list.map(element => {
+    var xx = new Date();
+    xx.setTime(element.dt * 1000);
+    element.dayNumber = xx.getDate();
+    return element;
+  });
 
-  const dates = rawWeather.list
-    .map(element => getDate(element).getDate())
-    .filter((el, idx, arr) => arr.indexOf(el) === idx)
-    .slice(0, 5);
+  const grouppedWeather = groupBy('dayNumber')(datesWithDay);
 
-  const list = dates.map(el => rawWeather.list.filter(elem => getDate(elem).getDate() === el)[0]);
+  for (let day in grouppedWeather) {
+    grouppedWeather[day] = grouppedWeather[day].map(d => {
+      return {
+        date: d.dt,
+        temperature: Math.floor(d.main.temp),
+        tempMin: Math.floor(d.main.temp_min),
+        tempMax: Math.floor(d.main.temp_max),
+        pressure: d.main.pressure,
+        humidity: d.main.humidity,
+        wind: d.wind.speed,
+        icon: d.weather[0].icon,
+      };
+    });
+  }
 
-  return {
+  let result = {
     city: {
       name: rawWeather.city.name,
       country: rawWeather.city.country,
     },
-    daysData: list.map(convertFiveDayListElement),
+    daysData: grouppedWeather,
   };
-  //dt;
-  //main.temp_min;
-  //main.temp_max;
-  //main.pressure;
-  //main.humidity;
-  //wind.speed;
-  //weather[0].icon;
+
+  return result;
 };
 
-function convertFiveDayListElement(el) {
-  let fullDate = getDate(el);
-  console.log(el);
+// Данные которые подгружаются в объект для последующей выгрузки в шаблон
+//dt;
+//main.temp_min;
+//main.temp_max;
+//main.pressure;
+//main.humidity;
+//wind.speed;
+//weather[0].icon;
 
-  return {
-    weather: {
-      icon: iconURL + el.weather[0].icon + '.png',
-    },
-    date: {
-      date: fullDate,
-      day: fullDate.getDate(),
-      dayName: new Intl.DateTimeFormat('en', { weekday: 'long' }).format(fullDate),
-      month: new Intl.DateTimeFormat('en', { month: 'short' }).format(fullDate),
-    },
-    temperature: {
-      min: el.main.temp_min,
-      max: el.main.temp_max,
-    },
-  };
-}
-
-const getDate = rawDate => new Date(rawDate.dt * 1000);
+// export data
+export { fetchWeather, fetchImages, fetchWeatherFive, fetchLocalWeather };
