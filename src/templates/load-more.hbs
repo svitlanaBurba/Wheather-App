@@ -1,32 +1,21 @@
-<div class='wheather-main-more-info-container'>
-  <ul class='wheather-whole-data-more-info-list'>
-    {{#each forecasts}}
-      <div class='wheather-whole-data-more-info-container'>
-        <li class='wheather-whole-data-more-info-item'>
-          <p class='current-more-info-time'>{{time}}</p>
-          <img class='icon-more-info-wheather' src='{{icon}}' width='35' height='35' />
-          <div class='current-more-info-temperature'>{{temperature}}</div>
+<ul class='wheather-whole-data-more-info-container'>
+  {{#each forecasts}}
 
-          <div class='container-more-info-wheather-parameters'>
-            <svg class='icon-more-info-wheather-parameters'>
-              <use href='./images/sprite.svg#icon-barometer' width='20' height='20'></use>
-            </svg>
-            <p class='text-more-info-wheather-parameters'>{{pressure}}</p>
-          </div>
-          <div class='container-more-info-wheather-parameters'>
-            <svg class='icon-more-info-wheather-parameters'>
-              <use href='./images/sprite.svg#icon-humidity' width='20' height='20'></use>
-            </svg>
-            <p class='text-more-info-wheather-parameters'>{{humidity}}</p>
-          </div>
-          <div class='container-more-info-wheather-parameters'>
-            <svg class='icon-more-info-wheather-parameters'>
-              <use href='./images/sprite.svg#icon-wind' width='20' height='20'></use>
-            </svg>
-            <p class='text-more-info-wheather-parameters'>{{windSpeed}}</p>
-          </div>
-        </li>
+    <li class='wheather-whole-data-more-info-item'>
+      <p class='current-more-info-time'>{{time}}</p>
+      <img class='icon-more-info-wheather' src='{{icon}}' width='35' height='35' />
+      <div class='current-more-info-temperature'>{{temperature}}&deg</div>
+
+      <div class='container-more-info-wheather-parameters-pressure'>
+        <p class='text-more-info-wheather-parameters'>{{pressure}}mm</p>
       </div>
-    {{/each}}
-  </ul>
-</div>
+      <div class='container-more-info-wheather-parameters-humidity'>
+        <p class='text-more-info-wheather-parameters'>{{humidity}}%</p>
+      </div>
+      <div class='container-more-info-wheather-parameters-wind'>
+        <p class='text-more-info-wheather-parameters'>{{windSpeed}}m/s</p>
+      </div>
+    </li>
+
+  {{/each}}
+</ul>
