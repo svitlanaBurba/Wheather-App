@@ -147,6 +147,7 @@ function convertFiveDayListElements(forecasts) {
       pressure: forecast.main.pressure,
       humidity: forecast.main.humidity,
       windSpeed: roundTo1digit(forecast.wind.speed),
+      icon: iconURL + forecast.weather[0].icon + '.png',
     })),
   };
   //dt;
