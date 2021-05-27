@@ -1,8 +1,40 @@
-.wheather-whole-data-more-info-list {
-  display: flex;
+.wheather-main-more-info-container {
+  width: 280px;
+
+  @media screen and (min-width: 768px) {
+    width: 659px;
+  }
+
+  @media screen and (min-width: 1280px) {
+    width: 1060px;
+  }
 }
 
 .wheather-whole-data-more-info-container {
+  display: flex;
+  width: 240;
+  overflow-x: auto;
+
+  @media screen and (min-width: 768px) {
+    width: 577px;
+  }
+
+  @media screen and (min-width: 1280px) {
+    width: 900px;
+  }
+}
+
+.wheather-whole-data-more-info-container::-webkit-scrollbar {
+  width: 5px;
+  height: 1px;
+  background-color: #aaa;
+}
+
+.wheather-whole-data-more-info-container::-webkit-scrollbar-thumb {
+  background: 2px solid #ff6b09;
+}
+
+.wheather-whole-data-more-info-item {
   width: 120px;
   height: 218px;
   border-radius: 25px;
@@ -12,14 +44,6 @@
   &:first-child {
     margin-left: 79px;
   }
-}
-
-.wheather-whole-data-more-info-item {
-  width: 88px;
-  height: 185px;
-  margin-top: 15px;
-  margin-left: 10px;
-  margin-right: 10px;
 }
 
 .current-more-info-time {

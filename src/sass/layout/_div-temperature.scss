@@ -33,12 +33,14 @@
     margin-bottom: 36px;
     margin-left: auto;
     margin-right: auto;
+    padding-top: 5px;
   }
   @media screen and (min-width: 1280px) {
     font-size: 18px;
     line-height: 0.81;
     margin-left: 144px;
-    margin-right: 186;
+    margin-right: 186px;
+    padding-top: 20px;
   }
 }
 
@@ -93,16 +95,19 @@
   @media screen and (min-width: 768px) {
     width: 90px;
     height: 96px;
-    margin-right: 0px;
     text-align: right;
     font-weight: 300;
     font-size: 90px;
     line-height: 0.83;
+    padding-top: 30px;
+    margin-bottom: 30px;
   }
 }
 
 .min-max-temperature-container {
   display: flex;
+  text-align: center;
+  align-items: center;
   width: 72px;
   height: 40px;
   @media screen and (min-width: 768px) {
@@ -116,9 +121,15 @@
 .max-temperature {
   text-align: center;
   padding-left: 10px;
+  @media screen and (min-width: 768px) {
+    padding-left: 20px;
+  }
 }
 .min-temperature {
   margin-right: 10px;
+  @media screen and (min-width: 768px) {
+    padding-right: 20px;
+  }
 }
 
 .min-t-text,

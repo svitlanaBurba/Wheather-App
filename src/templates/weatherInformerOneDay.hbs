@@ -1,22 +1,25 @@
 <div class='wheather-main-container'>
   <div class='wheather-whole-data-container'>
-    <svg class='icon-wheather'>
-      <use href='{{icon}}' width='35' height='35'></use>
-    </svg>
+    <img
+      class='icon-wheather'
+      src='http://openweathermap.org/img/wn/03n.png'
+      width='35'
+      height='35'
+    />
     <h2 class='city-name'>{{city.name}}, {{city.country}}</h2>
     <div class='values-container'>
       <div class='current-temperature'>{{temperature.value}}&deg</div>
       <div class='min-max-temperature-container'>
         <div class='min-temperature'>
-          <span class='min-t-text'>min</span>
-          <br />
-          <span class='min-t-value'>{{temperature.min}} &deg</span>
+          <p class='min-t-text'>min</p>
+
+          <p class='min-t-value'>{{temperature.min}}&deg</p>
         </div>
-        <span class='t-divider'> | </span>
+        <p class='t-divider'> | </p>
         <div class='max-temperature'>
-          <span class='max-t-text'>max</span>
-          <br />
-          <span class='max-t-value'>{{temperature.max}} &deg</span>
+          <p class='max-t-text'>max</p>
+
+          <p class='max-t-value'>{{temperature.max}}&deg</p>
         </div>
       </div>
     </div>

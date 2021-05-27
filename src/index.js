@@ -1,10 +1,12 @@
-import { fetchWeather } from './js/apiService';
+import { fetchWeather, fetchWeatherFive } from './js/apiService';
 import './sass/main.scss';
 
 import CitySelector from './js/components/citySelector';
 import FavCityManager from './js/favCityManager';
 import renderWeatherInformerOneDay from './js/components/weatherInformerOneDay';
 import renderWeatherInformerFiveDays from './js/components/weatherInformerFiveDays';
+import renderWeatherInformerMoreInfo from './js/components/weatherInformerMoreInfo';
+import renderTimeInformer from './js/components/timeInformer';
 
 // референсы - вынести в файл
 let citySelectorRefs = {
@@ -18,39 +20,22 @@ let weatherInformerOneDayRefs = {
   wrapper: document.querySelector('.wheather-main-container'),
 };
 
-let weatherInformerFiveDayRefs = {
-  wrapper: document.querySelector('.wheather-main-container'),
+let weatherInformerFiveDaysRefs = {
+  wrapper: document.querySelector('.weather-output-wrapper-five-days'),
+};
+
+let weatherInformerMoreInfoRefs = {
+  wrapper: document.querySelector('.wheather-main-more-info-container'),
+};
+
+let timeInformerRefs = {
+  wrapper: document.querySelector('.current-date-section'),
 };
 
 // глобальные переменные - хранят состояние программы, в т.ч. загруженную погоду
 let selectedCity;
 let selectedCityWeatherOneDay;
-let selectedCityWeatherFiveDays = {
-  list: [
-    {
-      date: {
-        dayName: 'Monday',
-        day: '1',
-        month: 'May',
-      },
-      temperature: {
-        min: 10,
-        max: 20,
-      },
-    },
-    {
-      date: {
-        dayName: 'Tuesday',
-        day: '2',
-        month: 'May',
-      },
-      temperature: {
-        min: 11,
-        max: 21,
-      },
-    },
-  ],
-};
+let selectedCityWeatherFiveDays;
 
 startApp();
 
@@ -83,11 +68,36 @@ function weatherOneDayLoad(onWeatherOneDayLoad) {
   });
 }
 
+// загружает погоду на 5 день по selectedCity, сохраняет ее в selectedCityWeatherFiveDays
+// и вызывает функцию onWeatherFiveDaysLoad которую передают как аргумент
+// (эта функция будет обновлять нужные компоненты)
+function weatherFiveDaysLoad(onWeatherFiveDaysLoad) {
+  // вызываем наш апи, передаем ему город
+  fetchWeatherFive(selectedCity).then(w => {
+    selectedCityWeatherFiveDays = w;
+    onWeatherFiveDaysLoad(); // погоду в параметрах не передаем, т.к. она уже лежит в глобальной переменной
+  });
+}
+
 // эта функция будет вызываться когда мы будем получать данные о погоде за 1 день
 // соответственно в ней мы будем рендерить (обновлять) наши компоненты
 function onWeatherOneDayLoad() {
   // рендерим погоду на 1 день
   renderWeatherInformerOneDay(weatherInformerOneDayRefs, selectedCityWeatherOneDay);
+  // рендерим время (с новым восходом и закатом)
+  renderTimeInformer(timeInformerRefs, selectedCityWeatherOneDay);
+}
+
+// эта функция будет вызываться когда мы будем получать данные о погоде за 1 день
+// соответственно в ней мы будем рендерить (обновлять) наши компоненты
+function onWeatherFiveDaysLoad() {
+  // рендерим погоду на 5 дней
+  renderWeatherInformerFiveDays(weatherInformerFiveDaysRefs, selectedCityWeatherFiveDays);
+  // рендерим more info для первого дня из 1 (ПЕРЕДЕЛАТЬ - будет показываться для того дня, который выбрал пользователь )
+  renderWeatherInformerMoreInfo(
+    weatherInformerMoreInfoRefs,
+    selectedCityWeatherFiveDays.daysData[0],
+  );
 }
 
 // эту функцию будут вызывать любые события выбора города
@@ -104,4 +114,5 @@ function onCitySelected(city) {
   weatherOneDayLoad(onWeatherOneDayLoad);
   // время
   // погода на 5 дней и тп
+  weatherFiveDaysLoad(onWeatherFiveDaysLoad);
 }

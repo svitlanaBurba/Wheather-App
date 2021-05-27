@@ -1,4 +1,10 @@
-/* 
+import timeTemp from '../../templates/timeInformer.hbs';
+
+export default function renderTimeInformer(ref, weather) {
+  ref.wrapper.innerHTML = timeTemp(weather);
+}
+
+/*
 Отвечает за обновление времени восхода и заката для выбранного города
 
 должен содержать функции:
