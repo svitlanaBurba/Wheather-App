@@ -91,7 +91,7 @@ const convertFiveDayWeather = rawWeather => {
   const dates = rawWeather.list
     .map(element => getDate(element).getDate())
     .filter((v, i, a) => a.indexOf(v) === i)
-    .slice(1, 5);
+    .slice(0, 5);
 
   // из исходного "плоского" массива детальных прогнозов list делаем 2 уровневый массив:
   // для каждого дня будет отдельный вложенный массив детальных прогнозов
@@ -123,7 +123,6 @@ function convertFiveDayListElements(forecasts) {
   let rootForecast = forecasts[0]; // берем первый детальный прогноз для этого дня - чаще всего это прогноз на 00:00
   // с него мы возьмем дату(она все равно одинакова для всех прогнозов)
   // также мы возьмем иконку (т.е. иконка всегда будет для прогноза на ночь)
-
   let fullDate = getDate(rootForecast);
 
   return {
