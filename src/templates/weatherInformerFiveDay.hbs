@@ -5,11 +5,11 @@
       <h2 class='location'>{{city.name}}, {{city.country}}</h2>
       <div class='temperature-wrapper'>
         {{#each daysData}}
-          <ul class='daily-temperature siema'> <!--"siema"-->
+          <ul class='daily-temperature'> <!--"siema"-->
             <li class='daily-temperature__day '>
               <p class='daily-temperature__week-day'>{{date.dayName}}</p>
               <p class='daily-temperature__date'>{{date.day}} {{date.month}}</p>
-              <img class='daily-temperature__img' src='{{weather.icon}}' width='30' height='30' />
+              <img class='daily-temperature__img' src='{{weather.icon}}' width='35' height='35' />
               <ul class='daily-temperature__range'>
                 <li class='daily-temperature__range-item'>
                   <p class='daily-temperature__range'>min</p>
