@@ -1,5 +1,7 @@
 import { fetchWeather, fetchWeatherFive } from './js/apiService';
 import './sass/main.scss';
+//import jquery from 'jquery';
+//import slick from 'slick-carousel';
 
 import CitySelector from './js/components/citySelector';
 import FavCityManager from './js/favCityManager';
@@ -41,11 +43,17 @@ startApp();
 
 function startApp() {
   // init components
+
   let favCityManager = new FavCityManager();
   //favCityManager.addFavCity('Berlin');
   //favCityManager.addFavCity('Moscow');
 
-  let citySelector = new CitySelector(citySelectorRefs, onCitySelected, favCityManager);
+  let citySelector = new CitySelector(
+    citySelectorRefs, //
+    onCitySelected,
+    favCityManager,
+    x => ({}), // функция которую вызывать после отрисовки компонента.
+  );
 
   // переделать в функцию выбора даты по умолчанию
   let defaultCity = favCityManager.getFavCities()[0];
