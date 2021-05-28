@@ -73,7 +73,6 @@ function getLocation() {
 function saveCoordinates(position) {
   latitude = position.coords.latitude;
   longitude = position.coords.longitude;
-  console.log(latitude, longitude);
 }
 
 getLocation();
@@ -129,8 +128,6 @@ const convertFiveDayWeather = rawWeather => {
   //              [{ прогноз на 28 на 00}, { прогноз на 28 на 03}]
   //          ]
   const list = dates.map(date => rawWeather.list.filter(elem => getDate(elem).getDate() === date));
-  console.log('5days:');
-  console.log(rawWeather);
 
   return {
     city: {
