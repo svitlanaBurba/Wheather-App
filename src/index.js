@@ -7,7 +7,7 @@ import renderWeatherInformerOneDay from './js/components/weatherInformerOneDay';
 import renderWeatherInformerFiveDays from './js/components/weatherInformerFiveDays';
 import renderWeatherInformerMoreInfo from './js/components/weatherInformerMoreInfo';
 import renderTimeInformer from './js/components/timeInformer';
-
+import renderChart from './js/components/weatherInformerChart';
 // референсы - вынести в файл
 let citySelectorRefs = {
   searchInputForm: document.querySelector('.input-form'),
@@ -120,3 +120,5 @@ function onCitySelected(city) {
   // погода на 5 дней и тп
   weatherFiveDaysLoad(onWeatherFiveDaysLoad);
 }
+
+export { selectedCityWeatherFiveDays };
