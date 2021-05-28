@@ -2,18 +2,32 @@
 .is-closed {
   display: none;
 }
+.days-of-week {
+  margin-bottom: 20px;
+}
+.weather-container-five-days-total {
+  min-width: 280px;
+  margin-top: 30px;
+  margin-bottom: 20px;
+  padding-top: 30px;
+  padding-bottom: 20px;
+
+  background-color: rgba(16, 33, 54, 0.8);
+  box-shadow: 0px 5px 33px rgba(16, 33, 54, 0.6);
+  border-radius: 34px;
+}
 .location1 {
   display: none;
 }
 .h2-wripper {
-  min-width: 280px;
-  height: 273px;
-  margin-top: 30px;
-  padding-top: 30px;
-  overflow: hidden;
-  background-color: rgba(16, 33, 54, 0.8);
-  box-shadow: 0px 5px 33px rgba(16, 33, 54, 0.6);
-  border-radius: 34px 34px 0 0;
+  // min-width: 280px;
+  // margin-top: 30px;
+  // padding-top: 30px;
+  // padding-bottom: 20px;
+
+  // background-color: rgba(16, 33, 54, 0.8);
+  // box-shadow: 0px 5px 33px rgba(16, 33, 54, 0.6);
+  // border-radius: 34px;
 
   .location {
     display: block;
@@ -25,11 +39,11 @@
     text-align: center;
   }
   .temperature-wrapper {
-    display: flex;
-    justify-content: flex-start;
-    align-items: center;
-
     .daily-temperature {
+      display: flex;
+      justify-content: flex-start;
+      align-items: center;
+      overflow: auto;
       margin-left: 10px;
       color: #ffffff;
 
@@ -55,8 +69,8 @@
         }
         .daily-temperature__img {
           margin-bottom: 5px;
-          // width: 35px;
-          // height: 35px;
+          width: 35px;
+          height: 35px;
           background-position: center;
           background-size: cover;
         }
@@ -127,17 +141,20 @@
 
   &.prev {
     margin-left: 100px;
-
-    &:hover {
-      color: rgb(132, 132, 243);
-    }
-  }
-  &.next:hover {
-    color: rgb(132, 132, 243);
   }
 }
 /* ====================== days-of-week-TABLET ===========================================*/
 @media screen and (min-width: 768px) {
+  .days-of-week {
+    margin-bottom: 40px;
+  }
+  .weather-container-five-days-total {
+    max-width: 620px;
+    margin: 0 auto;
+    margin-bottom: 30px;
+    padding-top: 30px;
+    padding-bottom: 40px;
+  }
   .location1 {
     display: block;
     margin-top: 25px;
@@ -148,21 +165,19 @@
     color: #ffffff;
   }
   .h2-wripper {
-    max-width: 620px;
-    height: 270px;
-    margin: 0 auto;
-    margin-top: 25px;
+    // max-width: 620px;
+    // margin: 0 auto;
+    // padding-top: 40px;
+    // padding-bottom: 40px;
 
     .location {
       display: none;
     }
 
     .temperature-wrapper {
-      justify-content: space-around;
-      padding-top: 40px;
-      padding-bottom: 40px;
-
       .daily-temperature {
+        justify-content: space-around;
+        overflow: hidden;
         .daily-temperature__day {
           .daily-temperature__week-day {
             margin-bottom: 10px;
@@ -202,18 +217,27 @@
 }
 /* ====================== days-of-week-Dasctop ===========================================*/
 @media screen and (min-width: 1280px) {
+  .days-of-week {
+    margin-bottom: 30px;
+  }
+  .weather-container-five-days-total {
+    max-width: 1060px;
+    margin: 0 auto;
+    margin-bottom: 20px;
+  }
   .location1 {
     margin-bottom: 22px;
   }
   .h2-wripper {
-    max-width: 1060px;
-    height: 308px;
-    margin: 0 auto;
-    margin-top: 25px;
+    // max-width: 1060px;
+    // height: 308px;
+    // margin: 0 auto;
 
     .temperature-wrapper {
       .daily-temperature {
+        justify-content: space-around;
         margin-top: 0;
+        overflow: hidden;
         .daily-temperature__day {
           margin: 0;
 

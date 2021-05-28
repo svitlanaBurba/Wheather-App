@@ -9,6 +9,7 @@ import renderWeatherInformerOneDay from './js/components/weatherInformerOneDay';
 import renderWeatherInformerFiveDays from './js/components/weatherInformerFiveDays';
 import renderWeatherInformerMoreInfo from './js/components/weatherInformerMoreInfo';
 import renderTimeInformer from './js/components/timeInformer';
+import renderChart from './js/components/weatherInformerChart';
 import renderQuoteInformer from './js/components/quoteInformer';
 
 // референсы - вынести в файл
@@ -99,11 +100,9 @@ function onWeatherOneDayLoad() {
   renderTimeInformer(timeInformerRefs, selectedCityWeatherOneDay);
 }
 
-// эта функция будет вызываться когда мы будем получать данные о погоде за 1 день
+// эта функция будет вызываться когда мы будем получать данные о погоде за 5
 // соответственно в ней мы будем рендерить (обновлять) наши компоненты
 function onWeatherFiveDaysLoad() {
-  console.log('After');
-  console.log(selectedCityWeatherFiveDays);
   // рендерим погоду на 5 дней
   renderWeatherInformerFiveDays(weatherInformerFiveDaysRefs, selectedCityWeatherFiveDays);
   // рендерим more info для первого дня из 1 (ПЕРЕДЕЛАТЬ - будет показываться для того дня, который выбрал пользователь )
@@ -111,6 +110,7 @@ function onWeatherFiveDaysLoad() {
     weatherInformerMoreInfoRefs,
     selectedCityWeatherFiveDays.daysData[0],
   );
+  renderChart(selectedCityWeatherFiveDays);
 }
 
 // эту функцию будут вызывать любые события выбора города
@@ -129,23 +129,12 @@ function onCitySelected(city) {
   // погода на 5 дней и тп
   weatherFiveDaysLoad(onWeatherFiveDaysLoad);
 }
+export { selectedCityWeatherFiveDays };
 
-// const btnsScrollRef = document.querySelector('.btn-scroll');
-// btnsScrollRef.addEventListener('click', scroolBtn);
-// function scroolBtn(event) {
-//   if (event.target.tagName === 'BUTTON')
-//     console.log('ok')
-//     ref.wrapper.scroll({
-//       left: 50,
-//       behavior: 'smooth',
-//     });
-// }
-// const containerFiveDaysRender = document.querySelector('wheather-main-more-info-container');
-// const btnFifeDaysRef = document.querySelector('switch-btn five-days-btn');
-// btnFifeDaysRef.addEventListener('click', openFiveDays);
-// function openFiveDays(event) {
-//   if (event.target === "BUTTON") {
-//     console.log('ok')
-//     containerFiveDaysRender.classList.remove(visually-hidden);
-//   }
-//  }
+const containerFiveDaysRender = document.querySelector('.weather-output-wrapper-five-days');
+const btnFifeDaysRef = document.querySelector('.five-days-btn');
+btnFifeDaysRef.addEventListener('click', openFiveDays);
+function openFiveDays(event) {
+  console.log('ok');
+  containerFiveDaysRender.classList.toggle('is-closed');
+}

@@ -156,10 +156,12 @@ function convertFiveDayListElements(forecasts) {
       icon: iconURL + rootForecast.weather[0].icon + '.png',
     },
     date: {
+      dt: rootForecast.dt,
       date: fullDate,
       day: fullDate.getDate(),
       dayName: new Intl.DateTimeFormat('en', { weekday: 'long' }).format(fullDate),
       month: new Intl.DateTimeFormat('en', { month: 'short' }).format(fullDate),
+      year: new Intl.DateTimeFormat('en', { year: 'numeric' }).format(fullDate),
     },
     // считаем минимальную и максимальную температуры по всем детальным прогнозам для этого дня
     temperature: {

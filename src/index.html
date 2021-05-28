@@ -75,7 +75,9 @@
     </div>
 
     <!-- Контейнер с графиком Богдан -->
-    <div class="chart-main-container"></div>
+    <div class="chart-main-container">
+          <canvas id="myChart"> </canvas>
+    </div>
 
     <!-- <include src="./partials/header.html"></include> -->
     <!-- <include src="./partials/city_search.html"></include> -->
@@ -83,12 +85,14 @@
 
     <!-- <include src="./partials/header.html"></include>
     <include src="./partials/section.html"></include> -->
+     <include src='./partials/chart-div.html'></include>
 
     <!-- <include src="./partials/current_date.html"></include>
     <include src="./partials/t-div.html"></include>
     <include src="./partials/qoute.html"></include>
 
     <!-- Скрипт идёт последним в разметке. В нём уже подключен главный SASS-файл. -->
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
     <script src="./index.js"></script>
     <script
       src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"
