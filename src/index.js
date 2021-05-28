@@ -131,10 +131,3 @@ function onCitySelected(city) {
 }
 export { selectedCityWeatherFiveDays };
 
-const containerFiveDaysRender = document.querySelector('.weather-output-wrapper-five-days');
-const btnFifeDaysRef = document.querySelector('.five-days-btn');
-btnFifeDaysRef.addEventListener('click', openFiveDays);
-function openFiveDays(event) {
-  console.log('ok');
-  containerFiveDaysRender.classList.toggle('is-closed');
-}
