@@ -2,18 +2,32 @@
 .is-closed {
   display: none;
 }
-.location1 {
-  display: none;
+.days-of-week {
+  margin-bottom: 20px;
 }
-.h2-wripper {
+.weather-container-five-days-total {
   min-width: 280px;
   margin-top: 30px;
+  margin-bottom: 20px;
   padding-top: 30px;
   padding-bottom: 20px;
 
   background-color: rgba(16, 33, 54, 0.8);
   box-shadow: 0px 5px 33px rgba(16, 33, 54, 0.6);
   border-radius: 34px;
+}
+.location1 {
+  display: none;
+}
+.h2-wripper {
+  // min-width: 280px;
+  // margin-top: 30px;
+  // padding-top: 30px;
+  // padding-bottom: 20px;
+
+  // background-color: rgba(16, 33, 54, 0.8);
+  // box-shadow: 0px 5px 33px rgba(16, 33, 54, 0.6);
+  // border-radius: 34px;
 
   .location {
     display: block;
@@ -131,6 +145,16 @@
 }
 /* ====================== days-of-week-TABLET ===========================================*/
 @media screen and (min-width: 768px) {
+  .days-of-week {
+    margin-bottom: 40px;
+  }
+  .weather-container-five-days-total {
+    max-width: 620px;
+    margin: 0 auto;
+    margin-bottom: 30px;
+    padding-top: 30px;
+    padding-bottom: 40px;
+  }
   .location1 {
     display: block;
     margin-top: 25px;
@@ -141,10 +165,10 @@
     color: #ffffff;
   }
   .h2-wripper {
-    max-width: 620px;
-    margin: 0 auto;
-    padding-top: 40px;
-    padding-bottom: 40px;
+    // max-width: 620px;
+    // margin: 0 auto;
+    // padding-top: 40px;
+    // padding-bottom: 40px;
 
     .location {
       display: none;
@@ -193,13 +217,21 @@
 }
 /* ====================== days-of-week-Dasctop ===========================================*/
 @media screen and (min-width: 1280px) {
+  .days-of-week {
+    margin-bottom: 30px;
+  }
+  .weather-container-five-days-total {
+    max-width: 1060px;
+    margin: 0 auto;
+    margin-bottom: 20px;
+  }
   .location1 {
     margin-bottom: 22px;
   }
   .h2-wripper {
-    max-width: 1060px;
-    height: 308px;
-    margin: 0 auto;
+    // max-width: 1060px;
+    // height: 308px;
+    // margin: 0 auto;
 
     .temperature-wrapper {
       .daily-temperature {
