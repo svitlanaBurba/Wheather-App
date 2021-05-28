@@ -5,9 +5,6 @@ const moment = require('moment-timezone');
 
 let chart;
 
-const average = (req, data) => {
-  const values = data.map(e => e[req]);
-
 const average = values => {
   const sum = values.reduce((previous, current) => (current += previous));
   const avg = sum / values.length;
@@ -90,4 +87,4 @@ export default function renderChart(weather) {
     weatherChart = new Chart(ctx, getChartData(weather));
     return weatherChart;
   }
-
+}
