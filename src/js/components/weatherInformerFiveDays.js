@@ -1,8 +1,10 @@
 import fiveDaysTemp from '../../templates/weatherInformerFiveDay.hbs';
 
+
 export default function renderWeatherInformerFiveDays(ref, weather) {
   ref.wrapper.innerHTML = fiveDaysTemp(weather);
-
+  console.log('--------------------');
+  console.log(weather);
   const btnsScrollRef = document.querySelector('.btn-scroll');
   const ul = document.querySelector('.daily-temperature');
   btnsScrollRef.addEventListener('click', scroolBtn);
@@ -28,6 +30,8 @@ export default function renderWeatherInformerFiveDays(ref, weather) {
   function openMoreInfo(event) {
     if (event.target.tagName !== 'BUTTON') return;
     containerMoreInfoRef.classList.toggle('is-closed');
+   const id = event.target.dataset.id
+    
   }
 }
 
