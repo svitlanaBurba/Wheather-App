@@ -1,8 +1,9 @@
 import favCityTmpl from '../../templates/citySelectorFavCity.hbs';
-import $ from 'jquery';
+import { fetchLocationCityName } from '../apiService';
+import jquery from 'jquery';
 import slick from 'slick-carousel';
 
-window.$ = $;
+let $ = jquery;
 
 export default class CitySelector {
   // атрибуты класса (свойства)
@@ -16,6 +17,7 @@ export default class CitySelector {
   favCityManager; // класс-API для получения-сохранения-удаления из localstorage
   onCitySelected; // функция, которая будет вызываться при выборе пользователем города - передается в конструкторе
   favCityTemplate; // шаблон для генерации кнопок любимых городов
+  onRender;
 
   // методы
 
@@ -28,29 +30,76 @@ export default class CitySelector {
     this.onCitySelected(city);
   }
 
+  sliderInit() {
+    let self = this;
+
+    this.refs.favCitiesList.innerHTML = this.favCities
+      .map(city => this.favCityTemplate(city))
+      .join();
+
+    $(document).ready(function () {
+      $('.slider').slick({
+        waitForAnimate: false,
+        infinite: false,
+        variableWidth: true,
+      });
+    });
+  }
+
+  setDisplayedCity(city) {
+    if (city) {
+      this.refs.searchInputField.value = city;
+    } else {
+      this.refs.searchInputField.value = '';
+    }
+  }
+
   onAddFavoriteBtnClick(e) {
-    // e.preventDefault();
+    e.preventDefault();
+    // получаем имя города из формы
     const formData = new FormData(e.target.parentElement);
     const city = formData.get(this.refs.searchInputField.name);
 
+    // сохраняем в локалсторадж
     this.favCityManager.addFavCity(city);
     this.favCities = this.favCityManager.getFavCities();
-    this.render();
+
+    let self = this;
+    $(document).ready(function () {
+      let rez = $('.slider').slick('slickAdd', self.favCityTemplate(city)); // здесь мы просим сликер добавить новый элемент
+      console.log(rez);
+    });
   }
 
-  removeFavCity(city) {
+  removeFavCity(city, sliderIndex) {
+    // удаляем из локал стораджа по имени
     this.favCityManager.delFavCity(city);
     this.favCities = this.favCityManager.getFavCities();
 
-    this.render();
+    // удаляем слайд из слайдера по индексу
+    $(document).ready(function () {
+      // здесь мы просим сликер удалить кнопки с указаннім индексом
+      $('.slider').slick('slickRemove', sliderIndex);
+
+      // принудительно обновляем индексы на кнопках после удаления - слик не делает это автоматически
+      var j = 0;
+      $('.slick-slide').each(function () {
+        $(this).attr('data-slick-index', j);
+        j++;
+      });
+    });
+
+    //this.render();
   }
 
   // обработчик нажатия на кнопку любимого города
-  // пока что не поддерживает удаление щелчком по крестику
   onFavCityClick(e) {
     if (e.target.nodeName === 'I') {
       const clickedCity = e.target.parentElement.innerText;
-      this.removeFavCity(clickedCity); // вызов этой функции удаляет город из стораджа и перерисовывает список
+      const sliderIndex = e.target.closest('.slick-slide').dataset.slickIndex;
+      console.log('Trying to remove btn');
+      console.dir(e.target);
+      this.removeFavCity(clickedCity, sliderIndex); // вызов этой функции удаляет город из стораджа и перерисовывает список
     } else if (
       !e.target.parentElement.className.includes('slider') &&
       e.target.nodeName === 'BUTTON'
@@ -62,6 +111,10 @@ export default class CitySelector {
     }
   }
 
+  onGeoBtnClick(e) {
+    fetchLocationCityName().then(city => this.onCitySelected(city));
+  }
+
   addListeners() {
     // при сабмите формы
     this.refs.searchInputForm.addEventListener('submit', this.onSearchInputSubmit.bind(this));
@@ -70,53 +123,35 @@ export default class CitySelector {
     this.refs.favCitiesList.addEventListener('click', this.onFavCityClick.bind(this));
     // при нажатии на кнопку добавления любимого города
     this.refs.addFavoriteBtn.addEventListener('click', this.onAddFavoriteBtnClick.bind(this));
+
+    this.refs.geoBtn.addEventListener('click', this.onGeoBtnClick.bind(this));
   }
 
   // перерисовывает список любимых городов
   render() {
+    /*
     this.refs.favCitiesList.innerHTML = ''; // очищаем список
-    // для каждого любимого города добавляем кнопку из шаблона
-    this.favCities.forEach(x => {
-      this.refs.favCitiesList.insertAdjacentHTML('beforeend', this.favCityTemplate({ city: x }));
-      //console.log($('.slider').slick);
-      //$('.slider').slick('slickAdd', '<div><h3>' + x + '</h3></div>');
-    });
+    this.refs.favCitiesList.innerHTML = this.favCities
+      .map(city => this.favCityTemplate(city))
+      .join();
+      */
+    this.favCities.forEach(city => this.sliderAddCity(city));
+
+    //this.sliderRefresh();
+    this.onRender();
   }
 
   // конструктор
-  constructor(refs, onCitySelected, favCityManager) {
+  constructor(refs, onCitySelectedFunc, favCityManager, onRenderFunc) {
     this.refs = refs;
-    this.onCitySelected = onCitySelected;
+    this.onCitySelected = onCitySelectedFunc;
     this.favCityTemplate = favCityTmpl; // переделать, должно быть параметром конструктора
+    this.onRender = onRenderFunc;
 
     this.favCityManager = favCityManager;
     this.favCities = this.favCityManager.getFavCities();
 
     this.addListeners();
-    this.render();
+    this.sliderInit();
   }
 }
-
-/* должен содержать функции:
-- renderCitySelector
-
-функция renderCitySelector: 
-принимает:
-- объект с референсами (поле ввода города, див для кнопок любимых городов, звездочка )
-- объект с данными для отображения: имя выбранного города, массив любимых городов, флаг isFavoriteCitySelected
-- шаблон кнопки любимого города
-и делает:
-- устанавливает название выбранного города в поле ввода
-- пересоздает список любимых городов 
-- делает звездочку желтой если был выбран любимый город (isFavoriteCitySelected===true)
-
-пример объекта референсов:
-const citySelectorRefs = {
- searchForm = document.querySelector('.search-form');
- searchInput = document.querySelector('.search-location__form');
- addFavoriteBtn = document.querySelector('.search-location__form-btn');
- favoritesListBtns = document.querySelector('.search-location__slider-list');
- btnPrev = document.querySelector('.search-location__slider-btnPrev');
- btnNext = document.querySelector('.search-location__slider-btnNext');
-};
- */

@@ -1,4 +1,5 @@
 <!DOCTYPE html>
+
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
@@ -63,16 +64,20 @@
     <div class="current-date-section"></div>
 
     <!-- Контейнер с цитатой Артем -->
-    <div class="quotation-wrapper"></div>
+    <section class="quote-section"></section>
 
-    <!-- Контейнер с погодой 5 дней (основной) Сергей -->
-    <div class="weather-output-wrapper-five-days"></div>
+    <div class="weather-container-five-days-total container is-closed">
+      <!-- Контейнер с погодой 5 дней (основной) Сергей -->
+      <div class="weather-output-wrapper-five-days"></div>
 
-    <!-- Контейнер с погодой 5 дней (Load more) Паша -->
-    <div class="wheather-main-more-info-container"></div>
+      <!-- Контейнер с погодой 5 дней (Load more) Паша -->
+      <div class="wheather-main-more-info-container is-closed"></div>
+    </div>
 
     <!-- Контейнер с графиком Богдан -->
-    <div class="chart-main-container"></div>
+    <!-- <div class="chart-main-container">
+          <canvas id="myChart"> </canvas>
+    </div> -->
 
     <!-- <include src="./partials/header.html"></include> -->
     <!-- <include src="./partials/city_search.html"></include> -->
@@ -80,12 +85,14 @@
 
     <!-- <include src="./partials/header.html"></include>
     <include src="./partials/section.html"></include> -->
+     <include src='./partials/chart-div.html'></include>
 
     <!-- <include src="./partials/current_date.html"></include>
     <include src="./partials/t-div.html"></include>
     <include src="./partials/qoute.html"></include>
-   
+
     <!-- Скрипт идёт последним в разметке. В нём уже подключен главный SASS-файл. -->
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
     <script src="./index.js"></script>
     <script
       src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"
@@ -98,14 +105,6 @@
       crossorigin="anonymous"
     ></script>
 
-    <script>
-      $(document).ready(function () {
-        $('.slider').slick({
-          infinite: true,
-          slidesToShow: 4,
-          slidesToScroll: 4,
-        });
-      });
-    </script>
+    <script></script>
   </body>
 </html>

@@ -1,7 +1,7 @@
 body {
   box-sizing: border-box;
-  background-image: linear-gradient(to top, rgba(0, 0, 0, 0.65) 0%, rgba(0, 0, 0, 0.05) 100%),
-    url('../../src/images/1st-page/1st-page-desktop.jpg');
+  // background-image: linear-gradient(to top, rgba(0, 0, 0, 0.65) 0%, rgba(0, 0, 0, 0.05) 100%),
+  //   url('../../src/images/1st-page/1st-page-desktop.jpg');
   background-size: cover;
   background-repeat: no-repeat;
   background-position: center;
@@ -30,14 +30,14 @@ body {
 
 @media screen and (min-width: 769px) {
   body {
-    background-image: linear-gradient(to top, rgba(0, 0, 0, 0.65) 0%, rgba(0, 0, 0, 0.05) 100%),
-      url('../../src/images/1st-page/1st-page-tablet.jpg');
+    // background-image: linear-gradient(to top, rgba(0, 0, 0, 0.65) 0%, rgba(0, 0, 0, 0.05) 100%),
+    //   url('../../src/images/1st-page/1st-page-tablet.jpg');
   }
 }
 @media screen and (min-width: 1280px) {
   body {
-    background-image: linear-gradient(to top, rgba(0, 0, 0, 0.65) 0%, rgba(0, 0, 0, 0.05) 100%),
-      url('../../src/images/1st-page/1st-page-desktop.jpg');
+    // background-image: linear-gradient(to top, rgba(0, 0, 0, 0.65) 0%, rgba(0, 0, 0, 0.05) 100%),
+    //   url('../../src/images/1st-page/1st-page-desktop.jpg');
   }
 }
 

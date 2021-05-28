@@ -1,5 +1,7 @@
 // Weather service
 import axios from 'axios';
+// export data
+export { fetchWeather, fetchImages, fetchWeatherFive, fetchLocalWeather, fetchLocationCityName };
 
 const BASE_URL_WEATHER = 'https://api.openweathermap.org/data/2.5/weather?';
 const BASE_URL_IMG = 'https://pixabay.com/api/?image_type=photo&orientation=horizontal&q=';
@@ -30,6 +32,7 @@ const convertOneDayWeather = rawWeather => {
       min: Math.floor(rawWeather.main.temp_min),
       max: Math.floor(rawWeather.main.temp_max),
     },
+    timezone: rawWeather.timezone,
     sunrise: getTime(rawWeather.sys.sunrise),
     sunset: getTime(rawWeather.sys.sunset),
     icon: iconURL + rawWeather.weather[0].icon + '.png',
@@ -70,7 +73,6 @@ function getLocation() {
 function saveCoordinates(position) {
   latitude = position.coords.latitude;
   longitude = position.coords.longitude;
-  console.log(latitude, longitude);
 }
 
 getLocation();
@@ -82,12 +84,30 @@ const fetchLocalWeather = () =>
       return convertOneDayWeather(res.data);
     });
 
-// export data
-export { fetchWeather, fetchImages, fetchWeatherFive, fetchLocalWeather };
+// GeoLocation Service 2.0
+
+const fetchLocationCityName = () => {
+  return new Promise((resolve, reject) => {
+    navigator.geolocation.getCurrentPosition(resolve, reject, { timeout: 3000 });
+  }).then(position => {
+    console.log(position);
+    const latitude = position.coords.latitude;
+    const longitude = position.coords.longitude;
+
+    return axios
+      .get(
+        `${BASE_URL_WEATHER}lat=${latitude}&lon=${longitude}&units=metric&appid=${apiKeyWeather}`,
+      )
+      .then(res => {
+        console.log(res);
+        return res.data.name + ', ' + res.data.sys.country;
+      });
+  });
+};
 
 // конвертер для 5 дней и more info (одна структура)
 const convertFiveDayWeather = rawWeather => {
-  // получаем массив из 5 дат путем удаления дубликатов и слайса
+  // получаем массив из 5 дат путем удаления дубликатов и shift
   const dates = rawWeather.list
     .map(element => getDate(element).getDate())
     .filter((v, i, a) => a.indexOf(v) === i);
@@ -133,10 +153,12 @@ function convertFiveDayListElements(forecasts) {
       icon: iconURL + rootForecast.weather[0].icon + '.png',
     },
     date: {
+      dt: rootForecast.dt,
       date: fullDate,
       day: fullDate.getDate(),
       dayName: new Intl.DateTimeFormat('en', { weekday: 'long' }).format(fullDate),
       month: new Intl.DateTimeFormat('en', { month: 'short' }).format(fullDate),
+      year: new Intl.DateTimeFormat('en', { year: 'numeric' }).format(fullDate),
     },
     // считаем минимальную и максимальную температуры по всем детальным прогнозам для этого дня
     temperature: {
