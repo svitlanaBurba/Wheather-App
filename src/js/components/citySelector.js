@@ -46,6 +46,14 @@ export default class CitySelector {
     });
   }
 
+  setDisplayedCity(city) {
+    if (city) {
+      this.refs.searchInputField.value = city;
+    } else {
+      this.refs.searchInputField.value = '';
+    }
+  }
+
   onAddFavoriteBtnClick(e) {
     e.preventDefault();
     // получаем имя города из формы
@@ -64,15 +72,21 @@ export default class CitySelector {
   }
 
   removeFavCity(city, sliderIndex) {
+    // удаляем из локал стораджа по имени
     this.favCityManager.delFavCity(city);
     this.favCities = this.favCityManager.getFavCities();
 
-    console.log('Delete slide number = ' + sliderIndex);
-
-    let self = this;
-
+    // удаляем слайд из слайдера по индексу
     $(document).ready(function () {
-      $('.slider').slick('slickRemove', sliderIndex); // здесь мы просим сликер удалить карточку с указаннім индексом
+      // здесь мы просим сликер удалить кнопки с указаннім индексом
+      $('.slider').slick('slickRemove', sliderIndex);
+
+      // принудительно обновляем индексы на кнопках после удаления - слик не делает это автоматически
+      var j = 0;
+      $('.slick-slide').each(function () {
+        $(this).attr('data-slick-index', j);
+        j++;
+      });
     });
 
     //this.render();

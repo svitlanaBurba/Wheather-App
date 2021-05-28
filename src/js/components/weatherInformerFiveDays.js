@@ -1,6 +1,7 @@
 import fiveDaysTemp from '../../templates/weatherInformerFiveDay.hbs';
 
 export default function renderWeatherInformerFiveDays(ref, weather) {
+  console.log(weather);
   ref.wrapper.innerHTML = fiveDaysTemp(weather);
 
   const btnsScrollRef = document.querySelector('.btn-scroll');

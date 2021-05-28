@@ -4,6 +4,8 @@ import Chart from 'chart.js/auto';
 import { selectedCityWeatherFiveDays } from '../../index.js';
 const moment = require('moment-timezone');
 
+let chart;
+
 const average = (req, data) => {
   const values = data.map(e => e[req]);
 
@@ -63,6 +65,8 @@ function getChartData(weather) {
 }
 
 export default function renderChart(weather) {
-  console.log(weather);
-  new Chart(ctx, getChartData(weather));
+  if (chart) {
+    chart.destroy();
+  }
+  chart = new Chart(ctx, getChartData(weather));
 }
