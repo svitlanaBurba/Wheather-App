@@ -78,13 +78,14 @@ function getChartData(weather) {
 
 let weatherChart;
 
-export default function renderChart(weather) {
-  if (!weatherChart) {
-    weatherChart = new Chart(ctx, getChartData(weather));
-    return weatherChart;
-  } else {
-    weatherChart.destroy();
-    weatherChart = new Chart(ctx, getChartData(weather));
-    return weatherChart;
+  export default function renderChart(weather) {
+    if (!weatherChart) {
+      weatherChart = new Chart(ctx, getChartData(weather));
+      return weatherChart;
+    } else {
+      weatherChart.destroy();
+      weatherChart = new Chart(ctx, getChartData(weather));
+      return weatherChart;
+    }
   }
-}
+
