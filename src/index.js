@@ -9,6 +9,7 @@ import renderWeatherInformerOneDay from './js/components/weatherInformerOneDay';
 import renderWeatherInformerFiveDays from './js/components/weatherInformerFiveDays';
 import renderWeatherInformerMoreInfo from './js/components/weatherInformerMoreInfo';
 import renderTimeInformer from './js/components/timeInformer';
+import renderChart from './js/components/weatherInformerChart';
 import renderQuoteInformer from './js/components/quoteInformer';
 
 // референсы - вынести в файл
@@ -129,7 +130,7 @@ function onCitySelected(city) {
   // погода на 5 дней и тп
   weatherFiveDaysLoad(onWeatherFiveDaysLoad);
 }
-
+export { selectedCityWeatherFiveDays };
 
 const containerFiveDaysRender = document.querySelector('.weather-output-wrapper-five-days');
 const btnFifeDaysRef = document.querySelector('.five-days-btn');
@@ -139,3 +140,4 @@ function openFiveDays(event) {
     containerFiveDaysRender.classList.toggle('is-closed');
   
  }
+
