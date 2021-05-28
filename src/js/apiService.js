@@ -1,64 +1,13 @@
 // Weather service
 import axios from 'axios';
-// export data
-export { fetchWeather, fetchImages, fetchWeatherFive, fetchLocalWeather, fetchLocationCityName };
 
-const BASE_URL_WEATHER = 'https://api.openweathermap.org/data/2.5/weather?';
+const BASE_URL_WEATHER = 'https://api.openweathermap.org/data/2.5/';
 const BASE_URL_IMG = 'https://pixabay.com/api/?image_type=photo&orientation=horizontal&q=';
 const apiKeyWeather = 'd01e7beda7c1dcab67ea99635e4fb4bc';
 const apiKeyImg = '21715456-94146d2128778e129cf5897fe';
 const iconURL = 'http://openweathermap.org/img/wn/';
 
-const fetchWeather = city =>
-  axios.get(`${BASE_URL_WEATHER}q=${city}&units=metric&appid=${apiKeyWeather}`).then(res => {
-    return convertOneDayWeather(res.data);
-  });
-
-// конвертируем полученный 'сырой' объект погоды в объект с температурой в цельсиях
-// имена атрибутов будут те, которые будем использовать в шаблонах
-const convertOneDayWeather = rawWeather => {
-  return {
-    city: {
-      name: rawWeather.name,
-      country: rawWeather.sys.country,
-    },
-    // temperature: {
-    //   value: convertToCel(rawWeather.main.temp),
-    //   min: convertToCel(rawWeather.main.temp_min),
-    //   max: convertToCel(rawWeather.main.temp_max),
-    // },
-    temperature: {
-      value: Math.floor(rawWeather.main.temp),
-      min: Math.floor(rawWeather.main.temp_min),
-      max: Math.floor(rawWeather.main.temp_max),
-    },
-    timezone: rawWeather.timezone,
-    sunrise: getTime(rawWeather.sys.sunrise),
-    sunset: getTime(rawWeather.sys.sunset),
-    icon: iconURL + rawWeather.weather[0].icon + '.png',
-  };
-};
-
-// переводим температуру из кельвинов в цельсии
-// const convertToCel = data => Math.floor(data - 273.15);
-
-// Weather service (5 days)
-
-const BASE_URL_WEATHER_FIVE = 'https://api.openweathermap.org/data/2.5/forecast?q=';
-
-const fetchWeatherFive = city =>
-  axios.get(`${BASE_URL_WEATHER_FIVE}${city}&units=metric&appid=${apiKeyWeather}`).then(res => {
-    return convertFiveDayWeather(res.data);
-  });
-
-// Bg Image Service
-const fetchImages = city =>
-  fetch(`${BASE_URL_IMG}${city}&page=1&per_page=12&key=${apiKeyImg}`).then(res => {
-    return res.json();
-  });
-
 // Geolocation service
-
 let latitude = '';
 let longitude = '';
 
@@ -78,37 +27,30 @@ function saveCoordinates(position) {
 
 getLocation();
 
-const fetchLocalWeather = () =>
-  axios
-    .get(`${BASE_URL_WEATHER}lat=${latitude}&lon=${longitude}&units=metric&appid=${apiKeyWeather}`)
-    .then(res => {
-      return convertOneDayWeather(res.data);
-    });
-
-// GeoLocation Service 2.0
-
-const fetchLocationCityName = () => {
-  return new Promise((resolve, reject) => {
-    navigator.geolocation.getCurrentPosition(resolve, reject, { timeout: 3000 });
-  }).then(position => {
-    console.log(position);
-    const latitude = position.coords.latitude;
-    const longitude = position.coords.longitude;
-
-    return axios
-      .get(
-        `${BASE_URL_WEATHER}lat=${latitude}&lon=${longitude}&units=metric&appid=${apiKeyWeather}`,
-      )
-      .then(res => {
-        console.log(res);
-        return res.data.name + ', ' + res.data.sys.country;
-      });
-  });
+// функции обработки полученных данных для отправки объекта необходимых данных
+// конвертируем полученный 'сырой' объект погоды в объект с температурой в цельсиях
+// имена атрибутов будут те, которые будем использовать в шаблонах
+// для одного дня
+const convertOneDayWeather = rawWeather => {
+  return {
+    city: {
+      name: rawWeather.name,
+      country: rawWeather.sys.country,
+    },
+    temperature: {
+      value: Math.floor(rawWeather.main.temp),
+      min: Math.floor(rawWeather.main.temp_min),
+      max: Math.floor(rawWeather.main.temp_max),
+    },
+    sunrise: getTime(rawWeather.sys.sunrise),
+    sunset: getTime(rawWeather.sys.sunset),
+    icon: iconURL + rawWeather.weather[0].icon + '.png',
+  };
 };
 
-// конвертер для 5 дней и more info (одна структура)
+// для пяти дней (прогноз)
 const convertFiveDayWeather = rawWeather => {
-  // получаем массив из 5 дат путем удаления дубликатов и shift
+  // получаем массив из 5 дат путем удаления дубликатов и слайса
   const dates = rawWeather.list
     .map(element => getDate(element).getDate())
     .filter((v, i, a) => a.indexOf(v) === i);
@@ -129,8 +71,6 @@ const convertFiveDayWeather = rawWeather => {
   //              [{ прогноз на 28 на 00}, { прогноз на 28 на 03}]
   //          ]
   const list = dates.map(date => rawWeather.list.filter(elem => getDate(elem).getDate() === date));
-  console.log('5days:');
-  console.log(rawWeather);
 
   return {
     city: {
@@ -141,7 +81,7 @@ const convertFiveDayWeather = rawWeather => {
     daysData: list.map(convertFiveDayListElements),
   };
 };
-
+// для пяти дней (отдельниые элементы)
 // эта функция принимает массив детальных прогнозов для 1 дня (т.е. примерно 7 элементов)
 // возвращает структуру, которая будет содержать прогноз для дня в целом + вложенный исходный массив детальных прогнозов
 // массив детальных прогнозов будет использоваться в more info
@@ -156,12 +96,10 @@ function convertFiveDayListElements(forecasts) {
       icon: iconURL + rootForecast.weather[0].icon + '.png',
     },
     date: {
-      dt: rootForecast.dt,
       date: fullDate,
       day: fullDate.getDate(),
       dayName: new Intl.DateTimeFormat('en', { weekday: 'long' }).format(fullDate),
       month: new Intl.DateTimeFormat('en', { month: 'short' }).format(fullDate),
-      year: new Intl.DateTimeFormat('en', { year: 'numeric' }).format(fullDate),
     },
     // считаем минимальную и максимальную температуры по всем детальным прогнозам для этого дня
     temperature: {
@@ -187,10 +125,14 @@ function convertFiveDayListElements(forecasts) {
   //weather[0].icon;
 }
 
+// вспомогательные функции
+// приводит юникс-время к конкретному дню месяца
 const getDate = rawDate => new Date(rawDate.dt * 1000);
 
+// функция округления
 const roundTo1digit = x => Math.round(x * 10) / 10;
 
+// функция получения времени в формате "12:00"
 const getTime = data => {
   const dt = new Date(data * 1000);
   return (
@@ -201,3 +143,51 @@ const getTime = data => {
     dt.getMinutes()
   );
 };
+
+// непосредственно запрос погоды с последующей его обработкой для получения необходимых данных
+// на один день
+const fetchWeather = city =>
+  axios
+    .get(`${BASE_URL_WEATHER}weather?q=${city}&units=metric&appid=${apiKeyWeather}`)
+    .then(res => {
+      return convertOneDayWeather(res.data);
+    });
+
+// на пять дней (прогноз)
+const fetchWeatherFive = city =>
+  axios
+    .get(`${BASE_URL_WEATHER}forecast?q=${city}&units=metric&appid=${apiKeyWeather}`)
+    .then(res => {
+      return convertFiveDayWeather(res.data);
+    });
+
+// запрос погоды по координатам (на 1 день)
+const fetchLocalWeather = () =>
+  axios
+    .get(
+      `${BASE_URL_WEATHER}weather?lat=${latitude}&lon=${longitude}&units=metric&appid=${apiKeyWeather}`,
+    )
+    .then(res => {
+      return convertOneDayWeather(res.data);
+    });
+
+// запрос погоды по координатам (на 5 дней)
+const fetchLocalWeatherFive = () =>
+  axios
+    .get(
+      `${BASE_URL_WEATHER}forecast?lat=${latitude}&lon=${longitude}&units=metric&appid=${apiKeyWeather}`,
+    )
+    .then(res => {
+      return convertFiveDayWeather(res.data);
+    });
+
+// получение рандомной картинки по названию города
+const fetchImages = city =>
+  fetch(`${BASE_URL_IMG}${city}&page=1&per_page=10&key=${apiKeyImg}`).then(res => {
+    return res.json();
+  });
+
+// export data
+export { fetchWeather, fetchImages, fetchWeatherFive, fetchLocalWeather, fetchLocalWeatherFive };
+
+// конвертер для 5 дней и more info (одна структура)

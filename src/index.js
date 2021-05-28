@@ -11,6 +11,7 @@ import renderWeatherInformerMoreInfo from './js/components/weatherInformerMoreIn
 import renderTimeInformer from './js/components/timeInformer';
 import renderChart from './js/components/weatherInformerChart';
 import renderQuoteInformer from './js/components/quoteInformer';
+import renderBgImg from './js/components/bgImageInformer';
 
 // референсы - вынести в файл
 let citySelectorRefs = {
@@ -98,8 +99,10 @@ function weatherFiveDaysLoad(onWeatherFiveDaysLoad) {
 // соответственно в ней мы будем рендерить (обновлять) наши компоненты
 function onWeatherOneDayLoad() {
   //
-  selectedCity =
-    selectedCityWeatherOneDay.city.name + ', ' + selectedCityWeatherOneDay.city.country;
+  // selectedCity =
+  //   selectedCityWeatherOneDay.city.name + ', ' + selectedCityWeatherOneDay.city.country;
+  // устанавливаем фоновое изображение
+  renderBgImg(selectedCity);
   // рендерим погоду на 1 день
   renderWeatherInformerOneDay(weatherInformerOneDayRefs, selectedCityWeatherOneDay);
   // рендерим время (с новым восходом и закатом)
@@ -109,6 +112,8 @@ function onWeatherOneDayLoad() {
 // эта функция будет вызываться когда мы будем получать данные о погоде за 5
 // соответственно в ней мы будем рендерить (обновлять) наши компоненты
 function onWeatherFiveDaysLoad() {
+  // устанавливаем фоновое изображение
+  renderBgImg(selectedCity);
   // рендерим погоду на 5 дней
   renderWeatherInformerFiveDays(
     weatherInformerFiveDaysRefs,
