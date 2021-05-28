@@ -29,11 +29,8 @@
   }
 
   @media screen and (min-width: 1280px) {
-    &:first-child {
-      margin-left: 79px;
-    }
     justify-content: space-evenly;
-    overflow: hidden;
+    overflow: visible;
   }
 }
 
@@ -93,7 +90,7 @@
 .container-more-info-wheather-parameters-pressure {
   display: flex;
 
-  margin-left: 10px;
+  margin-left: 3px;
   margin-bottom: 5px;
   align-items: center;
   text-align: center;
@@ -106,7 +103,7 @@
 }
 .container-more-info-wheather-parameters-humidity {
   display: flex;
-  margin-left: 10px;
+  margin-left: 3px;
   margin-bottom: 5px;
   align-items: center;
   text-align: center;
@@ -120,7 +117,7 @@
 
 .container-more-info-wheather-parameters-wind {
   display: flex;
-  margin-left: 10px;
+  margin-left: 3px;
   margin-bottom: 5px;
   align-items: center;
   text-align: center;
@@ -140,7 +137,8 @@
   line-height: 0.82;
   color: #ffffff;
   opacity: 0.54;
-  padding-left: 10px;
+  padding-left: 3px;
+  padding-top: 3px;
 }
 
 .buttons-more-info-scroll {
