@@ -110,13 +110,21 @@ function onWeatherOneDayLoad() {
 // соответственно в ней мы будем рендерить (обновлять) наши компоненты
 function onWeatherFiveDaysLoad() {
   // рендерим погоду на 5 дней
-  renderWeatherInformerFiveDays(weatherInformerFiveDaysRefs, selectedCityWeatherFiveDays);
+  renderWeatherInformerFiveDays(
+    weatherInformerFiveDaysRefs,
+    selectedCityWeatherFiveDays,
+    onMoreInfoClicked, // передаем функцию, которая будет выполняться при нажатии moreInfo кнопки, в нее будет передаваться номер выбранного дня
+  );
   // рендерим more info для первого дня из 1 (ПЕРЕДЕЛАТЬ - будет показываться для того дня, который выбрал пользователь )
+
+  renderChart(selectedCityWeatherFiveDays);
+}
+
+function onMoreInfoClicked(dayIndex) {
   renderWeatherInformerMoreInfo(
     weatherInformerMoreInfoRefs,
-    selectedCityWeatherFiveDays.daysData[0],
+    selectedCityWeatherFiveDays.daysData[dayIndex],
   );
-  renderChart(selectedCityWeatherFiveDays);
 }
 
 // эту функцию будут вызывать любые события выбора города
@@ -137,4 +145,3 @@ function onCitySelected(city) {
   weatherFiveDaysLoad(onWeatherFiveDaysLoad);
 }
 export { selectedCityWeatherFiveDays };
-
