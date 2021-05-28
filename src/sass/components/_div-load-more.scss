@@ -102,8 +102,6 @@
     width: 20px;
     height: 20px;
     content: url('../../src/images/Barometer.png');
-
-
   }
 }
 .container-more-info-wheather-parameters-humidity {
@@ -117,7 +115,6 @@
     width: 20px;
     height: 20px;
     content: url('../../src/images/Humidity.png');
-
   }
 }
 
@@ -132,7 +129,6 @@
     width: 20px;
     height: 20px;
     content: url('../../src/images/Wind.png');
-
   }
 }
 
@@ -145,4 +141,36 @@
   color: #ffffff;
   opacity: 0.54;
   padding-left: 10px;
+}
+
+.buttons-more-info-scroll {
+  @media screen and (min-width: 320px) {
+    display: none;
+  }
+  @media screen and (min-width: 768px) {
+    display: flex;
+    justify-content: space-between;
+  }
+  @media screen and (min-width: 1280px) {
+    display: none;
+  }
+}
+
+.left-button-more-info,
+.right-button-more-info {
+  width: 28px;
+  height: 28px;
+  background-color: rgba(255, 255, 255, 0.2);
+  border-radius: 50%;
+  border: none;
+  padding: 0;
+  transition: opacity 200ms linear;
+  outline: none;
+  img {
+    margin: 0 auto;
+  }
+}
+
+.button-more-info-arrow-hiden {
+  opacity: 0;
 }
