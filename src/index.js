@@ -1,5 +1,7 @@
 import { fetchWeather, fetchWeatherFive } from './js/apiService';
 import './sass/main.scss';
+//import jquery from 'jquery';
+//import slick from 'slick-carousel';
 
 import CitySelector from './js/components/citySelector';
 import FavCityManager from './js/favCityManager';
@@ -8,11 +10,14 @@ import renderWeatherInformerFiveDays from './js/components/weatherInformerFiveDa
 import renderWeatherInformerMoreInfo from './js/components/weatherInformerMoreInfo';
 import renderTimeInformer from './js/components/timeInformer';
 import renderChart from './js/components/weatherInformerChart';
+import renderQuoteInformer from './js/components/quoteInformer';
+
 // референсы - вынести в файл
 let citySelectorRefs = {
   searchInputForm: document.querySelector('.input-form'),
   searchInputField: document.querySelector('.input-field'),
   addFavoriteBtn: document.querySelector('.input-form-addfavorite'),
+  geoBtn: document.querySelector('.input-icon-location'),
   favCitiesList: document.querySelector('.favorite-list'),
 };
 
@@ -41,11 +46,17 @@ startApp();
 
 function startApp() {
   // init components
+
   let favCityManager = new FavCityManager();
   //favCityManager.addFavCity('Berlin');
   //favCityManager.addFavCity('Moscow');
 
-  let citySelector = new CitySelector(citySelectorRefs, onCitySelected, favCityManager);
+  let citySelector = new CitySelector(
+    citySelectorRefs, //
+    onCitySelected,
+    favCityManager,
+    x => ({}), // функция которую вызывать после отрисовки компонента.
+  );
 
   // переделать в функцию выбора даты по умолчанию
   let defaultCity = favCityManager.getFavCities()[0];
@@ -54,6 +65,7 @@ function startApp() {
   }
 
   onCitySelected(defaultCity);
+  renderQuoteInformer();
 }
 
 // загружает погоду на 1 день по selectedCity, сохраняет ее в selectedCityWeatherOneDay
@@ -72,8 +84,6 @@ function weatherOneDayLoad(onWeatherOneDayLoad) {
 // и вызывает функцию onWeatherFiveDaysLoad которую передают как аргумент
 // (эта функция будет обновлять нужные компоненты)
 function weatherFiveDaysLoad(onWeatherFiveDaysLoad) {
-  console.log('Before');
-  console.log(selectedCityWeatherFiveDays);
   // вызываем наш апи, передаем ему город
   fetchWeatherFive(selectedCity).then(w => {
     selectedCityWeatherFiveDays = w;
@@ -120,5 +130,14 @@ function onCitySelected(city) {
   // погода на 5 дней и тп
   weatherFiveDaysLoad(onWeatherFiveDaysLoad);
 }
-
 export { selectedCityWeatherFiveDays };
+
+const containerFiveDaysRender = document.querySelector('.weather-output-wrapper-five-days');
+const btnFifeDaysRef = document.querySelector('.five-days-btn');
+btnFifeDaysRef.addEventListener('click', openFiveDays);
+function openFiveDays(event) {
+     console.log('ok')
+    containerFiveDaysRender.classList.toggle('is-closed');
+  
+ }
+
