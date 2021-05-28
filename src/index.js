@@ -100,11 +100,9 @@ function onWeatherOneDayLoad() {
   renderTimeInformer(timeInformerRefs, selectedCityWeatherOneDay);
 }
 
-// эта функция будет вызываться когда мы будем получать данные о погоде за 1 день
+// эта функция будет вызываться когда мы будем получать данные о погоде за 5
 // соответственно в ней мы будем рендерить (обновлять) наши компоненты
 function onWeatherFiveDaysLoad() {
-  console.log('After');
-  console.log(selectedCityWeatherFiveDays);
   // рендерим погоду на 5 дней
   renderWeatherInformerFiveDays(weatherInformerFiveDaysRefs, selectedCityWeatherFiveDays);
   // рендерим more info для первого дня из 1 (ПЕРЕДЕЛАТЬ - будет показываться для того дня, который выбрал пользователь )
@@ -112,6 +110,7 @@ function onWeatherFiveDaysLoad() {
     weatherInformerMoreInfoRefs,
     selectedCityWeatherFiveDays.daysData[0],
   );
+  renderChart(selectedCityWeatherFiveDays);
 }
 
 // эту функцию будут вызывать любые события выбора города
@@ -136,8 +135,6 @@ const containerFiveDaysRender = document.querySelector('.weather-output-wrapper-
 const btnFifeDaysRef = document.querySelector('.five-days-btn');
 btnFifeDaysRef.addEventListener('click', openFiveDays);
 function openFiveDays(event) {
-     console.log('ok')
-    containerFiveDaysRender.classList.toggle('is-closed');
-  
- }
-
+  console.log('ok');
+  containerFiveDaysRender.classList.toggle('is-closed');
+}
