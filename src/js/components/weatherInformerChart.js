@@ -3,7 +3,7 @@ import Chart from 'chart.js/auto';
 import { selectedCityWeatherFiveDays } from '../../index.js';
 const moment = require('moment-timezone');
 
-let chart;
+// let chart;
 
 const average = values => {
   const sum = values.reduce((previous, current) => (current += previous));
@@ -63,13 +63,13 @@ function getChartData(weather) {
         },
       ],
     },
-    // options: {
-    //   title: {
-    //     display: true,
-    //     text: 'Value of indicators',
-    //     position: 'left',
-    //   },
-    // },
+    options: {
+      title: {
+        display: true,
+        text: 'Value of indicators',
+        position: 'left',
+      },
+    },
   };
 
   // console.log(chartMain);

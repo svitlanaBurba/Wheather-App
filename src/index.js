@@ -2,7 +2,6 @@ import { fetchWeather, fetchWeatherFive } from './js/apiService';
 import './sass/main.scss';
 //import jquery from 'jquery';
 //import slick from 'slick-carousel';
-
 import CitySelector from './js/components/citySelector';
 import FavCityManager from './js/favCityManager';
 import renderWeatherInformerOneDay from './js/components/weatherInformerOneDay';
@@ -112,8 +111,6 @@ function onWeatherOneDayLoad() {
 // эта функция будет вызываться когда мы будем получать данные о погоде за 5
 // соответственно в ней мы будем рендерить (обновлять) наши компоненты
 function onWeatherFiveDaysLoad() {
-  // устанавливаем фоновое изображение
-  renderBgImg(selectedCity);
   // рендерим погоду на 5 дней
   renderWeatherInformerFiveDays(
     weatherInformerFiveDaysRefs,
