@@ -112,8 +112,6 @@ function onWeatherOneDayLoad() {
 // эта функция будет вызываться когда мы будем получать данные о погоде за 5
 // соответственно в ней мы будем рендерить (обновлять) наши компоненты
 function onWeatherFiveDaysLoad() {
-  // устанавливаем фоновое изображение
-  renderBgImg(selectedCity);
   // рендерим погоду на 5 дней
   renderWeatherInformerFiveDays(
     weatherInformerFiveDaysRefs,
