@@ -1,48 +1,52 @@
-@media screen and (min-width: 318px) {
-  .quote-section {
-    margin: 0 auto;
-    width: 280px;
-    height: 200px;
-    margin-top: 30px;
-    // padding-top: 25px;
-    margin-bottom: 30px;
-  }
-  .quote-container {
-    float: right;
-    color: white;
-    position: relative;
-    right: 20px;
-  }
-  .quote-text {
-    font-size: 14px;
-    line-height: 17px;
-    letter-spacing: 0.04em;
-    font-style: italic;
-    text-align: end;
-    margin-bottom: 15px;
-  }
-  .quote-text::after {
-    content: url('/images/quote_icon_small.svg');
-    position: absolute;
-    top: -10px;
-    right: 6px;
-  }
-  .quote-author {
-    font-family: 'Lato';
-    font-size: 18px;
-    font-style: normal;
-    line-height: 22px;
-    float: right;
-  }
+.quote-section {
+  margin: 0 auto;
+  width: 280px;
+  padding-bottom: 100px;
+  margin-bottom: 30px;
+  font-family: 'Lato';
+  font-size: 14px;
+  font-style: italic;
+  text-align: right;
+}
+.quote-container {
+  width: 260px;
+  display: flex;
+  flex-direction: column;
+  color: white;
+}
+.quote-citation {
+  font-size: 14px;
+  line-height: 17px;
+  letter-spacing: 0.04em;
+  font-style: italic;
+  text-align: end;
+  margin-bottom: 15px;
+}
+.quote-citation::after {
+  content: url('/images/quote_icon_small.svg');
+  position: relative;
+  top: -25px;
+}
+.quote-author {
+  font-family: 'Lato';
+  font-size: 18px;
+  font-style: normal;
+  line-height: 22px;
+  float: right;
 }
 @media screen and (min-width: 768px) {
   .quote-section {
-    width: 500px;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+    align-items: flex-end;
+    width: 400px;
+    padding-bottom: 130px;
   }
   .quote-container {
-    width: 350px;
+    width: 380px;
   }
-  .quote-text {
+  .quote-citation {
     font-size: 22px;
     line-height: 26px;
     letter-spacing: 0.04em;
@@ -52,26 +56,20 @@
     line-height: 22px;
     letter-spacing: 0.04em;
   }
-  .quote-text::after {
+  .quote-citation {
+    margin-bottom: 20px;
+  }
+  .quote-citation::after {
     content: url('/images/quote_icon_big.svg');
-    position: absolute;
-    top: -20px;
-    right: 0px;
+    position: relative;
+    top: -75px;
   }
 }
 @media screen and (min-width: 1278px) {
   .quote-section {
     display: flex;
-    position: relative;
-    top: 70px;
-    left: 150px;
-    margin-bottom: 168px;
-  }
-  .quote-container {
-  }
-  .quote-text {
-    margin-bottom: 30px;
-  }
-  .quote-author {
+    justify-content: flex-end;
+    padding-top: 20px;
+    margin-top: 75px;
   }
 }

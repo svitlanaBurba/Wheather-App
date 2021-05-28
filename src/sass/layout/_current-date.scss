@@ -1,87 +1,85 @@
-@media screen and (min-width: 300px) {
-  .current-date-section {
-    margin: 0 auto;
-    width: 280px;
-    margin-top: 50px;
-    padding-top: 42px;
-    padding-bottom: 40px;
-    align-items: center;
-    background-color: rgba(16, 33, 54, 0.8);
-    border-radius: 34px;
-    color: white;
-  }
-  .current-date-div {
-    align-items: center;
-    display: flex;
-    flex-direction: column;
-    font-weight: 300;
-  }
-  .current-day-div {
-    font-weight: 300;
-    display: flex;
-    flex-direction: row;
-    font-size: 45px;
-    justify-content: center;
-    margin-bottom: 25px;
-  }
-  .current-time-div {
-    display: flex;
-    align-items: center;
-    flex-direction: column;
-    font-weight: 300;
-  }
-
-  .current-day-sup {
-    font-size: 32px;
-    padding-left: 3px;
-    padding-right: 5px;
-  }
-
-  .current-month-div,
-  .current-day-suntime {
-    display: flex;
-    flex-direction: row;
-    font-size: 14px;
-    padding-bottom: 15px;
-  }
-  .current-day-suntime {
-    padding-bottom: 0px;
-    padding-top: 0px;
-    height: 24px;
-  }
-  .current-month-div {
-    margin-right: 8px;
-  }
-  .current-month,
-  .current-sun-rise {
-    display: flex;
-    padding-right: 13px;
-    align-items: center;
-    width: 100px;
-    display: flex;
-    justify-content: flex-end;
-  }
-  .current-time,
-  .current-sun-set {
-    display: flex;
-    padding-left: 13px;
-    align-items: center;
-    border-left: 1px ridge #ffffff;
-  }
-  .current-sun-rise::before {
-    content: url('/images/008-sunrise.svg');
-    padding-right: 10px;
-    top: 3px;
-    position: relative;
-  }
-  .current-sun-set::before {
-    content: url('/images/008-sunrise.svg');
-    padding-right: 10px;
-    top: 3px;
-    position: relative;
-  }
+.current-date-section {
+  margin: 0 auto;
+  width: 280px;
+  margin-top: 50px;
+  margin-bottom: 40px;
+  padding-top: 42px;
+  padding-bottom: 30px;
+  align-items: center;
+  background-color: rgba(16, 33, 54, 0.8);
+  border-radius: 34px;
+  color: white;
+}
+.current-date-div {
+  align-items: center;
+  display: flex;
+  flex-direction: column;
+  font-weight: 300;
+}
+.current-day-div {
+  font-weight: 300;
+  display: flex;
+  flex-direction: row;
+  font-size: 45px;
+  justify-content: center;
+  margin-bottom: 25px;
+}
+.current-time-div {
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  font-weight: 300;
 }
 
+.current-day-sup {
+  font-size: 32px;
+  padding-left: 3px;
+  padding-right: 5px;
+}
+
+.current-month-div,
+.current-day-suntime {
+  display: flex;
+  flex-direction: row;
+  font-size: 14px;
+  padding-bottom: 15px;
+}
+.current-day-suntime {
+  padding-bottom: 0px;
+  padding-top: 0px;
+  height: 24px;
+}
+.current-month-div {
+  margin-right: 8px;
+}
+.current-month,
+.current-sun-rise {
+  display: flex;
+  padding-right: 13px;
+  align-items: center;
+  width: 100px;
+  display: flex;
+  justify-content: flex-end;
+}
+.current-time,
+.current-sun-set {
+  display: flex;
+  padding-left: 13px;
+  align-items: center;
+  border-left: 1px ridge #ffffff;
+}
+.current-sun-rise::before {
+  content: url('/images/008-sunrise.svg');
+  padding-right: 10px;
+  top: 3px;
+  position: relative;
+}
+.current-sun-set::before {
+  content: url('/images/008-sunrise.svg');
+  padding-right: 10px;
+  top: 3px;
+  position: relative;
+}
 @media screen and (min-width: 766px) {
   .current-date-section {
     width: 500px;
@@ -135,7 +133,6 @@
 @media screen and (min-width: 1278px) {
   .current-date-section {
     width: 630px;
-    height: 278px;
     float: left;
     border-radius: 0px 34px 0px 0px;
     margin-bottom: 0px;
