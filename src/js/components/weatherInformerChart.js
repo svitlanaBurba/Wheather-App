@@ -1,5 +1,12 @@
 const ctx = document.querySelector('#myChart').getContext('2d');
 import Chart from 'chart.js/auto';
+import { selectedCityWeatherFiveDays } from '../../index.js';
+const moment = require('moment-timezone');
+
+let chart;
+
+const average = (req, data) => {
+  const values = data.map(e => e[req]);
 
 const average = values => {
   const sum = values.reduce((previous, current) => (current += previous));
@@ -83,4 +90,4 @@ export default function renderChart(weather) {
     weatherChart = new Chart(ctx, getChartData(weather));
     return weatherChart;
   }
-}
+

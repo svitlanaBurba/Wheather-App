@@ -42,6 +42,8 @@ let selectedCity;
 let selectedCityWeatherOneDay;
 let selectedCityWeatherFiveDays;
 
+let citySelector;
+
 startApp();
 
 function startApp() {
@@ -51,7 +53,7 @@ function startApp() {
   //favCityManager.addFavCity('Berlin');
   //favCityManager.addFavCity('Moscow');
 
-  let citySelector = new CitySelector(
+  citySelector = new CitySelector(
     citySelectorRefs, //
     onCitySelected,
     favCityManager,
@@ -66,6 +68,7 @@ function startApp() {
 
   onCitySelected(defaultCity);
   renderQuoteInformer();
+  citySelector.setDisplayedCity();
 }
 
 // загружает погоду на 1 день по selectedCity, сохраняет ее в selectedCityWeatherOneDay
@@ -94,6 +97,9 @@ function weatherFiveDaysLoad(onWeatherFiveDaysLoad) {
 // эта функция будет вызываться когда мы будем получать данные о погоде за 1 день
 // соответственно в ней мы будем рендерить (обновлять) наши компоненты
 function onWeatherOneDayLoad() {
+  //
+  selectedCity =
+    selectedCityWeatherOneDay.city.name + ', ' + selectedCityWeatherOneDay.city.country;
   // рендерим погоду на 1 день
   renderWeatherInformerOneDay(weatherInformerOneDayRefs, selectedCityWeatherOneDay);
   // рендерим время (с новым восходом и закатом)
@@ -104,13 +110,21 @@ function onWeatherOneDayLoad() {
 // соответственно в ней мы будем рендерить (обновлять) наши компоненты
 function onWeatherFiveDaysLoad() {
   // рендерим погоду на 5 дней
-  renderWeatherInformerFiveDays(weatherInformerFiveDaysRefs, selectedCityWeatherFiveDays);
+  renderWeatherInformerFiveDays(
+    weatherInformerFiveDaysRefs,
+    selectedCityWeatherFiveDays,
+    onMoreInfoClicked, // передаем функцию, которая будет выполняться при нажатии moreInfo кнопки, в нее будет передаваться номер выбранного дня
+  );
   // рендерим more info для первого дня из 1 (ПЕРЕДЕЛАТЬ - будет показываться для того дня, который выбрал пользователь )
+
+  renderChart(selectedCityWeatherFiveDays);
+}
+
+function onMoreInfoClicked(dayIndex) {
   renderWeatherInformerMoreInfo(
     weatherInformerMoreInfoRefs,
-    selectedCityWeatherFiveDays.daysData[0],
+    selectedCityWeatherFiveDays.daysData[dayIndex],
   );
-  renderChart(selectedCityWeatherFiveDays);
 }
 
 // эту функцию будут вызывать любые события выбора города
@@ -118,6 +132,7 @@ function onWeatherFiveDaysLoad() {
 function onCitySelected(city) {
   // пользователь выбрал город. сохраняем в глобальную переменную
   selectedCity = city;
+  citySelector.setDisplayedCity(city);
 
   // теперь нам нужно :
   // 1. Получить данные погоды (и восходов-закатов) по этому городу
@@ -130,11 +145,3 @@ function onCitySelected(city) {
   weatherFiveDaysLoad(onWeatherFiveDaysLoad);
 }
 export { selectedCityWeatherFiveDays };
-
-const containerFiveDaysRender = document.querySelector('.weather-output-wrapper-five-days');
-const btnFifeDaysRef = document.querySelector('.five-days-btn');
-btnFifeDaysRef.addEventListener('click', openFiveDays);
-function openFiveDays(event) {
-  console.log('ok');
-  containerFiveDaysRender.classList.toggle('is-closed');
-}
