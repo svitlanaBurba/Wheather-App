@@ -1,27 +1,24 @@
 import fiveDaysTemp from '../../templates/weatherInformerFiveDay.hbs';
 
-
 export default function renderWeatherInformerFiveDays(ref, weather, onMoreInfoClick) {
   console.log(onMoreInfoClick);
   console.log(weather);
 
   ref.wrapper.innerHTML = fiveDaysTemp(weather);
-  console.log('--------------------');
-  console.log(weather);
   const btnsScrollRef = document.querySelector('.btn-scroll');
-  const ul = document.querySelector('.daily-temperature');
+  const ulContainer = document.querySelector('.daily-temperature');
   btnsScrollRef.addEventListener('click', scroolBtn);
   function scroolBtn(event) {
     if (event.target.tagName !== 'BUTTON') return;
     if (event.target.dataset.action === 'next') {
-      ul.scroll({
-        left: 60,
+      ulContainer.scroll({
+        left: 160,
         behavior: 'smooth',
       });
     }
     if (event.target.dataset.action === 'prev') {
-      ul.scroll({
-        left: -100,
+      ulContainer.scroll({
+        left: -160,
         behavior: 'smooth',
       });
     }
@@ -33,8 +30,8 @@ export default function renderWeatherInformerFiveDays(ref, weather, onMoreInfoCl
   btnMoreInfoRef.addEventListener('click', openMoreInfo);
   function openMoreInfo(event) {
     if (event.target.tagName !== 'BUTTON') return;
-    containerMoreInfoRef.classList.toggle('is-closed');
-    
+    containerMoreInfoRef.classList.remove('is-closed');
+
     onMoreInfoClick(event.target.dataset.index);
   }
 }
@@ -52,6 +49,10 @@ function openFiveDays(event) {
   dataSectionRef.classList.add('is-closed');
   wheatherMainRef.classList.add('is-closed');
   quoteSectionRef.classList.add('is-closed');
+  if (btnOneDayRef.disabled) {
+    btnFifeDaysRef.disabled = true;
+    btnOneDayRef.disabled = false;
+  }
 }
 
 btnOneDayRef.addEventListener('click', openOneDay);
@@ -60,4 +61,10 @@ function openOneDay(event) {
   dataSectionRef.classList.remove('is-closed');
   wheatherMainRef.classList.remove('is-closed');
   quoteSectionRef.classList.remove('is-closed');
+
+  if (btnFifeDaysRef.disabled) {
+    btnFifeDaysRef.disabled = false;
+    btnOneDayRef.disabled = true;
+  }
+  // containerMoreInfoRef.classList.add('is-closed');
 }
