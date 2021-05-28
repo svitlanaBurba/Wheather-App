@@ -2,7 +2,6 @@ import { fetchWeather, fetchWeatherFive } from './js/apiService';
 import './sass/main.scss';
 //import jquery from 'jquery';
 //import slick from 'slick-carousel';
-
 import CitySelector from './js/components/citySelector';
 import FavCityManager from './js/favCityManager';
 import renderWeatherInformerOneDay from './js/components/weatherInformerOneDay';
