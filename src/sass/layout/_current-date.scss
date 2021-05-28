@@ -2,7 +2,7 @@
   margin: 0 auto;
   width: 280px;
   margin-top: 50px;
-  margin-bottom: 40px;
+  margin-bottom: 25px;
   padding-top: 42px;
   padding-bottom: 30px;
   align-items: center;
@@ -30,7 +30,6 @@
   flex-direction: column;
   font-weight: 300;
 }
-
 .current-day-sup {
   font-size: 32px;
   padding-left: 3px;
@@ -85,8 +84,8 @@
     width: 500px;
     padding-top: 70px;
     padding-bottom: 42px;
+    margin-bottom: 35px;
   }
-
   .current-date-div {
     width: 290px;
     height: 180px;
@@ -106,7 +105,6 @@
     padding-right: 5px;
     top: -40px;
   }
-
   .current-month-div {
     margin-right: -15px;
   }
@@ -164,10 +162,6 @@
   .current-sun-rise {
     padding-right: 20px;
   }
-  // .current-day-suntime {
-  //   padding: 0px;
-  // }
-
   .current-time,
   .current-sun-set {
     padding-left: 20px;
