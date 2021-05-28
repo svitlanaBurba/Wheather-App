@@ -20,7 +20,6 @@
   display: none;
 }
 .h2-wripper {
-  
   .location {
     display: block;
     margin-bottom: 20px;
@@ -120,7 +119,7 @@
     width: 80%;
     height: 1px;
     margin-left: 7px;
-    background-color: white;
+    background-color: #ffffff;
     border-radius: 5px;
   }
 }
@@ -153,7 +152,6 @@
   }
   .location1 {
     display: block;
-    margin-top: 25px;
     margin-bottom: 25px;
     font-size: 28px;
     line-height: 0, 823;
@@ -161,15 +159,9 @@
     color: #ffffff;
   }
   .h2-wripper {
-    // max-width: 620px;
-    // margin: 0 auto;
-    // padding-top: 40px;
-    // padding-bottom: 40px;
-
     .location {
       display: none;
     }
-
     .temperature-wrapper {
       .daily-temperature {
         justify-content: space-around;
@@ -185,7 +177,9 @@
             font-size: 18px;
           }
           .daily-temperature__img {
-            margin-bottom: 15px;
+            width: 50px;
+            height: 50px;
+            margin-bottom: 0;
           }
           .daily-temperature__range {
             margin-top: 0;
@@ -225,10 +219,6 @@
     margin-bottom: 22px;
   }
   .h2-wripper {
-    // max-width: 1060px;
-    // height: 308px;
-    // margin: 0 auto;
-
     .temperature-wrapper {
       .daily-temperature {
         justify-content: space-around;
