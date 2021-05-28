@@ -3,9 +3,9 @@
     <h2 class='location1'>{{city.name}}, {{city.country}}</h2>
     <div class='h2-wripper'>
       <h2 class='location'>{{city.name}}, {{city.country}}</h2>
-      <div class=' temperature-wrapper'>
-          <ul class='daily-temperature'>
-        {{#each daysData}}
+      <div class='temperature-wrapper'>
+        <ul class='daily-temperature'>
+          {{#each daysData}}
             <li class='daily-temperature__day'>
               <p class='daily-temperature__week-day'>{{date.dayName}}</p>
               <p class='daily-temperature__date'>{{date.day}} {{date.month}}</p>
@@ -20,13 +20,17 @@
                   <p class='daily-temperature__range-value'>{{temperature.max}}</p>
                 </li>
               </ul>
-              <button type='button' data-id="{{@index}}" class='daily-temperature__additional-info'>more info</button>
+              <button
+                type='button'
+                class='daily-temperature__additional-info'
+                data-index={{@index}}
+              >more info</button>
             </li>
-        {{/each}}
-          </ul>
+          {{/each}}
+        </ul>
       </div>
       <div class='btn-scroll'>
-        <button type='button' class='day prev' data-action='prev'><</button>
+        <button type='button' class='day prev' data-action='prev'></button>
         <button type='button' class='day next' data-action='next'>></button>
       </div>
     </div>

@@ -22,7 +22,6 @@ function pad(value) {
 }
 
 export default function renderTimeInformer(ref, weather) {
-  console.log(weather);
   ref.wrapper.innerHTML = timeTemp(weather);
 
   const dayNowRef = document.querySelector('.current-day');

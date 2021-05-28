@@ -1,7 +1,10 @@
 import fiveDaysTemp from '../../templates/weatherInformerFiveDay.hbs';
 
 
-export default function renderWeatherInformerFiveDays(ref, weather) {
+export default function renderWeatherInformerFiveDays(ref, weather, onMoreInfoClick) {
+  console.log(onMoreInfoClick);
+  console.log(weather);
+
   ref.wrapper.innerHTML = fiveDaysTemp(weather);
   console.log('--------------------');
   console.log(weather);
@@ -24,14 +27,15 @@ export default function renderWeatherInformerFiveDays(ref, weather) {
     }
   }
 
+  // обработчик нажатия на more info
   const btnMoreInfoRef = document.querySelector('.weather-container-five-days-total');
   const containerMoreInfoRef = document.querySelector('.wheather-main-more-info-container');
   btnMoreInfoRef.addEventListener('click', openMoreInfo);
   function openMoreInfo(event) {
     if (event.target.tagName !== 'BUTTON') return;
     containerMoreInfoRef.classList.toggle('is-closed');
-   const id = event.target.dataset.id
     
+    onMoreInfoClick(event.target.dataset.index);
   }
 }
 

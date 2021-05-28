@@ -1,12 +1,11 @@
-import { fetchWeatherFive } from '../apiService';
 const ctx = document.querySelector('#myChart').getContext('2d');
 import Chart from 'chart.js/auto';
 import { selectedCityWeatherFiveDays } from '../../index.js';
 const moment = require('moment-timezone');
 
-const average = (req, data) => {
-  const values = data.map(e => e[req]);
+// let chart;
 
+const average = values => {
   const sum = values.reduce((previous, current) => (current += previous));
   const avg = sum / values.length;
   return Number(avg.toFixed(1));
@@ -16,10 +15,18 @@ function getChartData(weather) {
   let chartData = {};
 
   chartData.days = weather.daysData.map(e => e.date.month + ' ' + e.date.day + ', ' + e.date.year);
-  chartData.temp = weather.daysData.map(e => average('temperature', e.forecasts));
-  chartData.humidity = weather.daysData.map(e => average('humidity', e.forecasts));
-  chartData.pressure = weather.daysData.map(e => average('pressure', e.forecasts));
-  chartData.speed = weather.daysData.map(e => average('windSpeed', e.forecasts));
+  chartData.humidity = weather.daysData
+    .map(e => e.forecasts.map(i => i.humidity))
+    .map(j => average(j));
+  chartData.pressure = weather.daysData
+    .map(e => e.forecasts.map(i => i.pressure))
+    .map(j => average(j));
+  chartData.temperature = weather.daysData
+    .map(e => e.forecasts.map(i => i.temperature))
+    .map(j => average(j));
+  chartData.speed = weather.daysData
+    .map(e => e.forecasts.map(i => i.windSpeed))
+    .map(j => average(j));
 
   let chartMain = {
     type: 'line',
@@ -30,7 +37,7 @@ function getChartData(weather) {
           label: ' — Temperature, C°',
           backgroundColor: 'rgb(255, 107, 8)',
           borderColor: 'rgb(255, 107, 8)',
-          data: chartData.temp,
+          data: chartData.temperature,
           fill: false,
         },
         {
@@ -56,13 +63,28 @@ function getChartData(weather) {
         },
       ],
     },
+    options: {
+      title: {
+        display: true,
+        text: 'Value of indicators',
+        position: 'left',
+      },
+    },
   };
 
-  console.log(chartMain);
+  // console.log(chartMain);
   return chartMain;
 }
 
+let weatherChart;
+
 export default function renderChart(weather) {
-  console.log(weather);
-  new Chart(ctx, getChartData(weather));
+  if (!weatherChart) {
+    weatherChart = new Chart(ctx, getChartData(weather));
+    return weatherChart;
+  } else {
+    weatherChart.destroy();
+    weatherChart = new Chart(ctx, getChartData(weather));
+    return weatherChart;
+  }
 }
