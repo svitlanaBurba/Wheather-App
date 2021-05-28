@@ -3,6 +3,7 @@ import arrowRightPng from '../../images/right-arrow.png';
 import moreInfoTemp from '../../templates/load-more.hbs';
 
 export default function renderWeatherInformerMoreInfo(ref, weather) {
+
   weather.arrowLeftIcon = arrowLeftPng;
   weather.arrowRightIcon = arrowRightPng;
   ref.wrapper.innerHTML = moreInfoTemp(weather);
