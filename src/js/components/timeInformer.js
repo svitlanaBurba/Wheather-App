@@ -39,7 +39,9 @@ export default function renderTimeInformer(ref, weather) {
 
     const weekDayNow = new Intl.DateTimeFormat('en', { weekday: 'short' }).format(date);
 
-    dayNowRef.innerHTML = `${dayNow}<sup class="date__day--nth">${nth(dayNow)}</sup> ${weekDayNow}`;
+    dayNowRef.innerHTML = `${dayNow}<sup class="current-day-sup">${nth(
+      dayNow,
+    )}</sup> ${weekDayNow}`;
 
     monthNowRef.textContent = new Intl.DateTimeFormat('en', { month: 'long' }).format(date);
 

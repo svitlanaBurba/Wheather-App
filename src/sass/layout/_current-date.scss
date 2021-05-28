@@ -45,19 +45,24 @@
     padding-bottom: 0px;
     padding-top: 0px;
   }
-
+  .current-month-div {
+    margin-right: 8px;
+  }
   .current-month,
   .current-sun-rise {
     display: flex;
     padding-right: 10px;
-    border-right: 1px ridge #ffffff;
     align-items: center;
+    width: 100px;
+    display: flex;
+    justify-content: flex-end;
   }
   .current-time,
   .current-sun-set {
     display: flex;
     padding-left: 10px;
     align-items: center;
+    border-left: 1px ridge #ffffff;
   }
   .current-sun-rise::before {
     content: url('/images/008-sunrise.svg');
@@ -93,6 +98,9 @@
 
   .current-day-sup {
     top: -40px;
+  }
+  .current-month-div {
+    margin-right: 0px;
   }
   .current-month-div,
   .current-day-suntime {
