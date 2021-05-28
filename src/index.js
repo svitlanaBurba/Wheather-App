@@ -9,6 +9,7 @@ import renderWeatherInformerOneDay from './js/components/weatherInformerOneDay';
 import renderWeatherInformerFiveDays from './js/components/weatherInformerFiveDays';
 import renderWeatherInformerMoreInfo from './js/components/weatherInformerMoreInfo';
 import renderTimeInformer from './js/components/timeInformer';
+import renderQuoteInformer from './js/components/quoteInformer';
 
 // референсы - вынести в файл
 let citySelectorRefs = {
@@ -63,6 +64,7 @@ function startApp() {
   }
 
   onCitySelected(defaultCity);
+  renderQuoteInformer();
 }
 
 // загружает погоду на 1 день по selectedCity, сохраняет ее в selectedCityWeatherOneDay
