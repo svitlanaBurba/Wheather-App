@@ -53,6 +53,7 @@ function openFiveDays(event) {
     btnFifeDaysRef.disabled = true;
     btnOneDayRef.disabled = false;
   }
+  document.querySelector('.switch-btn-wrapper').classList.remove('buttons-one-day-desktop');
 }
 
 btnOneDayRef.addEventListener('click', openOneDay);
@@ -66,5 +67,6 @@ function openOneDay(event) {
     btnFifeDaysRef.disabled = false;
     btnOneDayRef.disabled = true;
   }
+  document.querySelector('.switch-btn-wrapper').classList.add('buttons-one-day-desktop');
   // containerMoreInfoRef.classList.add('is-closed');
 }
