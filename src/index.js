@@ -84,17 +84,6 @@ function weatherOneDayLoad(onWeatherOneDayLoad) {
   });
 }
 
-// загружает погоду на 5 день по selectedCity, сохраняет ее в selectedCityWeatherFiveDays
-// и вызывает функцию onWeatherFiveDaysLoad которую передают как аргумент
-// (эта функция будет обновлять нужные компоненты)
-function weatherFiveDaysLoad(onWeatherFiveDaysLoad) {
-  // вызываем наш апи, передаем ему город
-  fetchWeatherFive(selectedCity).then(w => {
-    selectedCityWeatherFiveDays = w;
-    onWeatherFiveDaysLoad(); // погоду в параметрах не передаем, т.к. она уже лежит в глобальной переменной
-  });
-}
-
 // эта функция будет вызываться когда мы будем получать данные о погоде за 1 день
 // соответственно в ней мы будем рендерить (обновлять) наши компоненты
 function onWeatherOneDayLoad() {
@@ -109,6 +98,16 @@ function onWeatherOneDayLoad() {
   renderTimeInformer(timeInformerRefs, selectedCityWeatherOneDay);
 }
 
+// загружает погоду на 5 день по selectedCity, сохраняет ее в selectedCityWeatherFiveDays
+// и вызывает функцию onWeatherFiveDaysLoad которую передают как аргумент
+// (эта функция будет обновлять нужные компоненты)
+function weatherFiveDaysLoad(onWeatherFiveDaysLoad) {
+  // вызываем наш апи, передаем ему город
+  fetchWeatherFive(selectedCity).then(weatherFive => {
+    selectedCityWeatherFiveDays = weatherFive;
+    onWeatherFiveDaysLoad(); // погоду в параметрах не передаем, т.к. она уже лежит в глобальной переменной
+  });
+}
 // эта функция будет вызываться когда мы будем получать данные о погоде за 5
 // соответственно в ней мы будем рендерить (обновлять) наши компоненты
 function onWeatherFiveDaysLoad() {
@@ -122,7 +121,7 @@ function onWeatherFiveDaysLoad() {
 
   renderChart(selectedCityWeatherFiveDays);
 }
-
+//  функция, которая будет выполнять поиск индекса при нажатии moreInfo кнопки, и рендерить погоду по времени для выбранного дня.
 function onMoreInfoClicked(dayIndex) {
   renderWeatherInformerMoreInfo(
     weatherInformerMoreInfoRefs,
