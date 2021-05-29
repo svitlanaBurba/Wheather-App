@@ -4,7 +4,8 @@ import axios from 'axios';
 export { fetchWeather, fetchImages, fetchWeatherFive, fetchLocalWeather, fetchLocationCityName };
 
 const BASE_URL_WEATHER = 'https://api.openweathermap.org/data/2.5/weather?';
-const BASE_URL_IMG = 'https://pixabay.com/api/?image_type=photo&orientation=horizontal&q=';
+const BASE_URL_IMG =
+  'https://pixabay.com/api/?image_type=photo&orientation=horizontal&min_width=1200&min_height=780&q=';
 const apiKeyWeather = 'd01e7beda7c1dcab67ea99635e4fb4bc';
 const apiKeyImg = '21715456-94146d2128778e129cf5897fe';
 const iconURL = 'http://openweathermap.org/img/wn/';
@@ -53,7 +54,7 @@ const fetchWeatherFive = city =>
 
 // Bg Image Service
 const fetchImages = city =>
-  fetch(`${BASE_URL_IMG}${city}&page=1&per_page=12&key=${apiKeyImg}`).then(res => {
+  fetch(`${BASE_URL_IMG}${city}&page=1&per_page=30&key=${apiKeyImg}`).then(res => {
     return res.json();
   });
 

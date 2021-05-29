@@ -40,6 +40,7 @@ export default function renderWeatherInformerFiveDays(ref, weather, onMoreInfoCl
   const wheatherMainRef = document.querySelector('.wheather-main-container');
   const quoteSectionRef = document.querySelector('.quote-section');
   const chartShowBtnRef = document.querySelector('.chart-show-button-container');
+  const chartContainer = document.querySelector('.chart-main-container');
 
   btnFifeDaysRef.addEventListener('click', openFiveDays);
   function openFiveDays(event) {
@@ -64,12 +65,13 @@ export default function renderWeatherInformerFiveDays(ref, weather, onMoreInfoCl
     quoteSectionRef.classList.remove('is-closed');
     containerMoreInfoRef.classList.add('is-closed');
     chartShowBtnRef.classList.add('is-closed');
+    chartContainer.classList.add('is-closed');
 
     if (btnFifeDaysRef.disabled) {
       btnFifeDaysRef.disabled = false;
       btnOneDayRef.disabled = true;
     }
-   
+
     document.querySelector('.switch-btn-wrapper').classList.remove('buttons-five-days-desktop');
   }
 }
