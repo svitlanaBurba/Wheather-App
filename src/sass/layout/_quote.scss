@@ -1,7 +1,6 @@
 .quote-section {
-  margin: 0 auto;
-  width: 280px;
-  padding-bottom: 100px;
+  display: flex;
+  justify-content: center;
   margin-bottom: 30px;
   font-family: 'Lato';
   font-size: 14px;
@@ -9,7 +8,7 @@
   text-align: right;
 }
 .quote-container {
-  width: 260px;
+  width: 250px;
   display: flex;
   flex-direction: column;
   color: white;
@@ -22,14 +21,14 @@
   text-align: end;
   margin-bottom: 15px;
 }
-.quote-citation::after {
+.quote-container::before {
   content: url('/images/quote_icon_small.svg');
   position: relative;
-  top: -25px;
+  top: 10px;
 }
 .quote-author {
   font-family: 'Lato';
-  font-size: 18px;
+  font-size: 14px;
   font-style: normal;
   line-height: 22px;
   float: right;
@@ -37,39 +36,46 @@
 @media screen and (min-width: 768px) {
   .quote-section {
     display: flex;
-    flex-direction: column;
-    justify-content: flex-end;
+    justify-content: center;
     align-items: flex-end;
-    width: 400px;
-    padding-bottom: 130px;
   }
   .quote-container {
-    width: 380px;
+    width: 400px;
   }
   .quote-citation {
     font-size: 22px;
-    line-height: 26px;
+    line-height: 1.5em;
     letter-spacing: 0.04em;
   }
   .quote-author {
     font-size: 18px;
-    line-height: 22px;
     letter-spacing: 0.04em;
   }
-  .quote-citation {
-    margin-bottom: 20px;
-  }
-  .quote-citation::after {
+  .quote-container::before {
     content: url('/images/quote_icon_big.svg');
     position: relative;
-    top: -75px;
+    top: 25px;
   }
 }
 @media screen and (min-width: 1278px) {
   .quote-section {
-    display: flex;
-    justify-content: flex-end;
-    padding-top: 20px;
-    margin-top: 75px;
+    float: right;
+    margin-top: 35px;
+    margin-right: 100px;
+  }
+  .quote-container {
+    width: 340px;
+  }
+  .quote-citation {
+    margin-bottom: 30px;
+  }
+  .quote-author {
+    font-size: 22px;
   }
 }
+
+//Temporary hidden Chart container
+
+// .chart-main-container {
+//   display: none;
+// }

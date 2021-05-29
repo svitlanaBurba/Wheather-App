@@ -7,107 +7,100 @@ export default renderQuoteInformer;
 const quotes = [
   {
     number: 1,
-    citation:
-      "People often say that motivation doesn't last. Well, neither does bathing -- that's why we recommend it daily.",
-    author: 'Zig Ziglar',
+    citation: 'You are the sky. Everything else – it’s just the weather.',
+    author: 'Pema Chödrön',
   },
   {
     number: 2,
-    citation: 'Someday is not a day of the week.',
-    author: 'Denise Brennan-Nelson',
+    citation: 'Wherever you go, no matter what the weather, always bring your own sunshine.',
+    author: "Anthony J. D'Angelo",
   },
   {
     number: 3,
-    citation: 'Hire character. Train skill.',
-    author: 'Peter Schutz',
+    citation: 'If you want to see the sunshine, you have to weather the storm.',
+    author: 'Frank Lane',
   },
   {
     number: 4,
-    citation: "Your time is limited, so don't waste it living someone else's life.",
-    author: 'Steve Jobs',
+    citation: 'In the Spring, I have counted 136 different kinds of weather inside of 24 hours.',
+    author: 'Mark Twain',
   },
   {
     number: 5,
     citation:
-      'Sales are contingent upon the attitude of the salesman -- not the attitude of the prospect.',
-    author: 'W. Clement Stone',
+      'Whenever people talk to me about the weather, i always feel certain that they mean something else.',
+    author: 'Oscar Wilde',
   },
   {
     number: 6,
-    citation: 'Everyone lives by selling something.',
-    author: 'Robert Louis Stevenson',
+    citation: 'My style varies on my mood or the weather of the day.',
+    author: 'Jennie',
   },
   {
     number: 7,
-    citation: 'If you are not taking care of your customer, your competitor will.',
-    author: 'Bob Hooey',
+    citation: 'There is no such thing as bad weather, only different kinds of good weather.',
+    author: 'John Ruskin',
   },
   {
     number: 8,
-    citation:
-      "The golden rule for every businessman is this: Put yourself in your customer's place.",
-    author: 'Orison Swett Marden',
+    citation: 'A change in the weather is sufficient to recreate the world and ourselves.',
+    author: 'Marcel Proust',
   },
   {
     number: 9,
-    citation: 'If you cannot do great things, do small things in a great way.',
-    author: 'Napoleon Hill',
+    citation: 'Bad weather always looks worse through a window.',
+    author: 'Tom Lehrer',
   },
   {
     number: 10,
-    citation:
-      'The best leaders are those most interested in surrounding themselves with assistants and associates smarter than they are. They are frank in admitting this and are willing to pay for such talents.',
-    author: 'Antos Parrish',
+    citation: 'The weather is the weather. You have to deal with whatever is out there.',
+    author: 'Matt Cassel',
   },
   {
     number: 11,
-    citation: "Beware of monotony; it's the mother of all the deadly sins.",
-    author: 'Edith Wharton',
+    citation: 'Everybody talks about the weather, but nobody does anything about it.',
+    author: 'Charles Dudley Warner',
   },
   {
     number: 12,
-    citation: 'Nothing is really work unless you would rather be doing something else.',
-    author: 'J.M. Barrie',
+    citation: 'It is only in sorrow bad weather masters us; in joy we face the storm and defy it.',
+    author: 'Amelia Barr',
   },
   {
     number: 13,
-    citation: "Without a customer, you don't have a business -- all you have is a hobby.",
-    author: 'Don Peppers',
+    citation: 'In fair weather prepare for foul.',
+    author: 'Thomas Fuller',
   },
   {
     number: 14,
-    citation:
-      "To be most effective in sales today, it's imperative to drop your 'sales' mentality and start working with your prospects as if they've already hired you.",
-    author: 'Jill Konrath',
+    citation: "I'm not into cold weather, I like warm weather.",
+    author: 'Amos Lee',
   },
   {
     number: 15,
-    citation:
-      "Pretend that every single person you meet has a sign around his or her neck that says, 'Make me feel important.' Not only will you succeed in sales, you will succeed in life.",
-    author: 'Mary Kay Ash',
+    citation: "It doesn't matter what people say about me, I weather the storm.",
+    author: 'Terrell Owens',
   },
   {
     number: 16,
-    citation:
-      "It's not just about being better. It's about being different. You need to give people a reason to choose your business.",
-    author: 'Tom Abbott',
+    citation: 'The weather is perfect. The gods are shining on us.',
+    author: 'Frank Shorter',
   },
   {
     number: 17,
     citation:
-      'Being good in business is the most fascinating kind of art. Making money is art and working is art and good business is the best art.',
-    author: 'Andy Warhol',
+      'The threat from extreme weather events highlights the importance of investing in preparedness.',
+    author: 'Sheri Fink',
   },
   {
     number: 18,
-    citation:
-      "Be patient with yourself. Self-growth is tender; it's holy ground. There's no greater investment.",
-    author: 'Stephen Covey',
+    citation: "One can't predict the weather more than a few days in advance.",
+    author: 'Stephen Hawking',
   },
   {
     number: 19,
-    citation: 'Without hustle, talent will only carry you so far.',
-    author: 'Gary Vaynerchuk',
+    citation: 'Apartheid does not happen spontaneously, like bad weather conditions.',
+    author: 'Jonathan Kozol',
   },
   {
     number: 20,
@@ -117,23 +110,24 @@ const quotes = [
   },
   {
     number: 21,
-    citation: "I'd rather regret the things I've done than regret the things I haven't done.",
-    author: 'Lucille Ball',
+    citation: 'Bad weather always looks worse through a window.',
+    author: 'Tom Lehrer',
   },
   {
     number: 22,
-    citation: "I didn't get there by wishing for it or hoping for it, but by working for it.",
-    author: 'Estée Lauder',
+    citation: 'Conversation about the weather is the last refuge of the unimaginative.',
+    author: 'Oscar Wilde',
   },
   {
     number: 23,
-    citation: 'Always do your best. What you plant now, you will harvest later.',
-    author: 'Og Mandino',
+    citation:
+      "You can't get mad at weather because weather's not about you. Apply that lesson to most other aspects of life.",
+    author: 'Douglas Coupland',
   },
   {
     number: 24,
-    citation: "The key to life is accepting challenges. Once someone stops doing this, he's dead.",
-    author: 'Bette Davis',
+    citation: "One can't predict the weather more than a few days in advance.",
+    author: 'Stephen Hawking',
   },
   {
     number: 25,
@@ -144,13 +138,13 @@ const quotes = [
   {
     number: 26,
     citation:
-      'Challenges are what make life interesting and overcoming them is what makes life meaningful.',
-    author: 'Joshua J. Marine',
+      'We may have bad weather in Ireland, but the sun shines in the hearts of the people and that keeps us all warm.',
+    author: 'Marianne Williamson',
   },
   {
     number: 27,
-    citation: "Don't let the fear of losing be greater than the excitement of winning.",
-    author: 'Robert Kiyosaki',
+    citation: 'A change in the weather is sufficient to recreate the world and ourselves.',
+    author: 'Marcel Proust',
   },
   {
     number: 28,
@@ -160,31 +154,28 @@ const quotes = [
   },
   {
     number: 29,
-    citation: 'Energy and persistence conquer all things.',
-    author: 'Benjamin Franklin',
+    citation: 'My style varies on my mood or the weather of the day.',
+    author: 'Jennie',
   },
   {
     number: 30,
-    citation: 'Perseverance is failing 19 times and succeeding the 20th.',
-    author: 'Julie Andrews',
+    citation: 'Climate is what we expect, weather is what we get.',
+    author: 'Mark Twain',
   },
   {
     number: 31,
-    citation:
-      "Grit is that ‘extra something' that separates the most successful people from the rest. It's the passion, perseverance, and stamina that we must channel in order to stick with our dreams until they become a reality.",
+    citation: 'Weather forecast for tonight: dark.',
     author: 'Travis Bradberry',
   },
   {
     number: 32,
-    citation:
-      'Failure after long perseverance is much grander than never to have a striving good enough to be called a failure.',
-    author: 'George Eliot',
+    citation: "There's no such thing as bad weather, just soft people.",
+    author: 'Bill Bowerman',
   },
   {
     number: 33,
-    citation:
-      'The secret of joy in work is contained in one word -- excellence. To know how to do something well is to enjoy it.',
-    author: 'Pearl Buck',
+    citation: 'Conversation about the weather is the last refuge of the unimaginative.',
+    author: 'Oscar Wilde',
   },
 ];
 
@@ -198,7 +189,7 @@ function renderQuoteInformer() {
 - renderQuoteInformer
 - getQuote
 
-функция renderQuoteInformer: 
+функция renderQuoteInformer:
 принимает:
 - объект с референсами ( элемент текста цитаты, элемент имя автора )
 - объект-цитату с данными для отображения: текст цитаты, имя автора
