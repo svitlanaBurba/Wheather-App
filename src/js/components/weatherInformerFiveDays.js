@@ -52,6 +52,8 @@ export default function renderWeatherInformerFiveDays(ref, weather, onMoreInfoCl
       btnOneDayRef.disabled = false;
     }
   }
+  document.querySelector('.switch-btn-wrapper').classList.remove('buttons-one-day-desktop');
+}
 
   btnOneDayRef.addEventListener('click', openOneDay);
   function openOneDay(event) {
