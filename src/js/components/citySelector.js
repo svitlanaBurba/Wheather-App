@@ -19,8 +19,6 @@ export default class CitySelector {
   favCityTemplate; // шаблон для генерации кнопок любимых городов
   onRender;
 
-  // методы
-
   // обработчик сабмита формы - когда город вводят руками
   onSearchInputSubmit(e) {
     e.preventDefault();
@@ -31,8 +29,6 @@ export default class CitySelector {
   }
 
   sliderInit() {
-    let self = this;
-
     this.refs.favCitiesList.innerHTML = this.favCities
       .map(city => this.favCityTemplate(city))
       .join();
@@ -43,6 +39,18 @@ export default class CitySelector {
         infinite: false,
         variableWidth: true,
       });
+    });
+  }
+
+  sliderRemoveSlideByIndex(slideIndex) {
+    // здесь мы просим сликер удалить кнопки с указаннім индексом
+    $('.slider').slick('slickRemove', slideIndex);
+
+    // принудительно обновляем индексы на кнопках после удаления - слик не делает это автоматически
+    var j = 0;
+    $('.slick-slide').each(function () {
+      $(this).attr('data-slick-index', j);
+      j++;
     });
   }
 
@@ -71,38 +79,27 @@ export default class CitySelector {
     });
   }
 
+  // удалить город из слайдера и локалстораджа
+  // нужны параметры - имя города и индекс слайда (кнопки) в слайдере
   removeFavCity(city, sliderIndex) {
     // удаляем из локал стораджа по имени
     this.favCityManager.delFavCity(city);
     this.favCities = this.favCityManager.getFavCities();
 
     // удаляем слайд из слайдера по индексу
-    $(document).ready(function () {
-      // здесь мы просим сликер удалить кнопки с указаннім индексом
-      $('.slider').slick('slickRemove', sliderIndex);
-
-      // принудительно обновляем индексы на кнопках после удаления - слик не делает это автоматически
-      var j = 0;
-      $('.slick-slide').each(function () {
-        $(this).attr('data-slick-index', j);
-        j++;
-      });
-    });
-
-    //this.render();
+    $(document).ready(this.sliderRemoveSlideByIndex(sliderIndex));
   }
 
-  // обработчик нажатия на кнопку любимого города
+  // обработчик нажатия на кнопку любимого города (два вида событий: показать погоду и удалить)
   onFavCityClick(e) {
     if (e.target.nodeName === 'I') {
+      // клик по крестику удаления - нужно удалить
       const clickedCity = e.target.parentElement.innerText;
       const sliderIndex = e.target.closest('.slick-slide').dataset.slickIndex;
-      console.log('Trying to remove btn');
-      console.dir(e.target);
       this.removeFavCity(clickedCity, sliderIndex); // вызов этой функции удаляет город из стораджа и перерисовывает список
     } else if (
       !e.target.parentElement.className.includes('slider') &&
-      e.target.nodeName === 'BUTTON'
+      e.target.nodeName === 'BUTTON' // клик по кнопке с именем - нужно показать погоду
     ) {
       const clickedCity = e.target.innerText;
       // пользователь выбрал новый город - так что вызываем onCitySelected
@@ -125,20 +122,6 @@ export default class CitySelector {
     this.refs.addFavoriteBtn.addEventListener('click', this.onAddFavoriteBtnClick.bind(this));
 
     this.refs.geoBtn.addEventListener('click', this.onGeoBtnClick.bind(this));
-  }
-
-  // перерисовывает список любимых городов
-  render() {
-    /*
-    this.refs.favCitiesList.innerHTML = ''; // очищаем список
-    this.refs.favCitiesList.innerHTML = this.favCities
-      .map(city => this.favCityTemplate(city))
-      .join();
-      */
-    this.favCities.forEach(city => this.sliderAddCity(city));
-
-    //this.sliderRefresh();
-    this.onRender();
   }
 
   // конструктор

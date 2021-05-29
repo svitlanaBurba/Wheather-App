@@ -1,3 +1,23 @@
+.switch-btn-wrapper {
+  // margin: 40px auto 40px;
+  padding-top: 30px;
+  width: 320px;
+  margin: 0 auto;
+  text-align: center;
+  @media screen and (min-width: 768px) {
+    padding-bottom: 40px;
+    padding-top: 40px;
+  }
+  @media screen and (min-width: 1280px) {
+    margin: 0;
+    margin-right: 105px;
+    margin-left: auto;
+    padding-bottom: 25px;
+    padding-top: 25px;
+    width: 400px;
+  }
+}
+
 .switch-btn {
   display: flex;
   justify-content: center;
@@ -5,7 +25,6 @@
   text-align: center;
   min-width: 126px;
   padding: 6px 0;
-  margin: 32px auto 0;
   border-radius: 15px;
   border: none;
   outline: none;
@@ -24,12 +43,12 @@
 .today-btn {
   display: inline-block;
   margin-right: 16px;
-  background-color: rgba(255, 255, 255, 1);
+  background-color: rgba(255, 255, 255, 0.7);
 }
 .five-days-btn {
   display: inline-block;
   margin-right: 0;
-  background-color: rgba(255, 255, 255, 0.54);
+  background-color: rgba(255, 255, 255, 0.7);
 }
 
 .slick-track {
@@ -72,7 +91,7 @@
 }
 .input-field {
   background-color: white;
-  padding: 14px 24px;
+  padding: 14px 50px;
   position: relative;
   align-items: center;
   border-radius: 30px;
@@ -95,7 +114,7 @@ input:autofill {
 }
 .input-form-addfavorite {
   position: absolute;
-  top: 12px;
+  top: 11px;
   left: 280px;
   border: none;
   cursor: pointer;
@@ -106,7 +125,7 @@ input:autofill {
     left: 455px;
   }
   @media screen and (min-width: 1280px) {
-    left: 480px;
+    left: 472px;
   }
 }
 
@@ -163,5 +182,9 @@ input:autofill {
   width: 22px;
   height: 22px;
   top: 15px;
-  left: 3px;
+  left: 17px;
+  cursor: pointer;
+}
+.input-icon-location:hover {
+  fill: #c6c7c98c;
 }

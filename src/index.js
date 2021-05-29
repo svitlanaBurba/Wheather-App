@@ -62,6 +62,7 @@ function startApp() {
 
   // переделать в функцию выбора даты по умолчанию
   let defaultCity = favCityManager.getFavCities()[0];
+
   if (!defaultCity) {
     defaultCity = 'Kyiv';
   }
