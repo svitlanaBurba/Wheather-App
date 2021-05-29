@@ -39,6 +39,7 @@ export default function renderWeatherInformerFiveDays(ref, weather, onMoreInfoCl
   const dataSectionRef = document.querySelector('.current-date-section');
   const wheatherMainRef = document.querySelector('.wheather-main-container');
   const quoteSectionRef = document.querySelector('.quote-section');
+  const chartShowBtnRef = document.querySelector('.chart-show-button-container');
 
   btnFifeDaysRef.addEventListener('click', openFiveDays);
   function openFiveDays(event) {
@@ -46,6 +47,7 @@ export default function renderWeatherInformerFiveDays(ref, weather, onMoreInfoCl
     dataSectionRef.classList.add('is-closed');
     wheatherMainRef.classList.add('is-closed');
     quoteSectionRef.classList.add('is-closed');
+    chartShowBtnRef.classList.remove('is-closed');
 
     if (btnOneDayRef.disabled) {
       btnFifeDaysRef.disabled = true;
@@ -60,12 +62,14 @@ export default function renderWeatherInformerFiveDays(ref, weather, onMoreInfoCl
     dataSectionRef.classList.remove('is-closed');
     wheatherMainRef.classList.remove('is-closed');
     quoteSectionRef.classList.remove('is-closed');
+    containerMoreInfoRef.classList.add('is-closed');
+    chartShowBtnRef.classList.add('is-closed');
 
     if (btnFifeDaysRef.disabled) {
       btnFifeDaysRef.disabled = false;
       btnOneDayRef.disabled = true;
     }
-    containerMoreInfoRef.classList.add('is-closed');
+   
     document.querySelector('.switch-btn-wrapper').classList.remove('buttons-five-days-desktop');
   }
 }
