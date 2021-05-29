@@ -135,10 +135,12 @@
 @media screen and (min-width: 1278px) {
   .current-date-section {
     width: 630px;
-    float: left;
     border-radius: 0px 34px 0px 0px;
     margin-bottom: 0px;
-    padding: 83px 0px;
+    // padding: 83px 0px;
+    position: absolute;
+    bottom: 0;
+    height: 278px;
   }
   .current-date-div {
     width: fit-content;

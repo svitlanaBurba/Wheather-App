@@ -1,8 +1,6 @@
 import timeTemp from '../../templates/timeInformer.hbs';
 const moment = require('moment-timezone');
 
-// const timeInformer = document.querySelector('.current-date-section');
-
 const nth = function (d) {
   if (d > 3 && d < 21) return 'th';
   switch (d % 10) {
@@ -46,7 +44,7 @@ export default function renderTimeInformer(ref, weather) {
 
     timeNowRef.textContent =
       pad(changeDate.hours()) + ':' + pad(changeDate.minutes()) + ':' + pad(changeDate.seconds());
-  }, 1000);
+  }, 0);
 }
 
 /*
