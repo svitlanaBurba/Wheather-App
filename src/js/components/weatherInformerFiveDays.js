@@ -32,7 +32,7 @@ export default function renderWeatherInformerFiveDays(ref, weather, onMoreInfoCl
 
     onMoreInfoClick(event.target.dataset.index);
   }
-// обработчик нажатия на openFiveDays и openOneDay
+  // обработчик нажатия на openFiveDays и openOneDay
   const containerFiveDaysRenderRef = document.querySelector('.weather-container-five-days-total');
   const btnFifeDaysRef = document.querySelector('.five-days-btn');
   const btnOneDayRef = document.querySelector('.today-btn');
@@ -46,14 +46,13 @@ export default function renderWeatherInformerFiveDays(ref, weather, onMoreInfoCl
     dataSectionRef.classList.add('is-closed');
     wheatherMainRef.classList.add('is-closed');
     quoteSectionRef.classList.add('is-closed');
-    
+
     if (btnOneDayRef.disabled) {
       btnFifeDaysRef.disabled = true;
       btnOneDayRef.disabled = false;
     }
+    document.querySelector('.switch-btn-wrapper').classList.add('buttons-five-days-desktop');
   }
-  document.querySelector('.switch-btn-wrapper').classList.remove('buttons-one-day-desktop');
-}
 
   btnOneDayRef.addEventListener('click', openOneDay);
   function openOneDay(event) {
@@ -67,5 +66,6 @@ export default function renderWeatherInformerFiveDays(ref, weather, onMoreInfoCl
       btnOneDayRef.disabled = true;
     }
     containerMoreInfoRef.classList.add('is-closed');
+    document.querySelector('.switch-btn-wrapper').classList.remove('buttons-five-days-desktop');
   }
 }

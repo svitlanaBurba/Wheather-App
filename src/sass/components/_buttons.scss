@@ -9,22 +9,18 @@
     padding-top: 40px;
   }
   @media screen and (min-width: 1280px) {
+    float: right;
+    margin-right: 100px;
+  }
+}
+@media screen and (min-width: 1280px) {
+  .buttons-five-days-desktop {
+    float: none;
+    margin-right: 0;
     display: flex;
     width: 1060px;
     margin: 0 auto;
     justify-content: flex-end;
-    // margin: 0;
-    // margin-right: 105px;
-    // margin-left: auto;
-    // padding-bottom: 25px;
-    // padding-top: 25px;
-    // width: 400px;
-  }
-}
-@media screen and (min-width: 1280px) {
-  .buttons-one-day-desktop {
-    float: right;
-    margin-right: 100px;
   }
 }
 
