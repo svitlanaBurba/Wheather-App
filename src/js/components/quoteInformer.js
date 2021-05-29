@@ -201,9 +201,4 @@ function renderQuoteInformer() {
 - функцию API сервиса, которую вызывать
 - возвращает - объект цитаты, полученный от сервиса (содержит текст цитаты, имя автора)
 
-пример объекта референсов:
-const citySelectorRefs = {
- searchForm = document.querySelector('.search-form');
- searchInput = document.querySelector('.search-location__form');
-};
  */
