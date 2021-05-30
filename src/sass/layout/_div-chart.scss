@@ -1,8 +1,8 @@
 .chart-main-container {
   position: relative;
   padding-top: 25px;
-  width: 280px;
-  height: 516px;
+  width: 320px;
+  height: 580px;
   background: rgba(16, 33, 54, 0.8);
   box-shadow: 0px 5px 33px rgba(16, 33, 54, 0.6);
   border-radius: 34px;
@@ -11,11 +11,11 @@
 
   @media screen and (min-width: 768px) {
     width: 620px;
-    height: 462px;
+    height: 580px;
   }
   @media screen and (min-width: 1280px) {
     width: 1060px;
-    height: 540px;
+    height: 580px;
   }
 }
 
@@ -23,7 +23,7 @@
   display: flex;
   justify-content: center;
   align-items: center;
-  margin-bottom: 40px;
+  margin-bottom: 30px;
   margin-left: auto;
   margin-right: auto;
 }

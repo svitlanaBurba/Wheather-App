@@ -81,11 +81,60 @@ function getChartData(weather) {
       ],
     },
     options: {
-      title: {
-        display: true,
-        text: 'Value of indicators',
-        position: 'left',
+      // responsive: true,
+      plugins: {
+        title: {
+          display: true,
+          text: 'AVARAGE:',
+          color: 'rgba(255, 255, 255, 0.54)',
+        }
       },
+      scales: {
+        x: {
+          display: true,
+          title: {
+            display: true,
+            text: '',
+            color: '#911',
+            font: {
+              family: 'Comic Sans MS',
+              size: 20,
+              style: '',
+              lineHeight: 1.2,
+            },
+            padding: {top: 20, left: 0, right: 0, bottom: 0}
+          },
+          grid: {
+            color: 'rgba(255, 255, 255, 0.54)',
+          },
+          ticks: {
+            color: 'rgba(255, 255, 255, 0.54)',
+          },
+        },
+        y: {
+          display: true,
+          title: {
+            display: true,
+            text: 'Value of indicators',
+            color: 'rgba(255, 255, 255, 0.54)',
+            font: {
+              family: 'Lato',
+              size: 14,
+              style: 'normal',
+              lineHeight: 1.2,
+            },
+            padding: {top: 30, left: 0, right: 0, bottom: 0}
+          },
+          grid: {
+            color: 'rgba(255, 255, 255, 0.54)',
+          },
+          ticks: {
+            color: 'rgba(255, 255, 255, 0.54)',
+          },
+        }
+      },
+      responsive: true,
+      maintainAspectRatio: false,
     },
   };
 
