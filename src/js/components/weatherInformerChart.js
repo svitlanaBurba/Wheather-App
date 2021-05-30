@@ -59,7 +59,7 @@ function getChartData(weather) {
         },
         {
           hidden: true,
-          label: ' —  Humidity, %',
+          label: ' —  Humidity, %   ',
           backgroundColor: 'rgb(10, 6, 234)',
           borderColor: 'rgb(10, 6, 234)',
           data: chartData.humidity,
@@ -80,6 +80,7 @@ function getChartData(weather) {
           borderColor: 'rgb(5, 120, 6)',
           data: chartData.pressure,
           fill: false,
+          
         },
       ],
     },
@@ -91,7 +92,20 @@ function getChartData(weather) {
           text: 'AVERAGE:',
           color: 'rgba(255, 255, 255, 0.54)',
         },
+        legend: {
+          align: 'start', 
+          
+          labels: {
+           boxWidth: 13,
+           boxHeight: 12,
+           padding: 10,
+              font: {
+                  size: 15,
+              }
+          }
+      }
       },
+      
       scales: {
         x: {
           display: true,

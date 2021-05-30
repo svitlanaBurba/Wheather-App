@@ -1,6 +1,6 @@
 import fiveDaysTemp from '../../templates/weatherInformerFiveDay.hbs';
 import renderWeatherInformerMoreInfo from '../components/weatherInformerMoreInfo';
-import { refs } from '../refs';
+import { weatherInformerMoreInfoRefs, refs } from '../refs';
 
 export default function renderWeatherInformerFiveDays(ref, weather) {
   ref.wrapper.innerHTML = fiveDaysTemp(weather);
