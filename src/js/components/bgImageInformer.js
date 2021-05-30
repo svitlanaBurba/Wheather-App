@@ -31,8 +31,6 @@ export default function renderBgImg(cityName) {
     .then(res => {
       var img = new Image();
       img.src = res;
-      img.onload = function () {
-        document.body.style.backgroundImage = `url(${res})`;
-      };
+      img.onload = addBackground(res);
     });
 }
