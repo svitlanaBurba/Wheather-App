@@ -25,9 +25,9 @@ export default function renderWeatherInformerFiveDays(ref, weather) {
   }
 
   // обработчик нажатия на more info
-  const containerFiveDaysRenderRef = document.querySelector('.weather-container-five-days-total');
-   // const containerMoreInfoRef = document.querySelector('.wheather-main-more-info-container');
-  containerFiveDaysRenderRef.addEventListener('click', openMoreInfo);
+  const btnMoreInfoRef = document.querySelector('.weather-container-five-days-total');
+  // const containerMoreInfoRef = document.querySelector('.wheather-main-more-info-container');
+  btnMoreInfoRef.addEventListener('click', openMoreInfo);
   function openMoreInfo(event) {
     if (event.target.tagName !== 'BUTTON') return;
     refs.weatherInformerMoreInfo.wrapper.classList.remove('is-closed');
@@ -35,7 +35,7 @@ export default function renderWeatherInformerFiveDays(ref, weather) {
     onMoreInfoClicked(event.target.dataset.index, weather);
   }
   // обработчик нажатия на openFiveDays и openOneDay
- 
+  const containerFiveDaysRenderRef = document.querySelector('.weather-container-five-days-total');
   const btnFifeDaysRef = document.querySelector('.five-days-btn');
   const btnOneDayRef = document.querySelector('.today-btn');
   const dataSectionRef = document.querySelector('.current-date-section');
