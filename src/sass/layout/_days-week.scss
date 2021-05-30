@@ -44,6 +44,11 @@
         &:not(:last-child) {
           margin-right: 0;
         }
+        .daily-temperature__range-item {
+          padding-right: 5px;
+          padding-left: 5px;
+        }
+
         .daily-temperature__week-day {
           margin-top: 0;
           margin-bottom: 13px;
@@ -72,15 +77,12 @@
         .daily-temperature__range {
           display: flex;
           justify-content: center;
-          margin: 5px;
-          margin-top: 0;
 
           font-size: 12px;
           line-height: 0, 857;
           color: #767d85;
 
           .daily-temperature__range-value {
-            margin: 5px;
             font-size: 14px;
             line-height: 0, 823;
             color: #ff6b09;
@@ -105,7 +107,7 @@
   line-height: 14px;
   box-shadow: none;
   border: none;
-  color: #767d85;
+  color: #ffffff;
   background-color: transparent;
 
   &:hover {
@@ -167,6 +169,10 @@
         justify-content: space-around;
         overflow: hidden;
         .daily-temperature__day {
+          .daily-temperature__range-item {
+            padding-right: 10px;
+            padding-left: 10px;
+          }
           .daily-temperature__week-day {
             margin-bottom: 10px;
             font-size: 14px;
@@ -182,7 +188,6 @@
             margin-bottom: 0;
           }
           .daily-temperature__range {
-            margin-top: 0;
             font-size: 14px;
             line-height: 0, 823;
 
@@ -200,6 +205,14 @@
     margin-top: 15px;
     font-size: 14px;
     line-height: 17px;
+
+    &::after {
+      margin-top: 1px;
+      width: 80%;
+      height: 1px;
+      background-color: #ffffff;
+      border-radius: 5px;
+    }
   }
   .day {
     display: none;
@@ -226,6 +239,7 @@
       .daily-temperature {
         justify-content: space-around;
         margin-top: 0;
+
         overflow: hidden;
         .daily-temperature__day {
           margin: 0;
@@ -242,7 +256,7 @@
             margin-bottom: 30px;
           }
           .daily-temperature__range {
-            margin-top: 0;
+            
             font-size: 18px;
             line-height: 0, 81;
 
