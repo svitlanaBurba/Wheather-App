@@ -29,7 +29,6 @@ export default function renderTimeInformer(ref, weather) {
   intervalTimer = setInterval(() => {
     updateFormattedWeather(weather.timezone);
   }, 1000);
-
 }
 
 function updateFormattedWeather(timezone) {

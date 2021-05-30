@@ -58,6 +58,7 @@ function getChartData(weather) {
           fill: false,
         },
         {
+          hidden: true,
           label: ' —  Humidity, %',
           backgroundColor: 'rgb(10, 6, 234)',
           borderColor: 'rgb(10, 6, 234)',
@@ -65,6 +66,7 @@ function getChartData(weather) {
           fill: false,
         },
         {
+          hidden: true,
           label: ' —  Speed, m/s',
           backgroundColor: 'rgb(235, 155, 5)',
           borderColor: 'rgb(235, 155, 5)',
@@ -72,6 +74,7 @@ function getChartData(weather) {
           fill: false,
         },
         {
+          hidden: true,
           label: ' —  Pressure, m/m',
           backgroundColor: 'rgb(5, 120, 6)',
           borderColor: 'rgb(5, 120, 6)',
@@ -87,7 +90,7 @@ function getChartData(weather) {
           display: true,
           text: 'AVARAGE:',
           color: 'rgba(255, 255, 255, 0.54)',
-        }
+        },
       },
       scales: {
         x: {
@@ -102,7 +105,7 @@ function getChartData(weather) {
               style: '',
               lineHeight: 1.2,
             },
-            padding: {top: 20, left: 0, right: 0, bottom: 0}
+            padding: { top: 20, left: 0, right: 0, bottom: 0 },
           },
           grid: {
             color: 'rgba(255, 255, 255, 0.54)',
@@ -123,7 +126,7 @@ function getChartData(weather) {
               style: 'normal',
               lineHeight: 1.2,
             },
-            padding: {top: 30, left: 0, right: 0, bottom: 0}
+            padding: { top: 30, left: 0, right: 0, bottom: 0 },
           },
           grid: {
             color: 'rgba(255, 255, 255, 0.54)',
@@ -131,7 +134,7 @@ function getChartData(weather) {
           ticks: {
             color: 'rgba(255, 255, 255, 0.54)',
           },
-        }
+        },
       },
       responsive: true,
       maintainAspectRatio: false,

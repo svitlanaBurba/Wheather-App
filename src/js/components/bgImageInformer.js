@@ -32,7 +32,7 @@ export default function renderBgImg(cityName) {
       var img = new Image();
       img.src = res;
       img.onload = function () {
-        body.style.backgroundImage = `url(${res})`;
+        document.body.style.backgroundImage = `url(${res})`;
       };
     });
 }
