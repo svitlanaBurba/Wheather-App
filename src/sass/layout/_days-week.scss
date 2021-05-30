@@ -40,6 +40,14 @@
 
       .daily-temperature__day {
         margin: 0;
+        border-radius: 25px;
+        padding: 8px;
+        transition: background-color 350ms cubic-bezier(0.4, 0, 0.2, 1);
+        
+        &:hover{
+          background: rgba(255, 255, 255, 0.1);
+          border: 1px solid rgba(255, 255, 255, 0.2);
+        }
 
         &:not(:last-child) {
           margin-right: 0;
@@ -56,6 +64,7 @@
           line-height: 0, 857;
           text-align: center;
           letter-spacing: 0.04em;
+          opacity: 0.55;
         }
         .daily-temperature__date {
           font-size: 16px;
@@ -81,6 +90,7 @@
           font-size: 12px;
           line-height: 0, 857;
           color: #767d85;
+          
 
           .daily-temperature__range-value {
             font-size: 14px;
@@ -108,10 +118,12 @@
   box-shadow: none;
   border: none;
   color: #ffffff;
+  opacity: 0.3;
   background-color: transparent;
 
   &:hover {
     cursor: pointer;
+    opacity:1;
   }
   &::after {
     content: '';
