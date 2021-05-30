@@ -64,7 +64,7 @@
     margin-right: 100px;
     position: absolute;
     right: 0px;
-    bottom: 9%;
+    bottom: 5vh;
     width: 350px;
   }
   .quote-container {
@@ -75,6 +75,16 @@
   }
   .quote-author {
     font-size: 22px;
+  }
+}
+// @media screen and (max-height: 840px) {
+//   .quote-section {
+//     bottom: 0vh;
+//   }
+// }
+@media screen and (max-height: 800px) {
+  .quote-section {
+    display: none;
   }
 }
 
