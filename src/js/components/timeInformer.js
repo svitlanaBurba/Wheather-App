@@ -3,8 +3,6 @@ import logTime from '../../index';
 const moment = require('moment-timezone');
 let intervalTimer;
 
-// const timeInformer = document.querySelector('.current-date-section');
-
 const nth = function (d) {
   if (d > 3 && d < 21) return 'th';
   switch (d % 10) {
@@ -25,13 +23,13 @@ function pad(value) {
 
 export default function renderTimeInformer(ref, weather) {
   ref.wrapper.innerHTML = timeTemp(weather);
-
   updateFormattedWeather(weather.timezone);
 
   clearInterval(intervalTimer);
   intervalTimer = setInterval(() => {
     updateFormattedWeather(weather.timezone);
   }, 1000);
+
 }
 
 function updateFormattedWeather(timezone) {

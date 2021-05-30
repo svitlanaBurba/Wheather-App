@@ -104,9 +104,8 @@ const quotes = [
   },
   {
     number: 20,
-    citation:
-      "Working hard for something we don't care about is called stressed; working hard for something we love is called passion.",
-    author: 'Simon Sinek',
+    citation: "There's no such thing as bad weather, only inappropriate clothing",
+    author: 'Ranulph Fiennes',
   },
   {
     number: 21,
@@ -132,8 +131,8 @@ const quotes = [
   {
     number: 25,
     citation:
-      'Move out of your comfort zone. You can only grow if you are willing to feel awkward and uncomfortable when you try something new.',
-    author: 'Brian Tracy',
+      'When all is said and done, the weather and love are the two elements about which one can never be sure.',
+    author: 'Alice Hoffman, Here on Earth',
   },
   {
     number: 26,
@@ -148,9 +147,8 @@ const quotes = [
   },
   {
     number: 28,
-    citation:
-      'How dare you settle for less when the world has made it so easy for you to be remarkable?',
-    author: 'Seth Godin',
+    citation: 'Climate is what we expect, weather is what we get',
+    author: 'Mark Twain',
   },
   {
     number: 29,
@@ -159,8 +157,8 @@ const quotes = [
   },
   {
     number: 30,
-    citation: 'Climate is what we expect, weather is what we get.',
-    author: 'Mark Twain',
+    citation: 'After three days men grow weary, of a wench, a guest, and weather rainy.',
+    author: 'Benjamin Franklin',
   },
   {
     number: 31,
