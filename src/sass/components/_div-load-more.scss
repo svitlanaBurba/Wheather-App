@@ -22,7 +22,7 @@
   }
 
   @media screen and (min-width: 1280px) {
-    justify-content: space-evenly;
+    justify-content: center;
     overflow: visible;
   }
 }
@@ -33,7 +33,9 @@
   background-color: #102136;
   width: 120px;
   height: 218px;
-  margin-left: 10px;
+  padding-left: 10px;
+  padding-right: 10px;
+  margin-right: 10px;
 
   &:hover {
     background-color: rgba(255, 255, 255, 0.1);
@@ -82,7 +84,6 @@
 
 .container-more-info-wheather-parameters-pressure {
   display: flex;
-  margin-left: 3px;
   margin-bottom: 5px;
   align-items: center;
   text-align: center;
@@ -92,13 +93,9 @@
     height: 20px;
     content: url('../../src/images/Barometer.png');
   }
-  @media screen and (min-width: 1280px) {
-    margin-left: 16px;
-  }
 }
 .container-more-info-wheather-parameters-humidity {
   display: flex;
-  margin-left: 3px;
   margin-bottom: 5px;
   align-items: center;
   text-align: center;
@@ -108,14 +105,10 @@
     height: 20px;
     content: url('../../src/images/Humidity.png');
   }
-  @media screen and (min-width: 1280px) {
-    margin-left: 16px;
-  }
 }
 
 .container-more-info-wheather-parameters-wind {
   display: flex;
-  margin-left: 3px;
   margin-bottom: 5px;
   align-items: center;
   text-align: center;
@@ -124,9 +117,6 @@
     width: 20px;
     height: 20px;
     content: url('../../src/images/Wind.png');
-  }
-  @media screen and (min-width: 1280px) {
-    margin-left: 16px;
   }
 }
 
@@ -140,9 +130,6 @@
   opacity: 0.54;
   padding-left: 3px;
   padding-top: 3px;
-  @media screen and (min-width: 1280px) {
-    padding-left: 7px;
-  }
 }
 
 .buttons-more-info-scroll {
