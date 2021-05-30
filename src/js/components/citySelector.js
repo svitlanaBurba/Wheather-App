@@ -1,4 +1,3 @@
-import favCityTmpl from '../../templates/citySelectorFavCity.hbs';
 import { fetchLocationCityName } from '../apiService';
 import FavCityManager from '../favCityManager';
 import jquery from 'jquery';
@@ -21,27 +20,30 @@ export default class CitySelector {
 
   // обработчик сабмита формы - когда город вводят руками
   onSearchInputSubmit(e) {
+    // получаем город
     e.preventDefault();
     const formData = new FormData(e.currentTarget);
     const city = formData.get(this.refs.searchInputField.name);
 
+    // вызываем коллбек функцию с именем введенного города
     this.onCitySelected(city);
   }
 
   sliderInit() {
+    // рисуем слайдер - добавляем по кнопке из шаблона для каждого города из массива
     this.refs.favCitiesList.innerHTML = this.favCities
-      .map(city => this.favCityTemplate(city))
+      .map(city => this.favCityTemplate(city)) // для каждого города из массива создаем кнопку из шаблона и объединяем их все в один html
       .join();
 
-    $(document).ready(function () {
-      $('.slider').slick({
-        waitForAnimate: false,
-        infinite: false,
-        variableWidth: true,
-      });
+    // инициализируем slick-сarousel на нарисованном нами слайдере
+    $('.slider').slick({
+      waitForAnimate: false,
+      infinite: false,
+      variableWidth: true,
     });
   }
 
+  // функция удаления кнопки из слайдера - нужно знать ее индекс
   sliderRemoveSlideByIndex(slideIndex) {
     // здесь мы просим сликер удалить кнопки с указаннім индексом
     $('.slider').slick('slickRemove', slideIndex);
@@ -90,6 +92,7 @@ export default class CitySelector {
     this.favCityManager.addFavCity(city);
     this.favCities = this.favCityManager.getFavCities();
 
+    // добавляем новую кнопку на слайдер
     let self = this;
     $(document).ready(function () {
       let rez = $('.slider').slick('slickAdd', self.favCityTemplate(city)); // здесь мы просим сликер добавить новый элемент
@@ -108,7 +111,7 @@ export default class CitySelector {
     $(document).ready(this.sliderRemoveSlideByIndex(sliderIndex));
   }
 
-  // обработчик нажатия на кнопку любимого города (два вида событий: показать погоду и удалить)
+  // обработчик нажатия на кнопку любимого города на слайдере (два вида событий: показать погоду и удалить)
   onFavCityClick(e) {
     if (e.target.nodeName === 'I') {
       // клик по крестику удаления - нужно удалить
@@ -137,24 +140,26 @@ export default class CitySelector {
     // при сабмите формы
     this.refs.searchInputForm.addEventListener('submit', this.onSearchInputSubmit.bind(this));
     // при нажатии на кнопку любимого города
-
     this.refs.favCitiesList.addEventListener('click', this.onFavCityClick.bind(this));
     // при нажатии на кнопку добавления любимого города
     this.refs.addFavoriteBtn.addEventListener('click', this.onAddFavoriteBtnClick.bind(this));
-
+    // при нажатии на кнопку геолокации
     this.refs.geoBtn.addEventListener('click', this.onGeoBtnClick.bind(this));
   }
 
   // конструктор
-  constructor(refs, onCitySelectedFunc, favCityManager) {
+  constructor(refs, onCitySelectedFunc, favCityTemp) {
+    // сохраняем свойства переданные в параметрах конструктора
     this.refs = refs;
     this.onCitySelected = onCitySelectedFunc;
-    this.favCityTemplate = favCityTmpl; // переделать, должно быть параметром конструктора
+    this.favCityTemplate = favCityTemp; // переделать, должно быть параметром конструктора
 
+    // вычисляем свойства - экземпляр FavCityManager и сразу запрашиваем у него список любимых городов из локал стораджа
     this.favCityManager = new FavCityManager();
     this.favCities = this.favCityManager.getFavCities();
 
-    this.addListeners();
-    this.sliderInit();
+    // и сразу выполним некоторые методы
+    this.addListeners(); // создадим все слушатели на элементы формы
+    this.sliderInit(); // инициализируем (рисуем) слайдер любимых городов
   }
 }
