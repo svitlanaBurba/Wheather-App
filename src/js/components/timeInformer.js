@@ -1,5 +1,7 @@
 import timeTemp from '../../templates/timeInformer.hbs';
+import logTime from '../../index';
 const moment = require('moment-timezone');
+let intervalTimer;
 
 // const timeInformer = document.querySelector('.current-date-section');
 
@@ -24,47 +26,26 @@ function pad(value) {
 export default function renderTimeInformer(ref, weather) {
   ref.wrapper.innerHTML = timeTemp(weather);
 
+  updateFormattedWeather(weather.timezone);
+
+  clearInterval(intervalTimer);
+  intervalTimer = setInterval(() => {
+    updateFormattedWeather(weather.timezone);
+  }, 1000);
+}
+
+function updateFormattedWeather(timezone) {
   const dayNowRef = document.querySelector('.current-day');
   const monthNowRef = document.querySelector('.current-month');
   const timeNowRef = document.querySelector('.current-time');
 
-  const intervalId = setInterval(() => {
-    const date = new Date();
+  const date = new Date();
+  const dayNow = date.getDate();
+  const weekDayNow = new Intl.DateTimeFormat('en', { weekday: 'short' }).format(date);
+  const changeDate = timezone ? moment(date).utcOffset(timezone / 60) : moment(date);
 
-    const changeDate = weather.timezone
-      ? moment(date).utcOffset(weather.timezone / 60)
-      : moment(date);
-    const dayNow = date.getDate();
-
-    const weekDayNow = new Intl.DateTimeFormat('en', { weekday: 'short' }).format(date);
-
-    dayNowRef.innerHTML = `${dayNow}<sup class="current-day-sup">${nth(
-      dayNow,
-    )}</sup> ${weekDayNow}`;
-
-    monthNowRef.textContent = new Intl.DateTimeFormat('en', { month: 'long' }).format(date);
-
-    timeNowRef.textContent =
-      pad(changeDate.hours()) + ':' + pad(changeDate.minutes()) + ':' + pad(changeDate.seconds());
-  }, 1000);
+  dayNowRef.innerHTML = `${dayNow}<sup class="current-day-sup">${nth(dayNow)}</sup> ${weekDayNow}`;
+  monthNowRef.textContent = new Intl.DateTimeFormat('en', { month: 'long' }).format(new Date());
+  timeNowRef.textContent =
+    pad(changeDate.hours()) + ':' + pad(changeDate.minutes()) + ':' + pad(changeDate.seconds());
 }
-
-/*
-Отвечает за обновление времени восхода и заката для выбранного города
-
-должен содержать функции:
-- renderTimeInformer
-
-функция renderTimeInformer:
-принимает:
-- объект с референсами
-- объект с данными для отображения: время восхода, время заката
-и делает:
-- обновляет время восхода, время заката
-
-пример объекта референсов:
-const timeInformerRefs = {
- dateSunriseTime = document.querySelector('.date__sunrise--time');
- dateSunsetTime = document.querySelector('.date__sunset--time');
-};
- */

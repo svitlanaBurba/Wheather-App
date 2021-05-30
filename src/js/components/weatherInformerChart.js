@@ -1,6 +1,5 @@
 const ctx = document.querySelector('#myChart').getContext('2d');
 import Chart from 'chart.js/auto';
-import { selectedCityWeatherFiveDays } from '../../index.js';
 const moment = require('moment-timezone');
 
 // let chart;
@@ -78,14 +77,13 @@ function getChartData(weather) {
 
 let weatherChart;
 
-  export default function renderChart(weather) {
-    if (!weatherChart) {
-      weatherChart = new Chart(ctx, getChartData(weather));
-      return weatherChart;
-    } else {
-      weatherChart.destroy();
-      weatherChart = new Chart(ctx, getChartData(weather));
-      return weatherChart;
-    }
+export default function renderChart(weather) {
+  if (!weatherChart) {
+    weatherChart = new Chart(ctx, getChartData(weather));
+    return weatherChart;
+  } else {
+    weatherChart.destroy();
+    weatherChart = new Chart(ctx, getChartData(weather));
+    return weatherChart;
   }
-
+}

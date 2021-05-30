@@ -17,5 +17,11 @@ function randomImg(min = 0, max = 20) {
 export default function renderBgImg(cityName) {
   fetchImages(cityName)
     .then(res => res.hits[randomImg(0, res.hits.length)].largeImageURL)
-    .then(res => (body.style.backgroundImage = `url(${res})`));
+    .then(res => {
+      var img = new Image();
+      img.src = res;
+      img.onload = function () {
+        body.style.backgroundImage = `url(${res})`;
+      };
+    });
 }
