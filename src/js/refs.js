@@ -5,6 +5,7 @@ export {
   weatherInformerMoreInfoRefs,
   timeInformerRefs,
   quoteInformerRefs,
+  refs,
 };
 
 const citySelectorRefs = {
@@ -33,4 +34,34 @@ const timeInformerRefs = {
 
 const quoteInformerRefs = {
   wrapper: document.querySelector('.quote-section'),
+};
+
+const refs = {
+  citySelector: {
+    searchInputForm: document.querySelector('.input-form'),
+    searchInputField: document.querySelector('.input-field'),
+    addFavoriteBtn: document.querySelector('.input-form-addfavorite'),
+    geoBtn: document.querySelector('.input-icon-location'),
+    favCitiesList: document.querySelector('.favorite-list'),
+  },
+
+  weatherInformerOneDay: {
+    wrapper: document.querySelector('.wheather-main-container'),
+  },
+
+  weatherInformerFiveDays: {
+    wrapper: document.querySelector('.weather-output-wrapper-five-days'),
+  },
+
+  weatherInformerMoreInfo: {
+    wrapper: document.querySelector('.wheather-main-more-info-container'),
+  },
+
+  timeInformer: {
+    wrapper: document.querySelector('.current-date-section'),
+  },
+
+  quoteInformer: {
+    wrapper: document.querySelector('.quote-section'),
+  },
 };

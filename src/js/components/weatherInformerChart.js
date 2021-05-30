@@ -88,7 +88,7 @@ function getChartData(weather) {
       plugins: {
         title: {
           display: true,
-          text: 'AVARAGE:',
+          text: 'AVERAGE:',
           color: 'rgba(255, 255, 255, 0.54)',
         },
       },

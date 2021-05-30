@@ -1,5 +1,6 @@
 import favCityTmpl from '../../templates/citySelectorFavCity.hbs';
 import { fetchLocationCityName } from '../apiService';
+import FavCityManager from '../favCityManager';
 import jquery from 'jquery';
 import slick from 'slick-carousel';
 
@@ -17,7 +18,6 @@ export default class CitySelector {
   favCityManager; // класс-API для получения-сохранения-удаления из localstorage
   onCitySelected; // функция, которая будет вызываться при выборе пользователем города - передается в конструкторе
   favCityTemplate; // шаблон для генерации кнопок любимых городов
-  onRender;
 
   // обработчик сабмита формы - когда город вводят руками
   onSearchInputSubmit(e) {
@@ -54,6 +54,8 @@ export default class CitySelector {
     });
   }
 
+  // === публичные методы по работе со строкой поиска ==
+  // setDisplayedCity - установить в строке поиска имя города
   setDisplayedCity(city) {
     if (city) {
       this.refs.searchInputField.value = city;
@@ -61,11 +63,23 @@ export default class CitySelector {
       this.refs.searchInputField.value = '';
     }
   }
-
+  // получить имя города из строки поиска
   getDisplayedCity() {
     return this.refs.searchInputField.value;
   }
 
+  // получить город для первой загрузки, параметр - город по умолчанию
+  // - сначала пытаемся получить первый город из локалстораджа
+  // - если такого нет, то возвращаем город по умолчанию из параметров
+  getDefaultCity(city) {
+    let defaultCity = this.favCityManager.getFavCities()[0];
+    if (!defaultCity) {
+      defaultCity = city;
+    }
+    return city;
+  }
+
+  // обработчик нажатия на "звездочку" - добавить любимый город
   onAddFavoriteBtnClick(e) {
     e.preventDefault();
     // получаем имя города из формы
@@ -137,7 +151,7 @@ export default class CitySelector {
     this.onCitySelected = onCitySelectedFunc;
     this.favCityTemplate = favCityTmpl; // переделать, должно быть параметром конструктора
 
-    this.favCityManager = favCityManager;
+    this.favCityManager = new FavCityManager();
     this.favCities = this.favCityManager.getFavCities();
 
     this.addListeners();

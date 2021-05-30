@@ -1,6 +1,6 @@
 import fiveDaysTemp from '../../templates/weatherInformerFiveDay.hbs';
 import renderWeatherInformerMoreInfo from '../components/weatherInformerMoreInfo';
-import { weatherInformerMoreInfoRefs } from '../refs';
+import { refs } from '../refs';
 
 export default function renderWeatherInformerFiveDays(ref, weather) {
   ref.wrapper.innerHTML = fiveDaysTemp(weather);
@@ -26,11 +26,11 @@ export default function renderWeatherInformerFiveDays(ref, weather) {
 
   // обработчик нажатия на more info
   const btnMoreInfoRef = document.querySelector('.weather-container-five-days-total');
-  const containerMoreInfoRef = document.querySelector('.wheather-main-more-info-container');
+  // const containerMoreInfoRef = document.querySelector('.wheather-main-more-info-container');
   btnMoreInfoRef.addEventListener('click', openMoreInfo);
   function openMoreInfo(event) {
     if (event.target.tagName !== 'BUTTON') return;
-    containerMoreInfoRef.classList.remove('is-closed');
+    refs.weatherInformerMoreInfo.wrapper.classList.remove('is-closed');
 
     onMoreInfoClicked(event.target.dataset.index, weather);
   }
@@ -67,7 +67,7 @@ export default function renderWeatherInformerFiveDays(ref, weather) {
     dataSectionRef.classList.remove('is-closed');
     wheatherMainRef.classList.remove('is-closed');
     quoteSectionRef.classList.remove('is-closed');
-    containerMoreInfoRef.classList.add('is-closed');
+    refs.weatherInformerMoreInfo.wrapper.classList.add('is-closed');
     chartShowBtnRef.classList.add('is-closed');
     chartContainer.classList.add('is-closed');
 
@@ -79,8 +79,15 @@ export default function renderWeatherInformerFiveDays(ref, weather) {
     document.querySelector('.switch-btn-wrapper').classList.remove('buttons-five-days-desktop');
   }
 }
-
+// let selectedMoreInfoDay;
 //  функция, которая будет выполнять поиск индекса при нажатии moreInfo кнопки, и рендерить погоду по времени для выбранного дня.
 function onMoreInfoClicked(dayIndex, weather) {
-  renderWeatherInformerMoreInfo(weatherInformerMoreInfoRefs, weather.daysData[dayIndex]);
+  renderWeatherInformerMoreInfo(refs.weatherInformerMoreInfo, weather.daysData[dayIndex]);
+
+  /*   if (dayIndex === selectedMoreInfoDay) {
+    alert('uzhe vybral');
+  } else {
+    selectedMoreInfoDay = dayIndex;
+    renderWeatherInformerMoreInfo(refs.weatherInformerMoreInfo, weather.daysData[dayIndex]);
+  } */
 }

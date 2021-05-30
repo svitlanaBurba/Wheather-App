@@ -10,10 +10,8 @@ import {
   timeInformerRefs,
 } from './js/refs';
 import CitySelector from './js/components/citySelector';
-import FavCityManager from './js/favCityManager';
 import renderWeatherInformerOneDay from './js/components/weatherInformerOneDay';
 import renderWeatherInformerFiveDays from './js/components/weatherInformerFiveDays';
-import renderWeatherInformerMoreInfo from './js/components/weatherInformerMoreInfo';
 import renderTimeInformer from './js/components/timeInformer';
 import renderChart from './js/components/weatherInformerChart';
 import renderQuoteInformer from './js/components/quoteInformer';
@@ -35,20 +33,14 @@ startApp();
 // главная функция
 function startApp() {
   // создаем экземпляры объектов-компонентов (увы, только 1 компонент создан как класс)
-  let favCityManager = new FavCityManager(); // служебный класс для работы с локалсторадж
 
   citySelector = new CitySelector( // класс для работы с компонентом - формой выбора города, кнопки любимых городов и т.п.
     citySelectorRefs, //передаем референсы
-    onCitySelected, // передаем функцию, которую компонент будет вызывать каждый раз, когда в нем выберут город
-    favCityManager, // передаем служебный класс для работы с локалсторадж, компонент будет его использовать чтоб читать и сохранять города
+    onCitySelected, // передаем коллбек-функцию, которую компонент будет вызывать каждый раз, когда в нем выберут город
   );
 
   // определяем город для первой загрузки: сначала первый любимый город, а если нет то Киев
-  // вызов геолокации пока не поддерживается - ДОБАВИТЬ
-  let defaultCity = favCityManager.getFavCities()[0];
-  if (!defaultCity) {
-    defaultCity = 'Kyiv';
-  }
+  let defaultCity = citySelector.getDefaultCity('Kyiv');
 
   // вызываем главную функцию onCitySelected - отвечает за загрузку и отображение данных по выбранному городу
   onCitySelected(defaultCity);
@@ -63,21 +55,18 @@ function onCitySelected(city) {
 
   renderBgImg(selectedCity.split(',')[0]); // устанавливаем фоновое изображение
 
-  weatherOneDayLoad(onWeatherOneDayLoad); // загружаем погоду на 1 день. когда загрузится - вызовется функция onWeatherOneDayLoad
+  // загружаем погоду на 1 день из апи. когда загрузится - вызовется функция onWeatherOneDayLoad
   // onWeatherOneDayLoad обработает полученные результаты и запустит обновление компонент которым нужна погода за 1 день: главный информер и время
-
-  weatherFiveDaysLoad(onWeatherFiveDaysLoad); // загружаем погоду на 1 день. когда загрузится - вызовется функция onWeatherFiveDaysLoad
-  // onWeatherFiveDaysLoad обработает полученные результаты и запустит обновление компонент с погодой за 5 дней: информер 5 дней, мор инфо и чарт
-}
-
-// загружает погоду на 1 день по selectedCity, сохраняет ее в selectedCityWeatherOneDay
-// и вызывает функцию onWeatherOneDayLoad которую передают как аргумент
-// (эта функция будет обновлять нужные компоненты)
-function weatherOneDayLoad(onWeatherOneDayLoad) {
-  // вызываем наш апи, передаем ему город
   fetchWeather(selectedCity).then(weather => {
     selectedCityWeatherOneDay = weather; // когда получим погоду, сохраняем ее в глобальную переменную
     onWeatherOneDayLoad(); // и вызываем функцию, которая наконец будет рисовать
+  });
+
+  // загружаем погоду на 5 дней из апи. когда загрузится - вызовется функция onWeatherFiveDaysLoad
+  // onWeatherFiveDaysLoad обработает полученные результаты и запустит обновление компонент с погодой за 5 дней: информер 5 дней, мор инфо и чарт
+  fetchWeatherFive(selectedCity).then(weatherFive => {
+    selectedCityWeatherFiveDays = weatherFive;
+    onWeatherFiveDaysLoad();
   });
 }
 
@@ -97,27 +86,18 @@ function onWeatherOneDayLoad() {
   renderTimeInformer(timeInformerRefs, selectedCityWeatherOneDay);
 }
 
-// загружает погоду на 5 день по selectedCity, сохраняет ее в selectedCityWeatherFiveDays
-// и вызывает функцию onWeatherFiveDaysLoad которую передают как аргумент
-// (эта функция будет обновлять нужные компоненты)
-function weatherFiveDaysLoad(onWeatherFiveDaysLoad) {
-  // вызываем наш апи, передаем ему город
-  fetchWeatherFive(selectedCity).then(weatherFive => {
-    selectedCityWeatherFiveDays = weatherFive;
-    onWeatherFiveDaysLoad();
-  });
-}
 // эта функция будет вызываться когда мы будем получать данные о погоде за 5
 // соответственно в ней мы будем рендерить (обновлять) наши компоненты
 function onWeatherFiveDaysLoad() {
-  // рендерим погоду на 5 дней
+  // рендерим погоду на 5 дней (которая в свою очередь рендерит и мор инфо)
   renderWeatherInformerFiveDays(weatherInformerFiveDaysRefs, selectedCityWeatherFiveDays);
 
-  // рендерим чарт
+  // рендерим чарт (по хорошему его лучше рендерить в 5 дней)
   renderChart(selectedCityWeatherFiveDays);
 }
 
-export default function logTime(str) {
+/* export default function logTime(str) {
   let t = new Date();
   console.log(t.toTimeString().split(' ')[0] + ':' + t.getMilliseconds() + ':   ' + str);
 }
+ */
