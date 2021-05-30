@@ -1,9 +1,26 @@
 const ctx = document.querySelector('#myChart').getContext('2d');
 import Chart from 'chart.js/auto';
-import { selectedCityWeatherFiveDays } from '../../index.js';
 const moment = require('moment-timezone');
 
 // let chart;
+
+const chartShowBtn = document.querySelector('.chart-show-link');
+const chartCloseBtn = document.querySelector('.chart-hide-link');
+const chartContainer = document.querySelector('.chart-main-container');
+
+function chartDisplay() {
+  chartShowBtn.classList.toggle('is-closed');
+  chartContainer.classList.toggle('is-closed');
+}
+
+chartShowBtn.addEventListener('click', chartDisplay);
+chartCloseBtn.addEventListener('click', chartDisplay);
+// function closeChart() {
+//   if (chartContainer.classList.contains('is-closed')) {
+//     chartShowBtn.classList.remove('is-closed');
+//     chartContainer.classList.add('is-closed');
+//   }
+// }
 
 const average = values => {
   const sum = values.reduce((previous, current) => (current += previous));
@@ -78,14 +95,13 @@ function getChartData(weather) {
 
 let weatherChart;
 
-  export default function renderChart(weather) {
-    if (!weatherChart) {
-      weatherChart = new Chart(ctx, getChartData(weather));
-      return weatherChart;
-    } else {
-      weatherChart.destroy();
-      weatherChart = new Chart(ctx, getChartData(weather));
-      return weatherChart;
-    }
+export default function renderChart(weather) {
+  if (!weatherChart) {
+    weatherChart = new Chart(ctx, getChartData(weather));
+    return weatherChart;
+  } else {
+    weatherChart.destroy();
+    weatherChart = new Chart(ctx, getChartData(weather));
+    return weatherChart;
   }
-
+}

@@ -62,6 +62,10 @@ export default class CitySelector {
     }
   }
 
+  getDisplayedCity() {
+    return this.refs.searchInputField.value;
+  }
+
   onAddFavoriteBtnClick(e) {
     e.preventDefault();
     // получаем имя города из формы
@@ -125,11 +129,10 @@ export default class CitySelector {
   }
 
   // конструктор
-  constructor(refs, onCitySelectedFunc, favCityManager, onRenderFunc) {
+  constructor(refs, onCitySelectedFunc, favCityManager) {
     this.refs = refs;
     this.onCitySelected = onCitySelectedFunc;
     this.favCityTemplate = favCityTmpl; // переделать, должно быть параметром конструктора
-    this.onRender = onRenderFunc;
 
     this.favCityManager = favCityManager;
     this.favCities = this.favCityManager.getFavCities();

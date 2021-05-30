@@ -134,6 +134,8 @@
 }
 @media screen and (min-width: 1278px) {
   .current-date-section {
+    position: absolute;
+    bottom: 0;
     width: 630px;
     border-radius: 0px 34px 0px 0px;
     margin-bottom: 0px;

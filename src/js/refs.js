@@ -1,4 +1,13 @@
-let citySelectorRefs = {
+export {
+  citySelectorRefs,
+  weatherInformerOneDayRefs,
+  weatherInformerFiveDaysRefs,
+  weatherInformerMoreInfoRefs,
+  timeInformerRefs,
+  quoteInformerRefs,
+};
+
+const citySelectorRefs = {
   searchInputForm: document.querySelector('.input-form'),
   searchInputField: document.querySelector('.input-field'),
   addFavoriteBtn: document.querySelector('.input-form-addfavorite'),
@@ -6,18 +15,22 @@ let citySelectorRefs = {
   favCitiesList: document.querySelector('.favorite-list'),
 };
 
-let weatherInformerOneDayRefs = {
+const weatherInformerOneDayRefs = {
   wrapper: document.querySelector('.wheather-main-container'),
 };
 
-let weatherInformerFiveDaysRefs = {
+const weatherInformerFiveDaysRefs = {
   wrapper: document.querySelector('.weather-output-wrapper-five-days'),
 };
 
-let weatherInformerMoreInfoRefs = {
+const weatherInformerMoreInfoRefs = {
   wrapper: document.querySelector('.wheather-main-more-info-container'),
 };
 
-let timeInformerRefs = {
+const timeInformerRefs = {
   wrapper: document.querySelector('.current-date-section'),
+};
+
+const quoteInformerRefs = {
+  wrapper: document.querySelector('.quote-section'),
 };
