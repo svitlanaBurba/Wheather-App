@@ -42,6 +42,7 @@ export default function renderWeatherInformerFiveDays(ref, weather) {
   const wheatherMainRef = document.querySelector('.wheather-main-container');
   const quoteSectionRef = document.querySelector('.quote-section');
   const chartShowBtnRef = document.querySelector('.chart-show-button-container');
+  const chartContainer = document.querySelector('.chart-main-container');
 
   btnFifeDaysRef.addEventListener('click', openFiveDays);
   function openFiveDays(event) {
@@ -66,6 +67,7 @@ export default function renderWeatherInformerFiveDays(ref, weather) {
     quoteSectionRef.classList.remove('is-closed');
     containerMoreInfoRef.classList.add('is-closed');
     chartShowBtnRef.classList.add('is-closed');
+    chartContainer.classList.add('is-closed');
 
     if (btnFifeDaysRef.disabled) {
       btnFifeDaysRef.disabled = false;
