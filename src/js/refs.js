@@ -21,6 +21,20 @@ const weatherInformerOneDayRefs = {
 
 const weatherInformerFiveDaysRefs = {
   wrapper: document.querySelector('.weather-output-wrapper-five-days'),
+
+  // btnsScrollRef: document.querySelector('.btn-scroll'),
+  // ulContainerRef: document.querySelector('.daily-temperature'),
+  // btnMoreInfoRef: document.querySelector('.weather-container-five-days-total'),
+  // containerMoreInfoRef: document.querySelector('.wheather-main-more-info-container'),
+  // containerFiveDaysRenderRef: document.querySelector('.weather-container-five-days-total'),
+  // btnFifeDaysRef: document.querySelector('.five-days-btn'),
+  // btnOneDayRef: document.querySelector('.today-btn'),
+  // dataSectionRef: document.querySelector('.current-date-section'),
+  // wheatherMainRef: document.querySelector('.wheather-main-container'),
+  // quoteSectionRef: document.querySelector('.quote-section'),
+  // chartShowBtnRef: document.querySelector('.chart-show-button-container'),
+  // chartShowBtn: document.querySelector('.chart-show-link'),
+  // chartContainer: document.querySelector('.chart-main-container'),
 };
 
 const weatherInformerMoreInfoRefs = {
