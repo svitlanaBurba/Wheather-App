@@ -141,19 +141,26 @@ function getChartData(weather) {
     },
   };
 
-  // console.log(chartMain);
   return chartMain;
 }
 
 let weatherChart;
 
 export default function renderChart(weather) {
-  if (!weatherChart) {
-    weatherChart = new Chart(ctx, getChartData(weather));
-    return weatherChart;
-  } else {
+  if (weatherChart) {
     weatherChart.destroy();
-    weatherChart = new Chart(ctx, getChartData(weather));
-    return weatherChart;
   }
+  // график рисуется сломанным если его контейнер виден пользователю в момент рисования
+  // поэтому спрячем график на время перерисовывания
+  let wasShown = !chartContainer.classList.contains('is-closed'); // если график был включен, то после перерисовывания мы его включим обратно
+  chartContainer.classList.add('is-closed');
+
+  weatherChart = new Chart(ctx, getChartData(weather));
+
+  if (wasShown) {
+    // если до перерисовывания показывался, то покажем
+    chartContainer.classList.remove('is-closed');
+  }
+
+  return weatherChart;
 }
