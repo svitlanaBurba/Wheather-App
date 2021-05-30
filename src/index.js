@@ -1,7 +1,5 @@
 import { fetchWeather, fetchWeatherFive } from './js/apiService';
 import './sass/main.scss';
-//import jquery from 'jquery';
-//import slick from 'slick-carousel';
 import {
   citySelectorRefs,
   weatherInformerOneDayRefs,
@@ -16,6 +14,7 @@ import renderTimeInformer from './js/components/timeInformer';
 import renderChart from './js/components/weatherInformerChart';
 import renderQuoteInformer from './js/components/quoteInformer';
 import renderBgImg from './js/components/bgImageInformer';
+import favCityTemp from './templates/citySelectorFavCity.hbs';
 
 export { selectedCityWeatherFiveDays };
 
@@ -37,6 +36,7 @@ function startApp() {
   citySelector = new CitySelector( // класс для работы с компонентом - формой выбора города, кнопки любимых городов и т.п.
     citySelectorRefs, //передаем референсы
     onCitySelected, // передаем коллбек-функцию, которую компонент будет вызывать каждый раз, когда в нем выберут город
+    favCityTemp,
   );
 
   // определяем город для первой загрузки: сначала первый любимый город, а если нет то Киев
