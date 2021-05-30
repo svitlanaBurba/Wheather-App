@@ -1,6 +1,5 @@
 const ctx = document.querySelector('#myChart').getContext('2d');
 import Chart from 'chart.js/auto';
-import { selectedCityWeatherFiveDays } from '../../index.js';
 const moment = require('moment-timezone');
 
 // let chart;

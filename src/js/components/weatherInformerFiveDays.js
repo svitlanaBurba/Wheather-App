@@ -1,6 +1,8 @@
 import fiveDaysTemp from '../../templates/weatherInformerFiveDay.hbs';
+import renderWeatherInformerMoreInfo from '../components/weatherInformerMoreInfo';
+import { weatherInformerMoreInfoRefs } from '../refs';
 
-export default function renderWeatherInformerFiveDays(ref, weather, onMoreInfoClick) {
+export default function renderWeatherInformerFiveDays(ref, weather) {
   ref.wrapper.innerHTML = fiveDaysTemp(weather);
 
   const btnsScrollRef = document.querySelector('.btn-scroll');
@@ -30,7 +32,7 @@ export default function renderWeatherInformerFiveDays(ref, weather, onMoreInfoCl
     if (event.target.tagName !== 'BUTTON') return;
     containerMoreInfoRef.classList.remove('is-closed');
 
-    onMoreInfoClick(event.target.dataset.index);
+    onMoreInfoClicked(event.target.dataset.index, weather);
   }
   // обработчик нажатия на openFiveDays и openOneDay
   const containerFiveDaysRenderRef = document.querySelector('.weather-container-five-days-total');
@@ -74,4 +76,9 @@ export default function renderWeatherInformerFiveDays(ref, weather, onMoreInfoCl
 
     document.querySelector('.switch-btn-wrapper').classList.remove('buttons-five-days-desktop');
   }
+}
+
+//  функция, которая будет выполнять поиск индекса при нажатии moreInfo кнопки, и рендерить погоду по времени для выбранного дня.
+function onMoreInfoClicked(dayIndex, weather) {
+  renderWeatherInformerMoreInfo(weatherInformerMoreInfoRefs, weather.daysData[dayIndex]);
 }

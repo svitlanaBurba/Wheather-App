@@ -28,5 +28,11 @@ export default function renderBgImg(cityName) {
   console.log('2 check', stringSpaceEraze(cityName.trim()));
   fetchImages(requestCity)
     .then(res => res.hits[randomImg(0, res.hits.length)].largeImageURL)
-    .then(res => addBackground(res));
+    .then(res => {
+      var img = new Image();
+      img.src = res;
+      img.onload = function () {
+        body.style.backgroundImage = `url(${res})`;
+      };
+    });
 }
