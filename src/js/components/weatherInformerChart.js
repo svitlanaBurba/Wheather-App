@@ -148,19 +148,12 @@ let weatherChart;
 
 export default function renderChart(weather) {
   if (weatherChart) {
-    weatherChart.destroy();
+    // если график уже существует, то обновляем ему данные
+    weatherChart.data.datasets = getChartData(weather).data.datasets; // просто дадим чарту новые датасеты, все остальные параметры не меняем
+    weatherChart.update(); // обновляем график
+  } else {
+    // если график не существует (например, первая загрузка), то создадим его
+    weatherChart = new Chart(ctx, getChartData(weather)); // передаем канвас и полный объект параметров
   }
-  // график рисуется сломанным если его контейнер виден пользователю в момент рисования
-  // поэтому спрячем график на время перерисовывания
-  let wasShown = !chartContainer.classList.contains('is-closed'); // если график был включен, то после перерисовывания мы его включим обратно
-  chartContainer.classList.add('is-closed');
-
-  weatherChart = new Chart(ctx, getChartData(weather));
-
-  if (wasShown) {
-    // если до перерисовывания показывался, то покажем
-    chartContainer.classList.remove('is-closed');
-  }
-
   return weatherChart;
 }
