@@ -76,7 +76,8 @@ export default function renderWeatherInformerFiveDays(ref, weather) {
     chartShowBtnRef.classList.remove('is-closed');
     chartShowBtn.classList.remove('is-closed');
 
-    if (btnOneDayRef.disabled) {
+
+    if (btnOneDayRef.disabled ) {
       btnFifeDaysRef.disabled = true;
       btnOneDayRef.disabled = false;
     }
