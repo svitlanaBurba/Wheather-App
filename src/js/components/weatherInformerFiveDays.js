@@ -2,8 +2,21 @@ import fiveDaysTemp from '../../templates/weatherInformerFiveDay.hbs';
 import renderWeatherInformerMoreInfo from '../components/weatherInformerMoreInfo';
 import { refs, weatherInformerFiveDaysRefs } from '../refs';
 
+let moreInfoDisplayedDayIndex; // хранит индекс показываемого в мор инфо дня - для обработки повторного нажатия на ту же кнопку мор инфо
+
 export default function renderWeatherInformerFiveDays(ref, weather) {
   ref.wrapper.innerHTML = fiveDaysTemp(weather);
+
+  // Поддержка ситуации, если пользователь выбрал новый город при открытом мор-инфо (т.е. какой-то день в мор инфо уже был выбран)
+  // последний выбранный в мор инфо день мы храним в moreInfoDisplayedDayIndex - так что давайте обновим мор инфо для этого дня но по новой погоде
+  // и еще выделим выбранный день
+  if (moreInfoDisplayedDayIndex) {
+    // По data-index находим кнопку li, которая активная, и вешаем на эту li класс is-active
+    let btn = document.querySelector(`button[data-index="${moreInfoDisplayedDayIndex}"]`);
+    btn.closest('li').classList.add('is-active');
+    //рендерим погоду если выбран новый город при отрытой секции мор инфо
+    onMoreInfoClicked(moreInfoDisplayedDayIndex, weather);
+  }
 
   // скрол дней на мобильной версии
   const btnsScrollRef = document.querySelector('.btn-scroll');
@@ -24,8 +37,6 @@ export default function renderWeatherInformerFiveDays(ref, weather) {
       });
     }
   }
-
-  let moreInfoDisplayedDayIndex; // хранит индекс показываемого в мор инфо дня - для обработки повторного нажатия на ту же кнопку мор инфо
 
   // обработчик нажатия на more info
   weatherInformerFiveDaysRefs.containerFiveDays.addEventListener('click', openMoreInfo);
@@ -97,15 +108,7 @@ export default function renderWeatherInformerFiveDays(ref, weather) {
     document.querySelector('.switch-btn-wrapper').classList.remove('buttons-five-days-desktop');
   }
 }
-// let selectedMoreInfoDay;
-//  функция, которая будет выполнять поиск индекса при нажатии moreInfo кнопки, и рендерить погоду по времени для выбранного дня.
+
 function onMoreInfoClicked(dayIndex, weather) {
   renderWeatherInformerMoreInfo(refs.weatherInformerMoreInfo, weather.daysData[dayIndex]);
-
-  /*   if (dayIndex === selectedMoreInfoDay) {
-    alert('uzhe vybral');
-  } else {
-    selectedMoreInfoDay = dayIndex;
-    renderWeatherInformerMoreInfo(refs.weatherInformerMoreInfo, weather.daysData[dayIndex]);
-  } */
 }
