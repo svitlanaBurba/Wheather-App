@@ -28,7 +28,7 @@ export default function renderWeatherInformerFiveDays(ref, weather) {
 
   // обработчик нажатия на more info
   const btnMoreInfoRef = document.querySelector('.weather-container-five-days-total');
-  // const containerMoreInfoRef = document.querySelector('.wheather-main-more-info-container');
+
   btnMoreInfoRef.addEventListener('click', openMoreInfo);
   function openMoreInfo(event) {
     if (event.target.tagName !== 'BUTTON') return;
@@ -44,7 +44,22 @@ export default function renderWeatherInformerFiveDays(ref, weather) {
       refs.weatherInformerMoreInfo.wrapper.classList.remove('is-closed');
       onMoreInfoClicked(newDayIndexToDisplay, weather);
     }
+
+    const temperatureDay = event.target.closest('li');
+    const activeElem = document.querySelector('.is-active');
+
+    if (temperatureDay.classList.contains('is-active')) return;
+        temperatureDay.classList.add('is-active');
+        temperatureDay.querySelector('.daily-temperature__week-day').style.color = '#FF6B09';
+        temperatureDay.querySelector('.daily-temperature__week-day').style.opacity = '1';
+    
+    if (activeElem) {
+      activeElem.classList.remove('is-active');
+      activeElem.querySelector('.daily-temperature__week-day').style.color = 'white';
+      activeElem.querySelector('.daily-temperature__week-day').style.opacity = 0;
+    }
   }
+
   // обработчик нажатия на openFiveDays и openOneDay
   const containerFiveDaysRenderRef = document.querySelector('.weather-container-five-days-total');
   const btnFifeDaysRef = document.querySelector('.five-days-btn');
