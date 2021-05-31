@@ -29,7 +29,7 @@ export default function renderBgImg(cityName) {
   fetchImages(requestCity)
     .then(res => res.hits[randomImg(0, res.hits.length)].largeImageURL)
     .then(res => {
-      var img = new Image();
+      const img = new Image();
       img.src = res;
       img.onload = addBackground(res);
     });

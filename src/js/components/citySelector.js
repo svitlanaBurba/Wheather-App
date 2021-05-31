@@ -129,7 +129,7 @@ export default class CitySelector {
     }
   }
 
-  onGeoBtnClick(e) {
+  onGeoBtnClick() {
     fetchLocationCityName().then(city => {
       this.setDisplayedCity(city);
       this.onCitySelected(city);

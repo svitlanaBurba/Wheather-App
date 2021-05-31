@@ -1,6 +1,6 @@
 import fiveDaysTemp from '../../templates/weatherInformerFiveDay.hbs';
 import renderWeatherInformerMoreInfo from '../components/weatherInformerMoreInfo';
-import { weatherInformerMoreInfoRefs, refs } from '../refs';
+import { refs } from '../refs';
 
 export default function renderWeatherInformerFiveDays(ref, weather) {
   ref.wrapper.innerHTML = fiveDaysTemp(weather);
@@ -46,7 +46,7 @@ export default function renderWeatherInformerFiveDays(ref, weather) {
   const chartContainer = document.querySelector('.chart-main-container');
 
   btnFifeDaysRef.addEventListener('click', openFiveDays);
-  function openFiveDays(event) {
+  function openFiveDays() {
     containerFiveDaysRenderRef.classList.remove('is-closed');
     dataSectionRef.classList.add('is-closed');
     wheatherMainRef.classList.add('is-closed');
@@ -62,7 +62,7 @@ export default function renderWeatherInformerFiveDays(ref, weather) {
   }
 
   btnOneDayRef.addEventListener('click', openOneDay);
-  function openOneDay(event) {
+  function openOneDay() {
     containerFiveDaysRenderRef.classList.add('is-closed');
     dataSectionRef.classList.remove('is-closed');
     wheatherMainRef.classList.remove('is-closed');
