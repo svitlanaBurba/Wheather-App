@@ -15,12 +15,7 @@ function chartDisplay() {
 
 chartShowBtn.addEventListener('click', chartDisplay);
 chartCloseBtn.addEventListener('click', chartDisplay);
-// function closeChart() {
-//   if (chartContainer.classList.contains('is-closed')) {
-//     chartShowBtn.classList.remove('is-closed');
-//     chartContainer.classList.add('is-closed');
-//   }
-// }
+
 
 const average = values => {
   const sum = values.reduce((previous, current) => (current += previous));

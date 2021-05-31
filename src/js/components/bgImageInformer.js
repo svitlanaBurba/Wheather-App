@@ -85,6 +85,7 @@ export default function renderBgImg(cityName) {
   // requestCity = stringSpaceEraze(cityName.trim());
   // console.log('check', cityName);
   // stringSpaceEraze(cityName.trim());
+
   // console.log('2 check', stringSpaceEraze(cityName.trim()));
 
   // ?????????
@@ -95,4 +96,5 @@ export default function renderBgImg(cityName) {
   //     img.src = res;
   //     img.onload = addBackground(res);
   //   });
+
 }
