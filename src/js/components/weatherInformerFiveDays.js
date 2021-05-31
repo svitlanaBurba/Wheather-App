@@ -24,15 +24,26 @@ export default function renderWeatherInformerFiveDays(ref, weather) {
     }
   }
 
+  let moreInfoDisplayedDayIndex; // хранит индекс показываемого в мор инфо дня - для обработки повторного нажатия на ту же кнопку мор инфо
+
   // обработчик нажатия на more info
   const btnMoreInfoRef = document.querySelector('.weather-container-five-days-total');
   // const containerMoreInfoRef = document.querySelector('.wheather-main-more-info-container');
   btnMoreInfoRef.addEventListener('click', openMoreInfo);
   function openMoreInfo(event) {
     if (event.target.tagName !== 'BUTTON') return;
-    refs.weatherInformerMoreInfo.wrapper.classList.remove('is-closed');
 
-    onMoreInfoClicked(event.target.dataset.index, weather);
+    let newDayIndexToDisplay = event.target.dataset.index;
+
+    if (newDayIndexToDisplay === moreInfoDisplayedDayIndex) {
+      // если щелкнули на тот же день, то просто тогл
+      refs.weatherInformerMoreInfo.wrapper.classList.toggle('is-closed');
+    } else {
+      // выполняется если выбрали другой день или было скрыто
+      moreInfoDisplayedDayIndex = newDayIndexToDisplay;
+      refs.weatherInformerMoreInfo.wrapper.classList.remove('is-closed');
+      onMoreInfoClicked(newDayIndexToDisplay, weather);
+    }
   }
   // обработчик нажатия на openFiveDays и openOneDay
   const containerFiveDaysRenderRef = document.querySelector('.weather-container-five-days-total');

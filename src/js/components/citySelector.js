@@ -88,16 +88,18 @@ export default class CitySelector {
     const formData = new FormData(e.target.parentElement);
     const city = formData.get(this.refs.searchInputField.name);
 
-    // сохраняем в локалсторадж
-    this.favCityManager.addFavCity(city);
-    this.favCities = this.favCityManager.getFavCities();
+    if (!this.favCities.includes(city)) {
+      // сохраняем в локалсторадж (не сохраняет если уже есть) и вычитываем из него обратно
+      this.favCityManager.addFavCity(city);
+      this.favCities = this.favCityManager.getFavCities();
 
-    // добавляем новую кнопку на слайдер
-    let self = this;
-    $(document).ready(function () {
-      let rez = $('.slider').slick('slickAdd', self.favCityTemplate(city)); // здесь мы просим сликер добавить новый элемент
-      console.log(rez);
-    });
+      // добавляем новую кнопку на слайдер
+      let self = this;
+      $(document).ready(function () {
+        let rez = $('.slider').slick('slickAdd', self.favCityTemplate(city)); // здесь мы просим сликер добавить новый элемент
+        console.log(rez);
+      });
+    }
   }
 
   // удалить город из слайдера и локалстораджа
@@ -141,7 +143,7 @@ export default class CitySelector {
     this.refs.searchInputForm.addEventListener('submit', this.onSearchInputSubmit.bind(this));
     // при нажатии на кнопку любимого города
     this.refs.favCitiesList.addEventListener('click', this.onFavCityClick.bind(this));
-    // при нажатии на кнопку добавления любимого города
+    // при нажатии на кнопку-"звездочку" добавления любимого города
     this.refs.addFavoriteBtn.addEventListener('click', this.onAddFavoriteBtnClick.bind(this));
     // при нажатии на кнопку геолокации
     this.refs.geoBtn.addEventListener('click', this.onGeoBtnClick.bind(this));
