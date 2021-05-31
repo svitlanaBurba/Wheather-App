@@ -78,7 +78,7 @@ export default class CitySelector {
     if (!defaultCity) {
       defaultCity = city;
     }
-    return city;
+    return defaultCity;
   }
 
   // обработчик нажатия на "звездочку" - добавить любимый город
