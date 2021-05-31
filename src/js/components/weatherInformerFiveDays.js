@@ -32,7 +32,6 @@ export default function renderWeatherInformerFiveDays(ref, weather) {
 
   btnMoreInfoRef.addEventListener('click', openMoreInfo);
   function openMoreInfo(event) {
-    console.dir(event.target);
     if (event.target.tagName !== 'BUTTON') return;
 
     const activeElem = document.querySelector('.is-active');
@@ -45,8 +44,6 @@ export default function renderWeatherInformerFiveDays(ref, weather) {
 
       if (activeElem) {
         activeElem.classList.remove('is-active');
-        activeElem.querySelector('.daily-temperature__week-day').style.color = '#FFFFFF';
-        activeElem.querySelector('.daily-temperature__week-day').style.opacity = '0.55';
       }
       return;
     }
@@ -87,8 +84,7 @@ export default function renderWeatherInformerFiveDays(ref, weather) {
     chartShowBtnRef.classList.remove('is-closed');
     chartShowBtn.classList.remove('is-closed');
 
-
-    if (btnOneDayRef.disabled ) {
+    if (btnOneDayRef.disabled) {
       btnFifeDaysRef.disabled = true;
       btnOneDayRef.disabled = false;
     }

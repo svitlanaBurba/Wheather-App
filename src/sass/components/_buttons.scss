@@ -112,7 +112,7 @@
   border: 1px solid white;
   margin-bottom: 14px;
   outline: none;
-  width: 320px;
+  width: 280px;
   @media screen and (min-width: 768px) {
     width: 500px;
   }
@@ -129,7 +129,7 @@ input:autofill {
 .input-form-addfavorite {
   position: absolute;
   top: 11px;
-  left: 280px;
+  left: 240px;
   border: none;
   cursor: pointer;
   background-color: white;
@@ -180,8 +180,7 @@ input:autofill {
 }
 
 .search-location__slider {
-  width: 280px;
-  padding-left: 6px;
+  width: 180px;
   margin: 0 auto;
   @media screen and (min-width: 768px) {
     width: 500px;
