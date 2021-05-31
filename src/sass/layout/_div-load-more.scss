@@ -18,12 +18,14 @@
   }
 
   @media screen and (min-width: 768px) {
+    width: 570px;
     overflow: hidden;
   }
 
   @media screen and (min-width: 1280px) {
     justify-content: center;
     overflow: visible;
+    width: 100%;
   }
 }
 
