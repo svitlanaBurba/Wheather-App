@@ -15,12 +15,7 @@ function chartDisplay() {
 
 chartShowBtn.addEventListener('click', chartDisplay);
 chartCloseBtn.addEventListener('click', chartDisplay);
-// function closeChart() {
-//   if (chartContainer.classList.contains('is-closed')) {
-//     chartShowBtn.classList.remove('is-closed');
-//     chartContainer.classList.add('is-closed');
-//   }
-// }
+
 
 const average = values => {
   const sum = values.reduce((previous, current) => (current += previous));
@@ -80,7 +75,6 @@ function getChartData(weather) {
           borderColor: 'rgb(5, 120, 6)',
           data: chartData.pressure,
           fill: false,
-          
         },
       ],
     },
@@ -93,6 +87,7 @@ function getChartData(weather) {
           color: 'rgba(255, 255, 255, 0.54)',
         },
         legend: {
+
           align: 'center', 
           
           labels: {
@@ -105,7 +100,7 @@ function getChartData(weather) {
           }
       }
       },
-      
+
       scales: {
         x: {
           display: true,
