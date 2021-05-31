@@ -1,5 +1,8 @@
 const ctx = document.querySelector('#myChart').getContext('2d');
-import Chart from 'chart.js/auto';
+// ctx.height = 500;
+import { Chart, registerables } from 'chart.js';
+
+Chart.register(...registerables);
 const moment = require('moment-timezone');
 
 // let chart;
@@ -15,7 +18,6 @@ function chartDisplay() {
 
 chartShowBtn.addEventListener('click', chartDisplay);
 chartCloseBtn.addEventListener('click', chartDisplay);
-
 
 const average = values => {
   const sum = values.reduce((previous, current) => (current += previous));
@@ -79,7 +81,8 @@ function getChartData(weather) {
       ],
     },
     options: {
-      // responsive: true,
+      responsive: true,
+      maintainAspectRatio: false,
       plugins: {
         title: {
           display: true,
@@ -87,18 +90,17 @@ function getChartData(weather) {
           color: 'rgba(255, 255, 255, 0.54)',
         },
         legend: {
+          align: 'start',
 
-          align: 'center', 
-          
           labels: {
-           boxWidth: 12,
-           boxHeight: 12,
-           padding: 10,
-              font: {
-                  size: 15,
-              }
-          }
-      }
+            boxWidth: 12,
+            boxHeight: 12,
+            padding: 10,
+            font: {
+              size: 15,
+            },
+          },
+        },
       },
 
       scales: {
@@ -145,8 +147,6 @@ function getChartData(weather) {
           },
         },
       },
-      responsive: true,
-      maintainAspectRatio: false,
     },
   };
 
@@ -162,7 +162,10 @@ export default function renderChart(weather) {
     weatherChart.update(); // обновляем график
   } else {
     // если график не существует (например, первая загрузка), то создадим его
-    weatherChart = new Chart(ctx, getChartData(weather)); // передаем канвас и полный объект параметров
+    let chartData = getChartData(weather);
+    console.dir(ctx);
+    console.dir(chartData);
+    weatherChart = new Chart(ctx, chartData); // передаем канвас и полный объект параметров
   }
   return weatherChart;
 }

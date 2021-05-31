@@ -3,9 +3,11 @@ import arrowRightPng from '../../images/right-arrow.png';
 import moreInfoTemp from '../../templates/load-more.hbs';
 
 export default function renderWeatherInformerMoreInfo(ref, weather) {
-
+  //console.dir(arrowLeftPng);
+  //console.dir(arrowRightPng);
   weather.arrowLeftIcon = arrowLeftPng;
   weather.arrowRightIcon = arrowRightPng;
+  console.log(weather);
   ref.wrapper.innerHTML = moreInfoTemp(weather);
 
   const arrowLeftRef = document.querySelector('#left-button-more-info');
