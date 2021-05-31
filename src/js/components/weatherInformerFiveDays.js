@@ -32,7 +32,7 @@ export default function renderWeatherInformerFiveDays(ref, weather) {
 
   btnMoreInfoRef.addEventListener('click', openMoreInfo);
   function openMoreInfo(event) {
-    if (event.target.tagName !== 'BUTTON') return;
+    if (event.target.name !== 'btn') return;
 
     const activeElem = document.querySelector('.is-active');
 
