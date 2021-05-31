@@ -71,8 +71,8 @@ const convertOneDayWeather = rawWeather => {
       max: Math.floor(rawWeather.main.temp_max),
     },
     timezone: rawWeather.timezone,
-    sunrise: getTime(rawWeather.sys.sunrise),
-    sunset: getTime(rawWeather.sys.sunset),
+    sunrise: getTime(rawWeather.sys.sunrise + rawWeather.timezone),
+    sunset: getTime(rawWeather.sys.sunset + rawWeather.timezone),
     icon: iconURL + rawWeather.weather[0].icon + '.png',
   };
 };
@@ -160,10 +160,10 @@ const roundTo1digit = x => Math.round(x * 10) / 10;
 const getTime = data => {
   const dt = new Date(data * 1000);
   return (
-    (dt.getHours() < 10 ? '0' : '') +
-    dt.getHours() +
+    (dt.getUTCHours() < 10 ? '0' : '') +
+    dt.getUTCHours() +
     ':' +
-    (dt.getMinutes() < 10 ? '0' : '') +
-    dt.getMinutes()
+    (dt.getUTCMinutes() < 10 ? '0' : '') +
+    dt.getUTCMinutes()
   );
 };
