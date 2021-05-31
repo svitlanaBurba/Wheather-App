@@ -5,6 +5,14 @@
 .is-active{
   background: rgba(255, 255, 255, 0.1);
   border: 1px solid rgba(255, 255, 255, 0.2);
+
+  .daily-temperature__week-day{
+    color: #FF6B09;
+    opacity: 1;
+  }
+  .daily-temperature__additional-info{
+    opacity: 1;
+  }
 }
 .days-of-week {
   margin-bottom: 20px;
@@ -69,7 +77,7 @@
           line-height: 0, 857;
           text-align: center;
           letter-spacing: 0.04em;
-          opacity: 0.55;
+          // opacity: 0.55;
         }
         .daily-temperature__date {
           font-size: 16px;
