@@ -28,30 +28,38 @@ export default function renderWeatherInformerFiveDays(ref, weather) {
 
   // обработчик нажатия на more info
   const btnMoreInfoRef = document.querySelector('.weather-container-five-days-total');
-  
+
   btnMoreInfoRef.addEventListener('click', openMoreInfo);
   function openMoreInfo(event) {
+    console.dir(event.target);
     if (event.target.tagName !== 'BUTTON') return;
+
+    const activeElem = document.querySelector('.is-active');
 
     let newDayIndexToDisplay = event.target.dataset.index;
 
     if (newDayIndexToDisplay === moreInfoDisplayedDayIndex) {
-      // если щелкнули на тот же день, то просто тогл
+      // если щелкнули на тот же день, то просто тогл, сбросить стиль и выйти
       refs.weatherInformerMoreInfo.wrapper.classList.toggle('is-closed');
-    } else {
-      // выполняется если выбрали другой день или было скрыто
-      moreInfoDisplayedDayIndex = newDayIndexToDisplay;
-      refs.weatherInformerMoreInfo.wrapper.classList.remove('is-closed');
-      onMoreInfoClicked(newDayIndexToDisplay, weather);
+
+      if (activeElem) {
+        activeElem.classList.remove('is-active');
+        activeElem.querySelector('.daily-temperature__week-day').style.color = '#FFFFFF';
+        activeElem.querySelector('.daily-temperature__week-day').style.opacity = '0.55';
+      }
+      return;
     }
+    // выполняется если выбрали другой день или было скрыто
+    moreInfoDisplayedDayIndex = newDayIndexToDisplay;
+    refs.weatherInformerMoreInfo.wrapper.classList.remove('is-closed');
+    onMoreInfoClicked(newDayIndexToDisplay, weather);
 
     const temperatureDay = event.target.closest('li');
-    const activeElem = document.querySelector('.is-active');
 
     if (temperatureDay.classList.contains('is-active')) return;
-      temperatureDay.classList.add('is-active');
-      temperatureDay.querySelector('.daily-temperature__week-day').style.color = '#FF6B09';
-      temperatureDay.querySelector('.daily-temperature__week-day').style.opacity = '1';
+    temperatureDay.classList.add('is-active');
+    temperatureDay.querySelector('.daily-temperature__week-day').style.color = '#FF6B09';
+    temperatureDay.querySelector('.daily-temperature__week-day').style.opacity = '1';
 
     if (activeElem) {
       activeElem.classList.remove('is-active');
