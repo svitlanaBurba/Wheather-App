@@ -77,12 +77,16 @@
     font-size: 22px;
   }
 }
-// @media screen and (max-height: 840px) {
-//   .quote-section {
-//     bottom: 0vh;
-//   }
-// }
-@media screen and (max-height: 800px) {
+@media screen and (max-height: 840px) {
+  .quote-section {
+    bottom: 0vh;
+    // margin-bottom: 0px;
+  }
+  .current-date-section {
+    margin-bottom: 5px;
+  }
+}
+@media screen and (max-height: 760px) {
   .quote-section {
     display: none;
   }
