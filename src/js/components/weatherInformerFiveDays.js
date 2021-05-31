@@ -49,14 +49,14 @@ export default function renderWeatherInformerFiveDays(ref, weather) {
     const activeElem = document.querySelector('.is-active');
 
     if (temperatureDay.classList.contains('is-active')) return;
-    temperatureDay.classList.add('is-active');
-    temperatureDay.querySelector('.daily-temperature__week-day').style.color = '#FF6B09';
-    temperatureDay.querySelector('.daily-temperature__week-day').style.opacity = '1';
+      temperatureDay.classList.add('is-active');
+      temperatureDay.querySelector('.daily-temperature__week-day').style.color = '#FF6B09';
+      temperatureDay.querySelector('.daily-temperature__week-day').style.opacity = '1';
 
     if (activeElem) {
       activeElem.classList.remove('is-active');
-      activeElem.querySelector('.daily-temperature__week-day').style.color = 'white';
-      activeElem.querySelector('.daily-temperature__week-day').style.opacity = 0;
+      activeElem.querySelector('.daily-temperature__week-day').style.color = '#FFFFFF';
+      activeElem.querySelector('.daily-temperature__week-day').style.opacity = '0.55';
     }
   }
 
