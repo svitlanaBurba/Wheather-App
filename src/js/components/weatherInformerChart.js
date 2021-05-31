@@ -75,7 +75,6 @@ function getChartData(weather) {
           borderColor: 'rgb(5, 120, 6)',
           data: chartData.pressure,
           fill: false,
-          
         },
       ],
     },
@@ -88,19 +87,19 @@ function getChartData(weather) {
           color: 'rgba(255, 255, 255, 0.54)',
         },
         legend: {
-          align: 'start', 
-          
+          align: 'start',
+
           labels: {
-           boxWidth: 13,
-           boxHeight: 12,
-           padding: 10,
-              font: {
-                  size: 15,
-              }
-          }
-      }
+            boxWidth: 13,
+            boxHeight: 12,
+            padding: 10,
+            font: {
+              size: 15,
+            },
+          },
+        },
       },
-      
+
       scales: {
         x: {
           display: true,

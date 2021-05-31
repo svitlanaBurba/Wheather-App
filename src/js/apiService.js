@@ -31,7 +31,7 @@ const fetchWeatherFive = city =>
 // Bg Image Service (запрос списка URL с картинками для БГ)
 // макс. 30 картинок, требования - мин. высота 780, мин. ширина 1200
 const fetchImages = city =>
-  fetch(`${BASE_URL_IMG}${city}&page=1&per_page=30&key=${apiKeyImg}`).then(res => {
+  fetch(`${BASE_URL_IMG}${city}&page=1&per_page=5&key=${apiKeyImg}`).then(res => {
     return res.json();
   });
 
