@@ -40,7 +40,7 @@
 .chart-hide-link {
   display: inline;
   position: relative;
-  width: 80px;
+  width: 120px;
   height: 18px;
   background-color: transparent;
   padding: 0;
@@ -48,10 +48,9 @@
   font-family: Lato;
   font-style: normal;
   font-weight: normal;
-  font-size: 14px;
+  font-size: 20px;
   line-height: 0.82;
   align-items: center;
-  text-decoration-line: underline;
   color: #ff6b09;
   align-items: center;
   cursor: pointer;
@@ -65,10 +64,49 @@
     top: -6px;
     transform: rotate(90deg);
   }
+  &:hover {
+    text-decoration-line: underline;
+    &::after {
+      background-color: rgb(109, 105, 105);
+      animation-name: spin1;
+      animation-duration: 1s;
+      animation-timing-function: linear;
+      animation-iteration-count: infinite;
+    }
+  }
 }
 .chart-hide-link {
   &::after {
     transform: rotate(-90deg);
+  }
+  &:hover {
+    text-decoration-line: underline;
+    &::after {
+      background-color: rgb(109, 105, 105);
+      animation-name: spin2;
+      animation-duration: 1s;
+      animation-timing-function: linear;
+      animation-iteration-count: infinite;
+    }
+  }
+}
+
+@keyframes spin1 {
+  0% {
+    transform: rotate(90deg);
+  }
+
+  100% {
+    transform: rotate(450deg);
+  }
+}
+@keyframes spin2 {
+  0% {
+    transform: rotate(-90deg);
+  }
+
+  100% {
+    transform: rotate(270deg);
   }
 }
 
