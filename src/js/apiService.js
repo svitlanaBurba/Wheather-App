@@ -17,24 +17,14 @@ const fetchWeather = city =>
   axios
     .get(`${BASE_URL_WEATHER}weather?q=${city}&units=metric&appid=${apiKeyWeather}`)
     .then(res => {
-      // console.log(res)
-      // if (res.status === 200) {
-        return convertOneDayWeather(res.data)
-      // }
-      // return convertOneDayWeather(res.data);
-        // throw new Error(`There are no such city in data-base`);
+      return convertOneDayWeather(res.data);
     });
-// .catch(err => console.log(err.message));
 
 // Запрос прогноза погоды (погода на 5 дней)
 const fetchWeatherFive = city =>
   axios
     .get(`${BASE_URL_WEATHER}forecast?q=${city}&units=metric&appid=${apiKeyWeather}`)
     .then(res => {
-      // if (res.cod !== '200') {
-      //   throw new Error(`There are no such city in data-base`);
-      // }
-
       return convertFiveDayWeather(res.data);
     });
 // .catch(err => console.log(err.message));
