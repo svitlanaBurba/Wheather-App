@@ -62,7 +62,7 @@ function onCitySelected(city) {
       selectedCityWeatherOneDay = weather; // когда получим погоду, сохраняем ее в глобальную переменную
       onWeatherOneDayLoad(); // и вызываем функцию, которая наконец будет рисовать
     })
-    .catch(err => console.log('Notify'));
+    .catch(err => console.log('photify'));
 
   // загружаем погоду на 5 дней из апи. когда загрузится - вызовется функция onWeatherFiveDaysLoad
   // onWeatherFiveDaysLoad обработает полученные результаты и запустит обновление компонент с погодой за 5 дней: информер 5 дней, мор инфо и чарт

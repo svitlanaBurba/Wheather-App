@@ -27,7 +27,7 @@ const fetchWeatherFive = city =>
     .then(res => {
       return convertFiveDayWeather(res.data);
     });
-
+// .catch(err => console.log(err.message));
 // Bg Image Service (запрос списка URL с картинками для БГ)
 // макс. 30 картинок, требования - мин. высота 780, мин. ширина 1200
 const fetchImages = city =>
