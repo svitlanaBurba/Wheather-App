@@ -16,7 +16,6 @@ function chartDisplay() {
 chartShowBtn.addEventListener('click', chartDisplay);
 chartCloseBtn.addEventListener('click', chartDisplay);
 
-
 const average = values => {
   const sum = values.reduce((previous, current) => (current += previous));
   const avg = sum / values.length;
@@ -87,18 +86,17 @@ function getChartData(weather) {
           color: 'rgba(255, 255, 255, 0.54)',
         },
         legend: {
+          align: 'center',
 
-          align: 'center', 
-          
           labels: {
-           boxWidth: 12,
-           boxHeight: 12,
-           padding: 10,
-              font: {
-                  size: 15,
-              }
-          }
-      }
+            boxWidth: 12,
+            boxHeight: 12,
+            padding: 10,
+            font: {
+              size: 15,
+            },
+          },
+        },
       },
 
       scales: {

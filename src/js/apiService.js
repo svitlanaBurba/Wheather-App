@@ -17,17 +17,27 @@ const fetchWeather = city =>
   axios
     .get(`${BASE_URL_WEATHER}weather?q=${city}&units=metric&appid=${apiKeyWeather}`)
     .then(res => {
-      return convertOneDayWeather(res.data);
+      // console.log(res)
+      // if (res.status === 200) {
+        return convertOneDayWeather(res.data)
+      // }
+      // return convertOneDayWeather(res.data);
+        // throw new Error(`There are no such city in data-base`);
     });
+// .catch(err => console.log(err.message));
 
 // Запрос прогноза погоды (погода на 5 дней)
 const fetchWeatherFive = city =>
   axios
     .get(`${BASE_URL_WEATHER}forecast?q=${city}&units=metric&appid=${apiKeyWeather}`)
     .then(res => {
+      // if (res.cod !== '200') {
+      //   throw new Error(`There are no such city in data-base`);
+      // }
+
       return convertFiveDayWeather(res.data);
     });
-
+// .catch(err => console.log(err.message));
 // Bg Image Service (запрос списка URL с картинками для БГ)
 // макс. 30 картинок, требования - мин. высота 780, мин. ширина 1200
 const fetchImages = city =>

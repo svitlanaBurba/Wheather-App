@@ -28,73 +28,38 @@ function addBackground(url) {
   document.body.style.backgroundImage = `linear-gradient(to top, rgba(0, 0, 0, 0.65) 0%, rgba(0, 0, 0, 0.05) 100%), url(${url})`;
 }
 
-export default function renderBgImg(cityName) {
+function renderBG(arr) {
+  const img = new Image();
+  img.onload = addBackground(arr[randomImg(0, arr.length - 1)]);
+}
+
+export default async function renderBgImg(cityName) {
   let requestCity;
   let requestCountry;
   const imgStorage = [];
   if (cityName.includes(',')) {
     requestCountry = stringSpaceEraze(getCountry(cityName));
     requestCity = stringSpaceEraze(cityName.split(', ')[0]);
-    fetchImages(requestCity).then(res =>
-      res.hits.forEach(el => {
-        imgStorage.push(el.largeImageURL);
-      }),
-    );
-    fetchImages(requestCountry)
-      .then(res =>
-        res.hits.forEach(el => {
-          imgStorage.push(el.largeImageURL);
-        }),
-      )
-      .then(res => {
-        const img = new Image();
-        img.onload = addBackground(imgStorage[randomImg(0, imgStorage.length)]);
-      });
-    // {
-    //   var img = new Image();
-    //   img.src = res;
-    //   img.onload = addBackground(res);
-    // }
 
-    // console.log('res', res.hits));
-
-    // res.hits.foreach(i => imgStorage.push(i.largeImageURL)));
-
-    // fetchImages(requestCountry).then(res =>
-    //   res.hits.foreach(i => imgStorage.push(i.largeImageURL)),
-    // );
-    // console.log('hmmmm', imgStorage);
-    // addBackground(imgStorage[randomImg(0, imgStorage.length)]);
-    //   res.hits[randomImg(0, res.hits.length)].largeImageURL)
-    // .then(res => {
-    //   var img = new Image();
-    //   img.src = res;
-    //   img.onload = addBackground(res);
-    // });
+    let listImg = await fetchImages(requestCity);
+    if (listImg.hits.length === 0) {
+      listImg = await fetchImages(requestCountry);
+    }
+    if (listImg.hits.length === 0) {
+      renderBG(['https://static.toiimg.com/photo/msid-76349133/76349133.jpg?1742625']);
+      return;
+    }
+    listImg.hits.forEach(el => imgStorage.push(el.largeImageURL));
+    renderBG(imgStorage);
   } else {
     requestCity = stringSpaceEraze(cityName.trim());
-    fetchImages(requestCity)
-      .then(res => res.hits[randomImg(0, res.hits.length)].largeImageURL)
-      .then(res => {
-        var img = new Image();
-        img.src = res;
-        img.onload = addBackground(res);
-      });
+
+    let listImg = await fetchImages(requestCity);
+    if (listImg.hits.length === 0) {
+      renderBG(['https://static.toiimg.com/photo/msid-76349133/76349133.jpg?1742625']);
+      return;
+    }
+    listImg.hits.forEach(el => imgStorage.push(el.largeImageURL));
+    renderBG(imgStorage);
   }
-  console.log('qweqwe', requestCountry, 'ewqeqw', requestCity);
-  // requestCity = stringSpaceEraze(cityName.trim());
-  // console.log('check', cityName);
-  // stringSpaceEraze(cityName.trim());
-
-  // console.log('2 check', stringSpaceEraze(cityName.trim()));
-
-  // ?????????
-  // fetchImages(requestCity)
-  //   .then(res => res.hits[randomImg(0, res.hits.length)].largeImageURL)
-  //   .then(res => {
-  //     var img = new Image();
-  //     img.src = res;
-  //     img.onload = addBackground(res);
-  //   });
-
 }

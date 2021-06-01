@@ -23,8 +23,10 @@ export default class CitySelector {
     // получаем город
     e.preventDefault();
     const formData = new FormData(e.currentTarget);
-    const city = formData.get(this.refs.searchInputField.name);
-
+    const city = formData.get(this.refs.searchInputField.name).trim();
+    if (!city) {
+      return;
+    }
     // вызываем коллбек функцию с именем введенного города
     this.onCitySelected(city);
   }
