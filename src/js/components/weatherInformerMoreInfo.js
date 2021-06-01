@@ -7,7 +7,7 @@ export default function renderWeatherInformerMoreInfo(ref, weather) {
   //console.dir(arrowRightPng);
   weather.arrowLeftIcon = arrowLeftPng;
   weather.arrowRightIcon = arrowRightPng;
-  console.log(weather);
+  
   ref.wrapper.innerHTML = moreInfoTemp(weather);
 
   const arrowLeftRef = document.querySelector('#left-button-more-info');
