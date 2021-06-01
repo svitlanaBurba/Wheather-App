@@ -1,63 +1,114 @@
 import fiveDaysTemp from '../../templates/weatherInformerFiveDay.hbs';
+import renderWeatherInformerMoreInfo from '../components/weatherInformerMoreInfo';
+import { refs, weatherInformerFiveDaysRefs } from '../refs';
 
+let moreInfoDisplayedDayIndex; // хранит индекс показываемого в мор инфо дня - для обработки повторного нажатия на ту же кнопку мор инфо
 
-export default function renderWeatherInformerFiveDays(ref, weather, onMoreInfoClick) {
-  console.log(onMoreInfoClick);
-  console.log(weather);
-
+export default function renderWeatherInformerFiveDays(ref, weather) {
   ref.wrapper.innerHTML = fiveDaysTemp(weather);
-  console.log('--------------------');
-  console.log(weather);
+
+  // Поддержка ситуации, если пользователь выбрал новый город при открытом мор-инфо (т.е. какой-то день в мор инфо уже был выбран)
+  // последний выбранный в мор инфо день мы храним в moreInfoDisplayedDayIndex - так что давайте обновим мор инфо для этого дня но по новой погоде
+  // и еще выделим выбранный день
+  if (moreInfoDisplayedDayIndex) {
+    // По data-index находим кнопку li, которая активная, и вешаем на эту li класс is-active
+    let btn = document.querySelector(`button[data-index="${moreInfoDisplayedDayIndex}"]`);
+    btn.closest('li').classList.add('is-active');
+    //рендерим погоду если выбран новый город при отрытой секции мор инфо
+    onMoreInfoClicked(moreInfoDisplayedDayIndex, weather);
+  }
+
+  // скрол дней на мобильной версии
   const btnsScrollRef = document.querySelector('.btn-scroll');
-  const ul = document.querySelector('.daily-temperature');
+  const ulContainerRef = document.querySelector('.daily-temperature');
   btnsScrollRef.addEventListener('click', scroolBtn);
   function scroolBtn(event) {
     if (event.target.tagName !== 'BUTTON') return;
     if (event.target.dataset.action === 'next') {
-      ul.scroll({
-        left: 60,
+      ulContainerRef.scroll({
+        left: 160,
         behavior: 'smooth',
       });
     }
     if (event.target.dataset.action === 'prev') {
-      ul.scroll({
-        left: -100,
+      ulContainerRef.scroll({
+        left: -160,
         behavior: 'smooth',
       });
     }
   }
 
   // обработчик нажатия на more info
-  const btnMoreInfoRef = document.querySelector('.weather-container-five-days-total');
-  const containerMoreInfoRef = document.querySelector('.wheather-main-more-info-container');
-  btnMoreInfoRef.addEventListener('click', openMoreInfo);
+  weatherInformerFiveDaysRefs.containerFiveDays.addEventListener('click', openMoreInfo);
   function openMoreInfo(event) {
-    if (event.target.tagName !== 'BUTTON') return;
-    containerMoreInfoRef.classList.toggle('is-closed');
-    
-    onMoreInfoClick(event.target.dataset.index);
+    if (event.target.name !== 'btn') return;
+
+    const activeElem = document.querySelector('.is-active');
+
+    let newDayIndexToDisplay = event.target.dataset.index;
+
+    if (newDayIndexToDisplay === moreInfoDisplayedDayIndex) {
+      // если щелкнули на тот же день, то просто тогл, сбросить стиль и выйти
+      refs.weatherInformerMoreInfo.wrapper.classList.toggle('is-closed');
+
+      if (activeElem) {
+        activeElem.classList.remove('is-active');
+      }
+      return;
+    }
+
+    // выполняется если выбрали другой день или было скрыто more info
+    moreInfoDisplayedDayIndex = newDayIndexToDisplay;
+    refs.weatherInformerMoreInfo.wrapper.classList.remove('is-closed');
+    onMoreInfoClicked(newDayIndexToDisplay, weather);
+
+    // выделяет выбранный день при нажатия на more info
+    const temperatureDay = event.target.closest('li');
+
+    if (temperatureDay.classList.contains('is-active')) return;
+    temperatureDay.classList.add('is-active');
+
+    if (activeElem) {
+      activeElem.classList.remove('is-active');
+    }
+  }
+  // обработчик нажатия на openFiveDays и openOneDay
+
+  weatherInformerFiveDaysRefs.btnFifeDays.addEventListener('click', openFiveDays);
+  function openFiveDays() {
+    weatherInformerFiveDaysRefs.containerFiveDays.classList.remove('is-closed');
+    weatherInformerFiveDaysRefs.dataSection.classList.add('is-closed');
+    weatherInformerFiveDaysRefs.wheatherMain.classList.add('is-closed');
+    weatherInformerFiveDaysRefs.quoteSection.classList.add('is-closed');
+    weatherInformerFiveDaysRefs.chartShowBtn.classList.remove('is-closed');
+    weatherInformerFiveDaysRefs.chartShowLink.classList.remove('is-closed');
+
+    if (weatherInformerFiveDaysRefs.btnOneDay.disabled) {
+      weatherInformerFiveDaysRefs.btnFifeDays.disabled = true;
+      weatherInformerFiveDaysRefs.btnOneDay.disabled = false;
+    }
+    document.querySelector('.switch-btn-wrapper').classList.add('buttons-five-days-desktop');
+  }
+
+  weatherInformerFiveDaysRefs.btnOneDay.addEventListener('click', openOneDay);
+  function openOneDay() {
+    weatherInformerFiveDaysRefs.containerFiveDays.classList.add('is-closed');
+    weatherInformerFiveDaysRefs.dataSection.classList.remove('is-closed');
+    weatherInformerFiveDaysRefs.wheatherMain.classList.remove('is-closed');
+    weatherInformerFiveDaysRefs.quoteSection.classList.remove('is-closed');
+    refs.weatherInformerMoreInfo.wrapper.classList.add('is-closed');
+    weatherInformerFiveDaysRefs.chartShowBtn.classList.add('is-closed');
+    weatherInformerFiveDaysRefs.chartContainer.classList.add('is-closed');
+
+    if (weatherInformerFiveDaysRefs.btnFifeDays.disabled) {
+      weatherInformerFiveDaysRefs.btnFifeDays.disabled = false;
+      weatherInformerFiveDaysRefs.btnOneDay.disabled = true;
+    }
+
+    document.querySelector('.switch-btn-wrapper').classList.remove('buttons-five-days-desktop');
   }
 }
 
-const containerFiveDaysRenderRef = document.querySelector('.weather-container-five-days-total');
-const btnFifeDaysRef = document.querySelector('.five-days-btn');
-const btnOneDayRef = document.querySelector('.today-btn');
-const dataSectionRef = document.querySelector('.current-date-section');
-const wheatherMainRef = document.querySelector('.wheather-main-container');
-const quoteSectionRef = document.querySelector('.quote-section');
-
-btnFifeDaysRef.addEventListener('click', openFiveDays);
-function openFiveDays(event) {
-  containerFiveDaysRenderRef.classList.remove('is-closed');
-  dataSectionRef.classList.add('is-closed');
-  wheatherMainRef.classList.add('is-closed');
-  quoteSectionRef.classList.add('is-closed');
-}
-
-btnOneDayRef.addEventListener('click', openOneDay);
-function openOneDay(event) {
-  containerFiveDaysRenderRef.classList.add('is-closed');
-  dataSectionRef.classList.remove('is-closed');
-  wheatherMainRef.classList.remove('is-closed');
-  quoteSectionRef.classList.remove('is-closed');
+function onMoreInfoClicked(dayIndex, weather) {
+  renderWeatherInformerMoreInfo(refs.weatherInformerMoreInfo, weather.daysData[dayIndex]);
 }

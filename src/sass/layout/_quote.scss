@@ -1,77 +1,99 @@
-@media screen and (min-width: 318px) {
-  .quote-section {
-    margin: 0 auto;
-    width: 280px;
-    height: 200px;
-    margin-top: 30px;
-    // padding-top: 25px;
-    margin-bottom: 30px;
-  }
-  .quote-container {
-    float: right;
-    color: white;
-    position: relative;
-    right: 20px;
-  }
-  .quote-text {
-    font-size: 14px;
-    line-height: 17px;
-    letter-spacing: 0.04em;
-    font-style: italic;
-    text-align: end;
-    margin-bottom: 15px;
-  }
-  .quote-text::after {
-    content: url('/images/quote_icon_small.svg');
-    position: absolute;
-    top: -10px;
-    right: 6px;
-  }
-  .quote-author {
-    font-family: 'Lato';
-    font-size: 18px;
-    font-style: normal;
-    line-height: 22px;
-    float: right;
-  }
+.quote-section {
+  display: flex;
+  justify-content: center;
+  margin-bottom: 30px;
+  font-family: 'Lato';
+  font-size: 14px;
+  font-style: italic;
+  text-align: right;
+}
+.quote-container {
+  width: 250px;
+  display: flex;
+  flex-direction: column;
+  color: white;
+}
+.quote-citation {
+  font-size: 14px;
+  line-height: 17px;
+  letter-spacing: 0.04em;
+  font-style: italic;
+  text-align: end;
+  margin-bottom: 15px;
+}
+.quote-container::before {
+  content: url('/images/quote_icon_small.svg');
+  position: relative;
+  top: 10px;
+}
+.quote-author {
+  font-family: 'Lato';
+  font-size: 14px;
+  font-style: normal;
+  line-height: 22px;
+  float: right;
 }
 @media screen and (min-width: 768px) {
   .quote-section {
-    width: 500px;
+    display: flex;
+    justify-content: center;
+    align-items: flex-end;
   }
   .quote-container {
-    width: 350px;
+    width: 400px;
   }
-  .quote-text {
+  .quote-citation {
     font-size: 22px;
-    line-height: 26px;
+    line-height: 1.5em;
     letter-spacing: 0.04em;
   }
   .quote-author {
     font-size: 18px;
-    line-height: 22px;
     letter-spacing: 0.04em;
   }
-  .quote-text::after {
+  .quote-container::before {
     content: url('/images/quote_icon_big.svg');
-    position: absolute;
-    top: -20px;
-    right: 0px;
+    position: relative;
+    top: 25px;
   }
 }
 @media screen and (min-width: 1278px) {
   .quote-section {
-    display: flex;
-    position: relative;
-    top: 70px;
-    left: 150px;
-    margin-bottom: 168px;
+    // margin-top: 35px;
+
+    margin-right: 100px;
+    position: absolute;
+    right: 0px;
+    bottom: 5vh;
+    width: 350px;
   }
   .quote-container {
+    width: 350px;
   }
-  .quote-text {
+  .quote-citation {
     margin-bottom: 30px;
   }
   .quote-author {
+    font-size: 22px;
   }
 }
+@media screen and (max-height: 840px) {
+  .quote-section {
+    bottom: 0vh;
+    // margin-bottom: 0px;
+  }
+  .current-date-section {
+    margin-bottom: 5px;
+  }
+}
+@media screen and (max-height: 760px) {
+  .quote-section {
+    display: none;
+  }
+}
+
+//Temporary hidden Chart container
+
+// .chart-main-container {
+//   display: none;
+// }

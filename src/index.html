@@ -4,7 +4,7 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Заголовок страницы</title>
+    <title>Weather App</title>
     <link rel="preconnect" href="https://fonts.gstatic.com" />
     <link
       href="https://fonts.googleapis.com/css2?family=Lato:ital,wght@0,300;0,400;0,700;1,400&display=swap"
@@ -39,11 +39,11 @@
         <input class="input-field" name="input-city" placeholder="Enter the city" type="text" />
 
         <!-- <input type="checkbox" class="add-favorite" /> -->
-        <button type="button" class="input-form-addfavorite">
+        <!-- <button type="button" class="input-form-addfavorite"> -->
           <svg class="input-icon-star">
             <use href="../src/images/sprite.svg#icon-Star-1"></use>
           </svg>
-        </button>
+        <!-- </button> -->
         <!-- <ul class="favorite-list"></ul> -->
       </form>
       <div class="search-location__slider">
@@ -56,7 +56,7 @@
 
     <!-- Группа из двух кнопок, пока в общей разметке -->
     <div class="switch-btn-wrapper container">
-      <button class="switch-btn today-btn" type="button">Today</button>
+      <button class="switch-btn today-btn" type="button" disabled>Today</button>
       <button class="switch-btn five-days-btn" type="button">5 days</button>
     </div>
 
@@ -74,22 +74,26 @@
       <div class="wheather-main-more-info-container is-closed"></div>
     </div>
 
+    <div class="chart-show-button-container is-closed">
+      <button type="button" class="chart-show-link">Show Chart</button>
+      <!-- <a class="chart-show-link" href="">Show Chart</a>
+      <svg class="icon-arrow-down">
+        <use href="./images/sprite.svg#icon-arrow-up" width="28" height="28"></use>
+      </svg> -->
+    </div>
+
     <!-- Контейнер с графиком Богдан -->
     <!-- <div class="chart-main-container">
-          <canvas id="myChart"> </canvas>
+    <canvas id="myChart"></canvas>
     </div> -->
-
-    <!-- <include src="./partials/header.html"></include> -->
-    <!-- <include src="./partials/city_search.html"></include> -->
-    <!-- <include src="./partials/section.html"></include> -->
-
-    <!-- <include src="./partials/header.html"></include>
-    <include src="./partials/section.html"></include> -->
-     <include src='./partials/chart-div.html'></include>
-
-    <!-- <include src="./partials/current_date.html"></include>
-    <include src="./partials/t-div.html"></include>
-    <include src="./partials/qoute.html"></include>
+    <div class="chart-main-container is-closed">
+      <div class="chart-hide-button-container">
+        <button type="button" class="chart-hide-link">Hide Chart</button>
+      </div>
+      <div class="canvas-wrapper">
+        <canvas id="myChart"></canvas>
+      </div>
+    </div>
 
     <!-- Скрипт идёт последним в разметке. В нём уже подключен главный SASS-файл. -->
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>

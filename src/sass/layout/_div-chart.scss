@@ -1,44 +1,112 @@
 .chart-main-container {
-  width: 280px;
-  height: 516px;
+  position: relative;
+  padding-top: 25px;
+  width: 320px;
+  height: 580px;
   background: rgba(16, 33, 54, 0.8);
   box-shadow: 0px 5px 33px rgba(16, 33, 54, 0.6);
   border-radius: 34px;
   margin-left: auto;
   margin-right: auto;
+  padding-right: 30px;
+  padding-left: 15px;
 
   @media screen and (min-width: 768px) {
     width: 620px;
-    height: 462px;
+    height: 580px;
+    padding: 20px;
   }
   @media screen and (min-width: 1280px) {
     width: 1060px;
-    height: 540px;
+    height: 580px;
   }
 }
 
 .chart-hide-button-container {
   display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-bottom: 30px;
   margin-left: auto;
   margin-right: auto;
 }
-
+.chart-show-button-container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: row;
+}
+.chart-show-link,
 .chart-hide-link {
-  margin-left: 85px;
-  margin-right: 10px;
-  margin-top: 26px;
-  width: 72px;
+  display: inline;
+  position: relative;
+  width: 120px;
   height: 18px;
+  background-color: transparent;
+  padding: 0;
+  border: none;
   font-family: Lato;
   font-style: normal;
   font-weight: normal;
-  font-size: 14px;
+  font-size: 20px;
   line-height: 0.82;
   align-items: center;
-  text-decoration-line: underline;
   color: #ff6b09;
-  @media screen and (min-width: 768px) {
-    margin-left: auto;
+  align-items: center;
+  cursor: pointer;
+  &::after {
+    margin-left: 10px;
+    width: 28px;
+    height: 28px;
+    border-radius: 50%;
+    content: url('../images/right-arrow.png');
+    position: absolute;
+    top: -6px;
+    transform: rotate(90deg);
+  }
+  &:hover {
+    text-decoration-line: underline;
+    &::after {
+      background-color: rgb(109, 105, 105);
+      animation-name: spin1;
+      animation-duration: 1s;
+      animation-timing-function: linear;
+      animation-iteration-count: infinite;
+    }
+  }
+}
+.chart-hide-link {
+  &::after {
+    transform: rotate(-90deg);
+  }
+  &:hover {
+    text-decoration-line: underline;
+    &::after {
+      background-color: rgb(109, 105, 105);
+      animation-name: spin2;
+      animation-duration: 1s;
+      animation-timing-function: linear;
+      animation-iteration-count: infinite;
+    }
+  }
+}
+
+@keyframes spin1 {
+  0% {
+    transform: rotate(90deg);
+  }
+
+  100% {
+    transform: rotate(450deg);
+  }
+}
+@keyframes spin2 {
+  0% {
+    transform: rotate(-90deg);
+  }
+
+  100% {
+    transform: rotate(270deg);
   }
 }
 
@@ -51,4 +119,10 @@
   @media screen and (min-width: 768px) {
     margin-right: auto;
   }
+}
+
+.canvas-wrapper {
+  position: relative;
+  height: 95%;
+  width: 100%;
 }
