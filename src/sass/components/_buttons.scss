@@ -126,7 +126,7 @@ input:autofill {
 .header-wrapper {
   margin: 0 auto 50px;
 }
-.input-form-addfavorite {
+.input-icon-star {
   position: absolute;
   top: 11px;
   left: 240px;
@@ -135,12 +135,29 @@ input:autofill {
   background-color: white;
   outline: none;
   border-radius: 50%;
+  height: 26px;
+  width: 22px;
+  border: #7e8691;
+  fill: none;
+  transition: fill 350ms cubic-bezier(0.4, 0, 0.2, 1);
   @media screen and (min-width: 768px) {
     left: 455px;
   }
   @media screen and (min-width: 1280px) {
     left: 472px;
   }
+}
+// .input-icon-star {
+//   height: 26px;
+//   width: 22px;
+//   border: #7e8691;
+//   fill: none;
+//   pointer-events: none;
+//   background-color: transparent;
+//   transition: fill 350ms cubic-bezier(0.4, 0, 0.2, 1);
+// }
+.input-icon-star:hover {
+  fill: gold;
 }
 
 .input-form {
@@ -155,18 +172,6 @@ input:autofill {
   }
 }
 
-.input-icon-star {
-  height: 26px;
-  width: 22px;
-  border: #7e8691;
-  fill: none;
-  pointer-events: none;
-  background-color: transparent;
-  transition: fill 350ms cubic-bezier(0.4, 0, 0.2, 1);
-}
-.input-form-addfavorite:hover .input-icon-star {
-  fill: gold;
-}
 @media screen and (min-width: 768px) {
   .city-search-section {
     width: 500px;
@@ -174,13 +179,11 @@ input:autofill {
     margin: 0 auto;
     margin-bottom: 100px;
   }
-  .input-icon-star {
-    left: 460px;
-  }
 }
 
 .search-location__slider {
-  width: 180px;
+  width: 260px;
+  padding-right: 30px;
   margin: 0 auto;
   @media screen and (min-width: 768px) {
     width: 500px;

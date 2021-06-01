@@ -11,7 +11,7 @@ export {
 const citySelectorRefs = {
   searchInputForm: document.querySelector('.input-form'),
   searchInputField: document.querySelector('.input-field'),
-  addFavoriteBtn: document.querySelector('.input-form-addfavorite'),
+  addFavoriteBtn: document.querySelector('.input-icon-star'),
   geoBtn: document.querySelector('.input-icon-location'),
   favCitiesList: document.querySelector('.favorite-list'),
 };
@@ -21,21 +21,19 @@ const weatherInformerOneDayRefs = {
 };
 
 const weatherInformerFiveDaysRefs = {
+  wheatherMain: document.querySelector('.wheather-main-container'),
   wrapper: document.querySelector('.weather-output-wrapper-five-days'),
+  containerFiveDays: document.querySelector('.weather-container-five-days-total'),
+  btnFifeDays: document.querySelector('.five-days-btn'),
+  btnOneDay: document.querySelector('.today-btn'),
+  dataSection: document.querySelector('.current-date-section'),
+  quoteSection: document.querySelector('.quote-section'),
+  chartShowBtn: document.querySelector('.chart-show-button-container'),
+  chartShowLink: document.querySelector('.chart-show-link'),
+  chartContainer: document.querySelector('.chart-main-container'),
 
-  // btnsScrollRef: document.querySelector('.btn-scroll'),
   // ulContainerRef: document.querySelector('.daily-temperature'),
-  // btnMoreInfoRef: document.querySelector('.weather-container-five-days-total'),
   // containerMoreInfoRef: document.querySelector('.wheather-main-more-info-container'),
-  // containerFiveDaysRenderRef: document.querySelector('.weather-container-five-days-total'),
-  // btnFifeDaysRef: document.querySelector('.five-days-btn'),
-  // btnOneDayRef: document.querySelector('.today-btn'),
-  // dataSectionRef: document.querySelector('.current-date-section'),
-  // wheatherMainRef: document.querySelector('.wheather-main-container'),
-  // quoteSectionRef: document.querySelector('.quote-section'),
-  // chartShowBtnRef: document.querySelector('.chart-show-button-container'),
-  // chartShowBtn: document.querySelector('.chart-show-link'),
-  // chartContainer: document.querySelector('.chart-main-container'),
 };
 
 const weatherInformerMoreInfoRefs = {
@@ -54,7 +52,7 @@ const refs = {
   citySelector: {
     searchInputForm: document.querySelector('.input-form'),
     searchInputField: document.querySelector('.input-field'),
-    addFavoriteBtn: document.querySelector('.input-form-addfavorite'),
+    addFavoriteBtn: document.querySelector('.input-icon-star'),
     geoBtn: document.querySelector('.input-icon-location'),
     favCitiesList: document.querySelector('.favorite-list'),
   },

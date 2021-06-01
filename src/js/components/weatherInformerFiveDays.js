@@ -1,9 +1,22 @@
 import fiveDaysTemp from '../../templates/weatherInformerFiveDay.hbs';
 import renderWeatherInformerMoreInfo from '../components/weatherInformerMoreInfo';
-import { refs } from '../refs';
+import { refs, weatherInformerFiveDaysRefs } from '../refs';
+
+let moreInfoDisplayedDayIndex; // хранит индекс показываемого в мор инфо дня - для обработки повторного нажатия на ту же кнопку мор инфо
 
 export default function renderWeatherInformerFiveDays(ref, weather) {
   ref.wrapper.innerHTML = fiveDaysTemp(weather);
+
+  // Поддержка ситуации, если пользователь выбрал новый город при открытом мор-инфо (т.е. какой-то день в мор инфо уже был выбран)
+  // последний выбранный в мор инфо день мы храним в moreInfoDisplayedDayIndex - так что давайте обновим мор инфо для этого дня но по новой погоде
+  // и еще выделим выбранный день
+  if (moreInfoDisplayedDayIndex) {
+    // По data-index находим кнопку li, которая активная, и вешаем на эту li класс is-active
+    let btn = document.querySelector(`button[data-index="${moreInfoDisplayedDayIndex}"]`);
+    btn.closest('li').classList.add('is-active');
+    //рендерим погоду если выбран новый город при отрытой секции мор инфо
+    onMoreInfoClicked(moreInfoDisplayedDayIndex, weather);
+  }
 
   // скрол дней на мобильной версии
   const btnsScrollRef = document.querySelector('.btn-scroll');
@@ -25,14 +38,10 @@ export default function renderWeatherInformerFiveDays(ref, weather) {
     }
   }
 
-  let moreInfoDisplayedDayIndex; // хранит индекс показываемого в мор инфо дня - для обработки повторного нажатия на ту же кнопку мор инфо
-
   // обработчик нажатия на more info
-  const btnMoreInfoRef = document.querySelector('.weather-container-five-days-total');
-
-  btnMoreInfoRef.addEventListener('click', openMoreInfo);
+  weatherInformerFiveDaysRefs.containerFiveDays.addEventListener('click', openMoreInfo);
   function openMoreInfo(event) {
-    if (event.target.tagName !== 'BUTTON') return;
+    if (event.target.name !== 'btn') return;
 
     const activeElem = document.querySelector('.is-active');
 
@@ -48,13 +57,12 @@ export default function renderWeatherInformerFiveDays(ref, weather) {
       return;
     }
 
-    // выделяет выбранный день при нажатия на more info
-
-    // выполняется если выбрали другой день или было скрыто
+    // выполняется если выбрали другой день или было скрыто more info
     moreInfoDisplayedDayIndex = newDayIndexToDisplay;
     refs.weatherInformerMoreInfo.wrapper.classList.remove('is-closed');
     onMoreInfoClicked(newDayIndexToDisplay, weather);
 
+    // выделяет выбранный день при нажатия на more info
     const temperatureDay = event.target.closest('li');
 
     if (temperatureDay.classList.contains('is-active')) return;
@@ -65,59 +73,42 @@ export default function renderWeatherInformerFiveDays(ref, weather) {
     }
   }
   // обработчик нажатия на openFiveDays и openOneDay
-  const containerFiveDaysRenderRef = document.querySelector('.weather-container-five-days-total');
-  const btnFifeDaysRef = document.querySelector('.five-days-btn');
-  const btnOneDayRef = document.querySelector('.today-btn');
-  const dataSectionRef = document.querySelector('.current-date-section');
-  const wheatherMainRef = document.querySelector('.wheather-main-container');
-  const quoteSectionRef = document.querySelector('.quote-section');
-  const chartShowBtnRef = document.querySelector('.chart-show-button-container');
-  const chartShowBtn = document.querySelector('.chart-show-link');
-  const chartContainer = document.querySelector('.chart-main-container');
 
-  btnFifeDaysRef.addEventListener('click', openFiveDays);
+  weatherInformerFiveDaysRefs.btnFifeDays.addEventListener('click', openFiveDays);
   function openFiveDays() {
-    containerFiveDaysRenderRef.classList.remove('is-closed');
-    dataSectionRef.classList.add('is-closed');
-    wheatherMainRef.classList.add('is-closed');
-    quoteSectionRef.classList.add('is-closed');
-    chartShowBtnRef.classList.remove('is-closed');
-    chartShowBtn.classList.remove('is-closed');
+    weatherInformerFiveDaysRefs.containerFiveDays.classList.remove('is-closed');
+    weatherInformerFiveDaysRefs.dataSection.classList.add('is-closed');
+    weatherInformerFiveDaysRefs.wheatherMain.classList.add('is-closed');
+    weatherInformerFiveDaysRefs.quoteSection.classList.add('is-closed');
+    weatherInformerFiveDaysRefs.chartShowBtn.classList.remove('is-closed');
+    weatherInformerFiveDaysRefs.chartShowLink.classList.remove('is-closed');
 
-    if (btnOneDayRef.disabled) {
-      btnFifeDaysRef.disabled = true;
-      btnOneDayRef.disabled = false;
+    if (weatherInformerFiveDaysRefs.btnOneDay.disabled) {
+      weatherInformerFiveDaysRefs.btnFifeDays.disabled = true;
+      weatherInformerFiveDaysRefs.btnOneDay.disabled = false;
     }
     document.querySelector('.switch-btn-wrapper').classList.add('buttons-five-days-desktop');
   }
 
-  btnOneDayRef.addEventListener('click', openOneDay);
+  weatherInformerFiveDaysRefs.btnOneDay.addEventListener('click', openOneDay);
   function openOneDay() {
-    containerFiveDaysRenderRef.classList.add('is-closed');
-    dataSectionRef.classList.remove('is-closed');
-    wheatherMainRef.classList.remove('is-closed');
-    quoteSectionRef.classList.remove('is-closed');
+    weatherInformerFiveDaysRefs.containerFiveDays.classList.add('is-closed');
+    weatherInformerFiveDaysRefs.dataSection.classList.remove('is-closed');
+    weatherInformerFiveDaysRefs.wheatherMain.classList.remove('is-closed');
+    weatherInformerFiveDaysRefs.quoteSection.classList.remove('is-closed');
     refs.weatherInformerMoreInfo.wrapper.classList.add('is-closed');
-    chartShowBtnRef.classList.add('is-closed');
-    chartContainer.classList.add('is-closed');
+    weatherInformerFiveDaysRefs.chartShowBtn.classList.add('is-closed');
+    weatherInformerFiveDaysRefs.chartContainer.classList.add('is-closed');
 
-    if (btnFifeDaysRef.disabled) {
-      btnFifeDaysRef.disabled = false;
-      btnOneDayRef.disabled = true;
+    if (weatherInformerFiveDaysRefs.btnFifeDays.disabled) {
+      weatherInformerFiveDaysRefs.btnFifeDays.disabled = false;
+      weatherInformerFiveDaysRefs.btnOneDay.disabled = true;
     }
 
     document.querySelector('.switch-btn-wrapper').classList.remove('buttons-five-days-desktop');
   }
 }
-// let selectedMoreInfoDay;
-//  функция, которая будет выполнять поиск индекса при нажатии moreInfo кнопки, и рендерить погоду по времени для выбранного дня.
+
 function onMoreInfoClicked(dayIndex, weather) {
   renderWeatherInformerMoreInfo(refs.weatherInformerMoreInfo, weather.daysData[dayIndex]);
-
-  /*   if (dayIndex === selectedMoreInfoDay) {
-    alert('uzhe vybral');
-  } else {
-    selectedMoreInfoDay = dayIndex;
-    renderWeatherInformerMoreInfo(refs.weatherInformerMoreInfo, weather.daysData[dayIndex]);
-  } */
 }

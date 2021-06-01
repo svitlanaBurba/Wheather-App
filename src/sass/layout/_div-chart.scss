@@ -8,8 +8,8 @@
   border-radius: 34px;
   margin-left: auto;
   margin-right: auto;
-  padding-right: 10px;
-  padding-left: 10px;
+  padding-right: 30px;
+  padding-left: 15px;
 
   @media screen and (min-width: 768px) {
     width: 620px;
@@ -110,25 +110,6 @@
   }
 }
 
-// .chart-hide-link {
-//   margin-left: 85px;
-//   margin-right: 10px;
-//   margin-top: 26px;
-//   width: 72px;
-//   height: 18px;
-//   font-family: Lato;
-//   font-style: normal;
-//   font-weight: normal;
-//   font-size: 14px;
-//   line-height: 0.82;
-//   align-items: center;
-//   text-decoration-line: underline;
-//   color: #ff6b09;
-//   @media screen and (min-width: 768px) {
-//     margin-left: auto;
-//   }
-// }
-
 .icon-arrow-up {
   display: block;
   width: 28px;
@@ -138,4 +119,10 @@
   @media screen and (min-width: 768px) {
     margin-right: auto;
   }
+}
+
+.canvas-wrapper {
+  position: relative;
+  height: 95%;
+  width: 100%;
 }

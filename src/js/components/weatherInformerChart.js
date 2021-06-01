@@ -1,5 +1,8 @@
 const ctx = document.querySelector('#myChart').getContext('2d');
-import Chart from 'chart.js/auto';
+// ctx.height = 500;
+import { Chart, registerables } from 'chart.js';
+
+Chart.register(...registerables);
 const moment = require('moment-timezone');
 
 // let chart;
@@ -78,7 +81,8 @@ function getChartData(weather) {
       ],
     },
     options: {
-      // responsive: true,
+      responsive: true,
+      maintainAspectRatio: false,
       plugins: {
         title: {
           display: true,
@@ -143,8 +147,6 @@ function getChartData(weather) {
           },
         },
       },
-      responsive: true,
-      maintainAspectRatio: false,
     },
   };
 
@@ -160,7 +162,10 @@ export default function renderChart(weather) {
     weatherChart.update(); // обновляем график
   } else {
     // если график не существует (например, первая загрузка), то создадим его
-    weatherChart = new Chart(ctx, getChartData(weather)); // передаем канвас и полный объект параметров
+    let chartData = getChartData(weather);
+    console.dir(ctx);
+    console.dir(chartData);
+    weatherChart = new Chart(ctx, chartData); // передаем канвас и полный объект параметров
   }
   return weatherChart;
 }

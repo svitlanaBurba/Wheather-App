@@ -27,7 +27,9 @@
   },
   "dependencies": {
     "axios": "^0.21.1",
-    "chart.js": "^3.3.0",
+    "chart.js": "^3.3.2",
+    "chartjs-chart-matrix": "^1.0.0",
+    "images": "^3.2.3",
     "jquery": "^3.6.0",
     "moment-timezone": "^0.5.33",
     "siema": "^1.5.1",
