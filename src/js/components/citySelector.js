@@ -135,8 +135,13 @@ export default class CitySelector {
 
   onGeoBtnClick() {
     fetchLocationCityName().then(city => {
-      this.setDisplayedCity(city);
-      this.onCitySelected(city);
+      if (city) {
+        this.setDisplayedCity(city);
+        this.onCitySelected(city);
+      } else {
+        alert('Geolocation refused or failed, default city displayed');
+        // inform user geolocation was denied or had not worked
+      }
     });
   }
 

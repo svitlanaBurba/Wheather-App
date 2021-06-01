@@ -40,20 +40,25 @@ const fetchImages = city =>
 const fetchLocationCityName = () => {
   return new Promise((resolve, reject) => {
     navigator.geolocation.getCurrentPosition(resolve, reject, { timeout: 3000 });
-  }).then(position => {
-    console.log(position);
-    const latitude = position.coords.latitude;
-    const longitude = position.coords.longitude;
+  })
+    .then(position => {
+      console.log(position);
+      const latitude = position.coords.latitude;
+      const longitude = position.coords.longitude;
 
-    return axios
-      .get(
-        `${BASE_URL_WEATHER}weather?lat=${latitude}&lon=${longitude}&units=metric&appid=${apiKeyWeather}`,
-      )
-      .then(res => {
-        console.log(res);
-        return res.data.name + ', ' + res.data.sys.country;
-      });
-  });
+      return axios
+        .get(
+          `${BASE_URL_WEATHER}weather?lat=${latitude}&lon=${longitude}&units=metric&appid=${apiKeyWeather}`,
+        )
+        .then(res => {
+          console.log(res);
+          return res.data.name + ', ' + res.data.sys.country;
+        });
+    })
+    .catch(err => {
+      console.log('User denied Geolocation');
+      return undefined;
+    });
 };
 
 // Конвертер для одного дня

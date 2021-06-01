@@ -163,8 +163,6 @@ export default function renderChart(weather) {
   } else {
     // если график не существует (например, первая загрузка), то создадим его
     let chartData = getChartData(weather);
-    console.dir(ctx);
-    console.dir(chartData);
     weatherChart = new Chart(ctx, chartData); // передаем канвас и полный объект параметров
   }
   return weatherChart;
