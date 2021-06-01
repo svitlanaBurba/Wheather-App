@@ -11,7 +11,7 @@ export {
 const citySelectorRefs = {
   searchInputForm: document.querySelector('.input-form'),
   searchInputField: document.querySelector('.input-field'),
-  addFavoriteBtn: document.querySelector('.input-form-addfavorite'),
+  addFavoriteBtn: document.querySelector('.input-icon-star'),
   geoBtn: document.querySelector('.input-icon-location'),
   favCitiesList: document.querySelector('.favorite-list'),
 };
@@ -52,7 +52,7 @@ const refs = {
   citySelector: {
     searchInputForm: document.querySelector('.input-form'),
     searchInputField: document.querySelector('.input-field'),
-    addFavoriteBtn: document.querySelector('.input-form-addfavorite'),
+    addFavoriteBtn: document.querySelector('.input-icon-star'),
     geoBtn: document.querySelector('.input-icon-location'),
     favCitiesList: document.querySelector('.favorite-list'),
   },
