@@ -23,8 +23,10 @@ export default class CitySelector {
     // получаем город
     e.preventDefault();
     const formData = new FormData(e.currentTarget);
-    const city = formData.get(this.refs.searchInputField.name);
-
+    const city = formData.get(this.refs.searchInputField.name).trim();
+    if (!city) {
+      return;
+    }
     // вызываем коллбек функцию с именем введенного города
     this.onCitySelected(city);
   }
@@ -85,7 +87,7 @@ export default class CitySelector {
   onAddFavoriteBtnClick(e) {
     e.preventDefault();
     // получаем имя города из формы
-    const formData = new FormData(e.target.parentElement);
+    const formData = new FormData(e.target.closest('form'));
     const city = formData.get(this.refs.searchInputField.name);
 
     if (!this.favCities.includes(city)) {
@@ -133,8 +135,13 @@ export default class CitySelector {
 
   onGeoBtnClick() {
     fetchLocationCityName().then(city => {
-      this.setDisplayedCity(city);
-      this.onCitySelected(city);
+      if (city) {
+        this.setDisplayedCity(city);
+        this.onCitySelected(city);
+      } else {
+        alert('Geolocation refused or failed, default city displayed');
+        // inform user geolocation was denied or had not worked
+      }
     });
   }
 

@@ -1,8 +1,46 @@
 import fiveDaysTemp from '../../templates/weatherInformerFiveDay.hbs';
 import renderWeatherInformerMoreInfo from '../components/weatherInformerMoreInfo';
 import { refs, weatherInformerFiveDaysRefs } from '../refs';
+import { selectedCityWeatherFiveDays } from '../../index';
 
 let moreInfoDisplayedDayIndex; // хранит индекс показываемого в мор инфо дня - для обработки повторного нажатия на ту же кнопку мор инфо
+
+// обработчик нажатия на more info
+weatherInformerFiveDaysRefs.containerFiveDays.addEventListener('click', openMoreInfo);
+
+function openMoreInfo(event) {
+  if (event.target.name !== 'btn') return;
+  // console.log('MoreInfo button pressed');
+
+  const activeElem = document.querySelector('.is-active');
+
+  let newDayIndexToDisplay = event.target.dataset.index;
+
+  if (newDayIndexToDisplay === moreInfoDisplayedDayIndex) {
+    // если щелкнули на тот же день, то просто тогл, сбросить стиль и выйти
+    refs.weatherInformerMoreInfo.wrapper.classList.toggle('is-closed');
+
+    if (activeElem) {
+      activeElem.classList.remove('is-active');
+    }
+    return;
+  }
+
+  // выполняется если выбрали другой день или было скрыто more info
+  moreInfoDisplayedDayIndex = newDayIndexToDisplay;
+  refs.weatherInformerMoreInfo.wrapper.classList.remove('is-closed');
+  onMoreInfoClicked(newDayIndexToDisplay, selectedCityWeatherFiveDays);
+
+  // выделяет выбранный день при нажатия на more info
+  const temperatureDay = event.target.closest('li');
+
+  if (temperatureDay.classList.contains('is-active')) return;
+  temperatureDay.classList.add('is-active');
+
+  if (activeElem) {
+    activeElem.classList.remove('is-active');
+  }
+}
 
 export default function renderWeatherInformerFiveDays(ref, weather) {
   ref.wrapper.innerHTML = fiveDaysTemp(weather);
@@ -38,40 +76,6 @@ export default function renderWeatherInformerFiveDays(ref, weather) {
     }
   }
 
-  // обработчик нажатия на more info
-  weatherInformerFiveDaysRefs.containerFiveDays.addEventListener('click', openMoreInfo);
-  function openMoreInfo(event) {
-    if (event.target.name !== 'btn') return;
-
-    const activeElem = document.querySelector('.is-active');
-
-    let newDayIndexToDisplay = event.target.dataset.index;
-
-    if (newDayIndexToDisplay === moreInfoDisplayedDayIndex) {
-      // если щелкнули на тот же день, то просто тогл, сбросить стиль и выйти
-      refs.weatherInformerMoreInfo.wrapper.classList.toggle('is-closed');
-
-      if (activeElem) {
-        activeElem.classList.remove('is-active');
-      }
-      return;
-    }
-
-    // выполняется если выбрали другой день или было скрыто more info
-    moreInfoDisplayedDayIndex = newDayIndexToDisplay;
-    refs.weatherInformerMoreInfo.wrapper.classList.remove('is-closed');
-    onMoreInfoClicked(newDayIndexToDisplay, weather);
-
-    // выделяет выбранный день при нажатия на more info
-    const temperatureDay = event.target.closest('li');
-
-    if (temperatureDay.classList.contains('is-active')) return;
-    temperatureDay.classList.add('is-active');
-
-    if (activeElem) {
-      activeElem.classList.remove('is-active');
-    }
-  }
   // обработчик нажатия на openFiveDays и openOneDay
 
   weatherInformerFiveDaysRefs.btnFifeDays.addEventListener('click', openFiveDays);

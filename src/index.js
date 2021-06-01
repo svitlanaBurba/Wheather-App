@@ -16,6 +16,10 @@ import renderQuoteInformer from './js/components/quoteInformer';
 import renderBgImg from './js/components/bgImageInformer';
 import favCityTemp from './templates/citySelectorFavCity.hbs';
 
+import { alert, defaultModules } from '@pnotify/core';
+import '@pnotify/core/dist/PNotify.css';
+import '@pnotify/core/dist/BrightTheme.css';
+
 export { selectedCityWeatherFiveDays };
 
 // референсы - вынести в файл
@@ -57,17 +61,25 @@ function onCitySelected(city) {
 
   // загружаем погоду на 1 день из апи. когда загрузится - вызовется функция onWeatherOneDayLoad
   // onWeatherOneDayLoad обработает полученные результаты и запустит обновление компонент которым нужна погода за 1 день: главный информер и время
-  fetchWeather(selectedCity).then(weather => {
-    selectedCityWeatherOneDay = weather; // когда получим погоду, сохраняем ее в глобальную переменную
-    onWeatherOneDayLoad(); // и вызываем функцию, которая наконец будет рисовать
-  });
+  fetchWeather(selectedCity)
+    .then(weather => {
+      selectedCityWeatherOneDay = weather; // когда получим погоду, сохраняем ее в глобальную переменную
+      onWeatherOneDayLoad(); // и вызываем функцию, которая наконец будет рисовать
+    })
+    .catch(err =>
+      alert({
+        text: `There is no such city. Please, try again`,
+      }),
+    );
 
   // загружаем погоду на 5 дней из апи. когда загрузится - вызовется функция onWeatherFiveDaysLoad
   // onWeatherFiveDaysLoad обработает полученные результаты и запустит обновление компонент с погодой за 5 дней: информер 5 дней, мор инфо и чарт
-  fetchWeatherFive(selectedCity).then(weatherFive => {
-    selectedCityWeatherFiveDays = weatherFive;
-    onWeatherFiveDaysLoad();
-  });
+  fetchWeatherFive(selectedCity)
+    .then(weatherFive => {
+      selectedCityWeatherFiveDays = weatherFive;
+      onWeatherFiveDaysLoad();
+    })
+    .catch(err => console.log('No such city'));
 }
 
 // эта функция будет вызываться когда мы будем получать данные о погоде за 1 день
