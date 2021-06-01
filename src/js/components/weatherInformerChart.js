@@ -90,7 +90,7 @@ function getChartData(weather) {
           color: 'rgba(255, 255, 255, 0.54)',
         },
         legend: {
-          align: 'start',
+          align: 'center',
 
           labels: {
             boxWidth: 12,
