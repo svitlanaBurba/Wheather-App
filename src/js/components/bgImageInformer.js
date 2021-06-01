@@ -52,7 +52,9 @@ export default async function renderBgImg(cityName) {
       listImg = await fetchImages(requestCountry);
     }
     if (listImg.hits.length === 0) {
-      renderBG(['https://static.toiimg.com/photo/msid-76349133/76349133.jpg?1742625']);
+      renderBG([
+        'https://blog.way.com/wp-content/uploads/2020/11/holiday-travel-safety-1024x687.jpg',
+      ]);
       return;
     }
     listImg.hits.forEach(el => imgStorage.push(el.largeImageURL));
@@ -62,7 +64,9 @@ export default async function renderBgImg(cityName) {
 
     let listImg = await fetchImages(requestCity);
     if (listImg.hits.length === 0) {
-      renderBG(['https://static.toiimg.com/photo/msid-76349133/76349133.jpg?1742625']);
+      renderBG([
+        'https://blog.way.com/wp-content/uploads/2020/11/holiday-travel-safety-1024x687.jpg',
+      ]);
       return;
     }
     listImg.hits.forEach(el => imgStorage.push(el.largeImageURL));
