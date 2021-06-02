@@ -1,5 +1,4 @@
 import timeTemp from '../../templates/timeInformer.hbs';
-import logTime from '../../index';
 const moment = require('moment-timezone');
 let intervalTimer;
 
