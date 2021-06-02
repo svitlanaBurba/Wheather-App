@@ -3,7 +3,6 @@ const ctx = document.querySelector('#myChart').getContext('2d');
 import { Chart, registerables } from 'chart.js';
 
 Chart.register(...registerables);
-const moment = require('moment-timezone');
 
 // let chart;
 
